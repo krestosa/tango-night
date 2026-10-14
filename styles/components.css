@@ -23,7 +23,7 @@
   .hero__center { position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100%; padding: 130px 0 125px; text-align:center; }
   .eyebrow--hero { color:var(--color-white); gap:16px; margin-bottom:34px; font-size:clamp(10px,.7vw,13px); text-shadow:0 2px 20px #000; }
   .eyebrow-line { display:inline-block; width:24px; height:1px; background:rgba(255,255,255,.55); }
-  .hero__title { width:100%; color:#fff; font-weight:800; line-height:.74; letter-spacing:-.096em; font-size:var(--text-hero); text-transform:uppercase; text-shadow:0 4px 40px rgba(0,0,0,.22); }
+  .hero__title { width:100%; color:#fff; font-weight:800; line-height:.98; letter-spacing:-.096em; font-size:var(--text-hero); text-transform:uppercase; text-shadow:0 4px 40px rgba(0,0,0,.22); }
   .hero__title > span { display:block; }
   .hero__title-bottom { white-space:nowrap; }
   .hero__title-bottom em { display:inline-block; position:relative; top:-.27em; margin-right:.04em; font-style:normal; font-weight:500; font-size:.27em; line-height:1; letter-spacing:-.07em; vertical-align:middle; }
@@ -56,12 +56,13 @@
   .interlude__wash { z-index:-1; background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.1) 40%,rgba(0,0,0,.58)),linear-gradient(90deg,rgba(0,0,0,.76),rgba(0,0,0,.14) 85%); }
   .interlude__content { position:relative; padding-block:170px; }
   .interlude__content .eyebrow { margin-bottom:clamp(40px,5vw,90px); }
-  .interlude__quote { max-width: 1100px; font-size:clamp(56px,7.5vw,148px); font-weight:800; letter-spacing:-.075em; line-height:.89; }
+  .interlude__quote { max-width: 1100px; font-size:clamp(56px,7.5vw,148px); font-weight:800; letter-spacing:-.075em; line-height:1.05; }
   .interlude__quote span { color:var(--color-copper); }
   .interlude__credit { margin-top:70px; color:var(--color-soft); font-size:10px; font-weight:650; letter-spacing:.1em; }
   /* FORMATS */
   .formats { background:#0b0b0b; }
   .formats__heading { display:grid; grid-template-columns:minmax(0, 7fr) minmax(0, 4fr); align-items:end; gap:var(--grid-gap); margin-top:clamp(64px,7vw,120px); margin-bottom:clamp(65px,6.5vw,112px); }
+  .formats__heading .display { font-size:clamp(48px,7.1vw,136px); }
   .formats__intro { justify-self:end; max-width:400px; padding-bottom:9px; font-size:var(--text-lg); line-height:1.5; letter-spacing:-.025em; color:var(--color-soft); }
   .formats__intro strong { color:var(--color-text); font-weight:700; }
   .format-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--grid-gap); }
@@ -77,11 +78,10 @@
   .format-card__tag { border:1px solid rgba(255,255,255,.5); padding:9px 12px; white-space:nowrap; }
   .format-card__body { margin-top:auto; padding-top:80px; }
   .format-card__eyebrow { margin-bottom:20px; font-size:11px; font-weight:700; letter-spacing:.13em; }
-  .format-card h3 { font-size:var(--text-card); line-height:.82; font-weight:800; letter-spacing:-.083em; }
+  .format-card h3 { font-size:var(--text-card); line-height:1.02; font-weight:800; letter-spacing:-.083em; }
   .format-card h3 span { color:var(--color-copper); }
   .format-card__body > p:not(.format-card__eyebrow) { max-width:460px; margin-top:35px; font-size:clamp(16px,1.18vw,22px); line-height:1.4; letter-spacing:-.035em; }
   .format-card__features { display:flex; flex-wrap:wrap; gap:13px; margin-top:40px; font-size:11px; font-weight:650; letter-spacing:.045em; }
-  .format-card__features span { padding-bottom:9px; border-bottom:1px solid rgba(255,255,255,.4); }
   .format-card__footer { margin-top:42px; padding-top:20px; border-top:1px solid rgba(255,255,255,.34); }
   .format-card__footer strong { letter-spacing:.1em; font-weight:700; }
   .format-note { display:flex; gap:12px; align-items:flex-start; max-width:870px; color:var(--color-muted); margin-top:32px; font-size:11px; letter-spacing:.025em; font-weight:600; line-height:1.6; }
@@ -99,7 +99,7 @@
   .menu-section__headline .eyebrow { margin-bottom:38px; }
   .menu-price { display:flex; flex-direction:column; flex:0 0 auto; align-items:flex-end; gap:12px; padding-bottom:10px; white-space:nowrap; }
   .menu-price > span { font-size:10px; font-weight:650; letter-spacing:.1em; }
-  .menu-price strong { font-size:clamp(45px,5.1vw,96px); font-weight:750; letter-spacing:-.075em; line-height:.9; }
+  .menu-price strong { font-size:clamp(45px,5.1vw,96px); font-weight:750; letter-spacing:-.075em; line-height:1.03; }
   .menu-price strong small { font-size:.55em; font-weight:600; vertical-align:top; }
   .menu-price > span:last-child { color:var(--color-muted); }
   .menu-layout { display:grid; grid-template-columns: minmax(0,4fr) minmax(0,7fr); gap:calc(var(--grid-gap) + var(--grid-gap)); }
@@ -110,7 +110,7 @@
   .menu-course:last-child { border-bottom:1px solid var(--color-border-strong); }
   .menu-course__heading { display:flex; align-items:baseline; flex-wrap:wrap; column-gap:20px; row-gap:12px; }
   .menu-course__num { font-size:11px; font-weight:650; color:var(--color-copper); }
-  .menu-course h3 { font-size:clamp(33px,3.3vw,64px); line-height:.9; font-weight:750; letter-spacing:-.065em; }
+  .menu-course h3 { font-size:clamp(33px,3.3vw,64px); line-height:1.06; font-weight:750; letter-spacing:-.065em; }
   .course-choice { margin-left:auto; color:var(--color-soft); border:1px solid var(--color-border-strong); border-radius:99px; padding:6px 10px; font-size:10px; font-weight:600; letter-spacing:.02em; white-space:nowrap; }
   .menu-course__choices { padding-left:35px; margin-top:35px; display:grid; gap:15px; }
   .menu-course__choices p { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; column-gap:20px; row-gap:5px; font-size:clamp(16px,1.4vw,23px); font-weight:500; letter-spacing:-.025em; line-height:1.25; }
@@ -121,7 +121,7 @@
   .reservations .section-topline { border-color:rgba(0,0,0,.25); }
   .reservations .section-index,.reservations .section-topline > :last-child { color:#373330; }
   .reservations .dot { background:var(--color-wine); }
-  .reservations .outline { -webkit-text-stroke:1.6px #151515; }
+  .reservations .outline { -webkit-text-stroke:1.2px #151515; }
   .reservations__layout { display:grid; grid-template-columns:minmax(0, 7fr) minmax(0,5fr); gap:calc(var(--grid-gap) + var(--grid-gap)); align-items:start; margin-top:clamp(80px,8vw,140px); }
   .reservations__heading { min-width:0; }
   .reservations__heading .eyebrow { margin-bottom:50px; }
@@ -146,12 +146,14 @@
   /* FAQ */
   .questions { background:#0a0a0a; }
   .questions__grid { display:grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap:calc(var(--grid-gap) + var(--grid-gap)); }
-  .questions__left h2 { margin-top:75px; font-size:clamp(54px,5vw,96px); line-height:.9; letter-spacing:-.068em; }
+  .questions__left h2 { margin-top:75px; font-size:clamp(54px,5vw,96px); line-height:1.06; letter-spacing:-.068em; }
   .questions__right { border-top:1px solid var(--color-border-strong); }
   .faq { border-bottom:1px solid var(--color-border-strong); }
   .faq summary { display:flex; justify-content:space-between; align-items:center; gap:28px; list-style:none; min-height:98px; padding:26px 0; cursor:pointer; font-size:clamp(15px,1.25vw,21px); font-weight:600; letter-spacing:-.025em; }
   .faq summary::-webkit-details-marker { display:none; }
-  .faq summary span { display:grid; flex:0 0 38px; place-items:center; width:38px; height:38px; border:1px solid var(--color-border-strong); border-radius:50%; font-size:24px; font-weight:300; transition:transform var(--duration-normal); }
+  .faq summary span { position:relative; display:block; flex:0 0 38px; width:38px; height:38px; border:1px solid var(--color-border-strong); border-radius:50%; transform-origin:center center; transition:transform var(--duration-normal) var(--ease-out); }
+  .faq summary span::before, .faq summary span::after { content:""; position:absolute; top:50%; left:50%; width:14px; height:1.5px; border-radius:2px; background:currentColor; transform:translate(-50%, -50%); }
+  .faq summary span::after { transform:translate(-50%, -50%) rotate(90deg); }
   .faq[open] summary span { transform:rotate(45deg); }
   .faq p { max-width:560px; padding-bottom:32px; color:var(--color-soft); font-size:16px; line-height:1.5; }
   /* FINAL CTA */

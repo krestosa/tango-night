@@ -107,7 +107,7 @@
     .interlude__quote { font-size:clamp(48px,10.5vw,70px); }
     .interlude__content .eyebrow { margin-bottom:40px; }
     .formats__heading { margin-top:58px; }
-    .formats__heading .display { font-size:clamp(50px,12vw,75px); }
+    .formats__heading .display { font-size:clamp(36px,10.2vw,69px); }
     .formats__intro { font-size:17px; }
     .format-card { min-height:580px; padding:23px; }
     .format-card__top { font-size:9px; }

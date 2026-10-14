@@ -15,13 +15,13 @@
   --color-wine: #6f171e;
   --color-copper: #b88b6d;
   --color-blue: #0d66ee;
-  --font-primary: "Acumin Pro", "Inter", Arial, sans-serif;
-  --font-display: "Acumin Pro", "Inter", Arial, sans-serif;
+  --font-primary: "Inter", Arial, sans-serif;
+  --font-display: "Inter", Arial, sans-serif;
   --weight-normal: 400;
   --weight-medium: 500;
   --weight-bold: 700;
   --weight-heavy: 800;
-  --tracking-display: -.075em;
+  --tracking-display: -.065em;
   --tracking-tight: -.052em;
   --tracking-label: .095em;
 

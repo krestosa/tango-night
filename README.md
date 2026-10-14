@@ -14,7 +14,7 @@ Landing de campaña estática, responsive y lista para publicar en hosting HTTP(
 - \`styles/components.css\`: arquitectura de secciones, cards, menú, reservas y dock.
 - \`styles/responsive.css\`: adaptaciones de 1300, 1100, 960, 760, 640 y 375 px.
 - Grilla: 12 columnas desktop, 6 tablet, 4 mobile. Shell fluid con ancho máximo de 1576px y gutter centralizado.
-- Fuente: intenta Acumin Pro si existe localmente; en su ausencia usa Inter.
+- Tipografía única: **Inter** de Google Fonts (fallback Arial). Los títulos contorneados utilizan un interlineado ampliado para impedir superposiciones.
 - Animaciones respetan \`prefers-reduced-motion\`; navegación y FAQ accesibles sin JS.
 
 ## Datos de producción que faltan, SIN inventarlos
