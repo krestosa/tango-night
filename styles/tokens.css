@@ -72,6 +72,11 @@
   --duration-fast: 180ms;
   --duration-normal: 360ms;
   --duration-slow: 820ms;
+  --duration-press: 150ms;
+  --duration-panel: 240ms;
+  --duration-reveal: 680ms;
+  --duration-hero: 900ms;
+  --ease-drawer: cubic-bezier(.32, .72, 0, 1);
 }
 @media (max-width: 960px) {
   :root {
@@ -83,9 +88,9 @@
 @media (max-width: 640px) {
   :root {
     --grid-columns: 4;
-    --page-gutter: 20px;
+    --page-gutter: max(20px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
     --grid-gap: 12px;
-    --section-y: 104px;
+    --section-y: clamp(76px, 13vw, 104px);
     --section-y-tight: 76px;
     --dock-height: 74px;
     --dock-bottom: 12px;

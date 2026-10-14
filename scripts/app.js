@@ -17,26 +17,61 @@
   const bookingUrl = safeUrl(data.reservationUrl) || "https://www.sushiclub.com.ar/shop_reservas.php";
   qa("[data-reservation-link]").forEach((a) => { a.href = bookingUrl; });
 
-  // Keyboard-accessible mobile navigation. Escape and link click close it.
+  // Interruptible mobile menu, with focus semantics and reduced-motion support.
   const menuToggle = q("[data-menu-toggle]");
   const mobileNavigation = q("#mobile-navigation");
-  const setMenuOpen = (open) => {
+  let menuAnimation = null;
+  if (mobileNavigation) mobileNavigation.inert = true;
+
+  const setMenuOpen = (open, immediate = false) => {
     if (!menuToggle || !mobileNavigation) return;
+    menuAnimation?.cancel();
+    menuAnimation = null;
     menuToggle.setAttribute("aria-expanded", String(open));
     menuToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
-    mobileNavigation.hidden = !open;
+    mobileNavigation.setAttribute("aria-hidden", String(!open));
+    mobileNavigation.inert = !open;
     document.body.classList.toggle("menu-open", open);
+
+    if (open) {
+      mobileNavigation.hidden = false;
+      if (!immediate && !reducedMotion && mobileNavigation.animate) {
+        menuAnimation = mobileNavigation.animate(
+          [{ opacity: 0, transform: "translate3d(0, -14px, 0)" },
+           { opacity: 1, transform: "translate3d(0, 0, 0)" }],
+          { duration: 240, easing: "cubic-bezier(.32, .72, 0, 1)" }
+        );
+      }
+    } else if (!immediate && !reducedMotion && !mobileNavigation.hidden && mobileNavigation.animate) {
+      const closing = mobileNavigation.animate(
+        [{ opacity: 1, transform: "translate3d(0, 0, 0)" },
+         { opacity: 0, transform: "translate3d(0, -10px, 0)" }],
+        { duration: 160, easing: "cubic-bezier(.22, 1, .36, 1)" }
+      );
+      menuAnimation = closing;
+      closing.onfinish = () => {
+        if (menuToggle.getAttribute("aria-expanded") === "false") mobileNavigation.hidden = true;
+        if (menuAnimation === closing) menuAnimation = null;
+      };
+    } else {
+      mobileNavigation.hidden = true;
+    }
   };
-  menuToggle?.addEventListener("click", () => setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true"));
-  qa("a", mobileNavigation || document).forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
+
+  menuToggle?.addEventListener("click", () => {
+    setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+  });
+  qa("a", mobileNavigation || document).forEach((link) =>
+    link.addEventListener("click", () => setMenuOpen(false))
+  );
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && menuToggle?.getAttribute("aria-expanded") === "true") {
-      setMenuOpen(false);
+      setMenuOpen(false, true);
       menuToggle.focus();
     }
   });
   window.matchMedia("(min-width: 761px)").addEventListener("change", (event) => {
-    if (event.matches) setMenuOpen(false);
+    if (event.matches) setMenuOpen(false, true);
   });
 
   // Render confirmed events only; never guess venues, dates or performance formats.
@@ -92,12 +127,12 @@
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+          entry.target.classList.add("is-visible", "is-in-view");
           observer.unobserve(entry.target);
         }
       }
     }, { threshold: 0.08, rootMargin: "0px 0px 30px 0px" });
-    qa(".reveal").forEach((el) => observer.observe(el));
+    qa(".reveal, .interlude, .final-cta").forEach((el) => observer.observe(el));
   }
 
   // Single rAF update for inexpensive reading progress; no scroll effects on layout.

@@ -1,0 +1,134 @@
+/* Emil Kowalski-inspired motion pass.
+   Intentional, one-time narrative entrances. UI transitions stay <300ms.
+   Only transform/opacity are animated; hover is fine-pointer only. */
+@layer adaptive {
+  /* Hero: sequence reading order, not simultaneous motion. */
+  @keyframes night-enter {
+    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  .hero__image {
+    animation-duration: 1350ms;
+    animation-timing-function: var(--ease-out);
+  }
+  .hero .eyebrow--hero,
+  .hero__title > span,
+  .hero__tagline,
+  .hero__footer {
+    animation: night-enter var(--duration-hero) var(--ease-out) both;
+  }
+  .hero .eyebrow--hero { animation-delay: 110ms; }
+  .hero__title > span:first-child { animation-delay: 170ms; }
+  .hero__title > span:last-child { animation-delay: 245ms; }
+  .hero__tagline { animation-delay: 370ms; }
+  .hero__footer { animation-delay: 510ms; }
+
+  /* Section rule: a subtle progressive cue that the next chapter has arrived. */
+  .section-topline { position: relative; }
+  .section-topline::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    width: clamp(52px, 7vw, 104px);
+    background: var(--color-copper);
+    transform-origin: left center;
+  }
+  .js-motion .section-topline::after {
+    transform: scaleX(0);
+    transition: transform var(--duration-slow) var(--ease-out) 80ms;
+  }
+  .js-motion .section-topline.is-visible::after { transform: scaleX(1); }
+  .js-motion .format-grid .format-card:nth-child(2).is-visible {
+    transition-delay: 70ms;
+  }
+  .js-motion .menu-list .menu-course:nth-child(2).is-visible,
+  .js-motion .menu-list .menu-course:nth-child(4).is-visible {
+    transition-delay: 45ms;
+  }
+
+  /* Cinematic media settles once on entry; no continuous scroll listeners. */
+  .interlude__photo img,
+  .final-cta__image img {
+    transform: scale(1);
+  }
+  .js-motion .interlude__photo img,
+  .js-motion .final-cta__image img {
+    transform: scale(1.045);
+    transition: transform 1050ms var(--ease-out);
+  }
+  .js-motion .interlude.is-in-view .interlude__photo img,
+  .js-motion .final-cta.is-in-view .final-cta__image img {
+    transform: scale(1);
+  }
+
+  /* Desktop focus/hover is deliberate and never emulated on touch. */
+  @media (hover: hover) and (pointer: fine) {
+    .format-card__backdrop img {
+      transition: transform 700ms var(--ease-out);
+    }
+    .format-card:hover .format-card__backdrop img { transform: scale(1.025); }
+    .site-header__links a,
+    .footer__inner a { transition: opacity var(--duration-fast) var(--ease-out); }
+    .site-header__links a:hover { opacity: 1; }
+    .footer__inner a:hover { opacity: .72; }
+    .scroll-prompt:hover .scroll-prompt__arrow {
+      transform: translate3d(0, 5px, 0);
+      background: rgba(255,255,255,.14);
+    }
+    .button--bright:hover,
+    .reservation-dock__cta:hover {
+      background: var(--color-copper);
+    }
+  }
+
+  /* One coherent touch/press rhythm. */
+  .button, .reservation-dock__cta, .site-header__reserve, .scroll-prompt__arrow {
+    transition: transform var(--duration-press) var(--ease-out),
+      opacity var(--duration-press) var(--ease-out),
+      background var(--duration-press) var(--ease-out);
+  }
+  .button:active, .reservation-dock__cta:active,
+  .site-header__reserve:active, .mobile-menu-toggle:active {
+    transform: scale(.97);
+  }
+  .faq summary span {
+    transition: transform var(--duration-panel) var(--ease-out);
+  }
+  .faq[open] p {
+    animation: faq-content-in var(--duration-panel) var(--ease-out) both;
+  }
+  @keyframes faq-content-in {
+    from { opacity: 0; transform: translate3d(0, 8px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  @media (max-width: 760px) {
+    .mobile-navigation {
+      transform-origin: top right;
+    }
+    .mobile-navigation a {
+      touch-action: manipulation;
+      transition: transform var(--duration-press) var(--ease-out),
+        opacity var(--duration-press) var(--ease-out);
+    }
+    .mobile-navigation a:active { transform: translate3d(4px, 0, 0); opacity: .75; }
+  }
+  @media (pointer: coarse) {
+    .format-card:hover .format-card__backdrop img { transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__image, .hero .eyebrow--hero, .hero__title > span,
+    .hero__tagline, .hero__footer, .faq[open] p {
+      animation: none;
+    }
+    .js-motion .interlude__photo img,
+    .js-motion .final-cta__image img,
+    .js-motion .interlude.is-in-view .interlude__photo img,
+    .js-motion .final-cta.is-in-view .final-cta__image img {
+      transform: none;
+    }
+    .js-motion .section-topline::after { transform: scaleX(1); }
+  }
+}

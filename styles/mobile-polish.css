@@ -1,0 +1,107 @@
+/* Mobile art direction and platform polish, layered after responsive.css.
+   320px through tablet: no horizontal overflow, tappable controls, native safe areas. */
+@layer adaptive {
+  @media (max-width: 760px) {
+    .site-header {
+      top: env(safe-area-inset-top, 0px);
+    }
+    .mobile-navigation {
+      padding-top: calc(115px + env(safe-area-inset-top, 0px));
+      padding-bottom: calc(118px + env(safe-area-inset-bottom, 0px));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    .mobile-navigation a {
+      min-height: 64px;
+    }
+    .mobile-menu-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      transition: transform var(--duration-press) var(--ease-out);
+    }
+    .hero__title-bottom {
+      display: inline-flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: .08em;
+    }
+    .hero__title-bottom em {
+      position: static;
+      top: auto;
+      margin: 0;
+      transform: translate3d(0, -.11em, 0);
+    }
+    .hero__title-word { display: inline-block; }
+    .format-card { overflow: hidden; }
+    .format-card__features { line-height: 1.5; gap: 10px 17px; }
+    .faq summary { min-height: 76px; }
+    .footer { padding-bottom: calc(135px + env(safe-area-inset-bottom, 0px)); }
+  }
+
+  @media (max-width: 640px) {
+    .hero { min-height: min(640px, 100svh); height: 100svh; }
+    .hero__image { --hero-photo-opacity: .67; }
+    .hero__center { padding-top: 100px; padding-bottom: 150px; }
+    .hero__title {
+      font-size: clamp(64px, 20.2vw, 112px);
+      line-height: 1.025;
+      letter-spacing: -.083em;
+    }
+    .hero__title-bottom em { font-size: .21em; letter-spacing: -.055em; }
+    .hero__tagline { margin-top: clamp(20px, 4svh, 35px); font-size: clamp(12px, 3.5vw, 15px); }
+    .hero__footer { bottom: calc(var(--dock-height) + 32px + env(safe-area-inset-bottom, 0px)); }
+    .section-topline > :last-child:not(:first-child) { display: none; }
+    .story__meta { margin-bottom: var(--space-10); }
+    .display--story {
+      font-size: clamp(42px, 11.2vw, 70px);
+      line-height: 1.065;
+    }
+    .interlude {
+      min-height: clamp(500px, 80svh, 675px);
+    }
+    .interlude__content { padding-block: clamp(100px, 15svh, 140px); }
+    .interlude__quote { font-size: clamp(40px, 10.1vw, 65px); line-height: 1.055; }
+    .formats__heading { margin-block: clamp(42px, 9vw, 68px); }
+    .formats__heading .display {
+      font-size: clamp(37px, 9.8vw, 65px);
+      line-height: 1.07;
+    }
+    .format-card {
+      min-height: clamp(450px, 122vw, 600px);
+      padding: clamp(20px, 5vw, 32px);
+    }
+    .format-card__body { padding-top: 36px; }
+    .format-card h3 {
+      font-size: clamp(36px, 10.1vw, 67px);
+      letter-spacing: -.073em;
+      line-height: 1.07;
+    }
+    .format-card__body > p:not(.format-card__eyebrow) { margin-top: 22px; line-height: 1.47; }
+    .format-card__features { margin-top: 26px; font-size: 10px; }
+    .format-note { margin-top: var(--space-5); }
+    .menu-section__headline .display { font-size: clamp(57px, 15vw, 96px); line-height: 1.07; }
+    .menu-price { margin-top: var(--space-10); }
+    .menu-course__choices p { line-height: 1.4; }
+    .reservations__heading .display { font-size: clamp(53px, 13vw, 82px); line-height: 1.07; }
+    .questions__left h2 { font-size: clamp(42px, 11vw, 60px); line-height: 1.08; }
+    .final-cta h2 { font-size: clamp(48px, 12.2vw, 78px); line-height: 1.08; }
+    .reservation-dock {
+      bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      box-shadow: 0 10px 38px rgba(0,0,0,.52);
+    }
+  }
+  @media (max-width: 370px) {
+    .hero__title { font-size: 19.5vw; }
+    .format-card__top { gap: var(--space-2); }
+    .format-card__tag { font-size: 8px; }
+    .format-card h3 { font-size: 9.5vw; }
+    .reservation-dock__segment--name strong { font-size: 10px; }
+    .reservation-dock__label { font-size: 8px; }
+  }
+  @media (max-height: 620px) and (max-width: 640px) {
+    .hero__center { padding-top: 86px; padding-bottom: 110px; }
+    .hero__title { font-size: min(19vw, 72px); }
+    .hero__footer { bottom: calc(var(--dock-height) + 20px + env(safe-area-inset-bottom, 0px)); }
+    .scroll-prompt { gap: 7px; }
+  }
+}

@@ -19,7 +19,6 @@
   }
   @media (max-width: 960px) {
     .hero { min-height:650px; }
-    .hero__topline { top:115px; }
     .hero__footer-left,.hero__footer-right { display:none; }
     .hero__footer { display:flex; justify-content:center; }
     .story__meta { grid-column:1 / span 2; }
@@ -51,8 +50,6 @@
     .mobile-navigation { position:fixed; z-index:29; inset:0; padding:115px var(--page-gutter) 150px; display:flex; flex-direction:column; justify-content:center; gap:0; background:rgba(7,7,7,.985); }
     .mobile-navigation a { display:flex; justify-content:space-between; align-items:baseline; gap:15px; padding:23px 0; border-bottom:1px solid var(--color-border); font-size:clamp(27px,6.5vw,45px); font-weight:800; letter-spacing:-.055em; }
     .mobile-navigation a span { color:var(--color-copper); font-size:13px; font-weight:500; }
-    .hero__topline { top:108px; font-size:9px; }
-    .hero__topline span:last-child { display:none; }
     .hero__center { padding-top:100px; padding-bottom:155px; }
     .hero__title { font-size:clamp(80px,16vw,133px); }
     .hero__tagline { font-size:15px; }
@@ -117,7 +114,6 @@
     .format-card h3 { font-size:clamp(62px,15.8vw,96px); }
     .format-card__body > p:not(.format-card__eyebrow) { margin-top:28px; font-size:16px; }
     .format-card__features { margin-top:29px; }
-    .format-card__footer { margin-top:33px; font-size:9px; }
     .format-note { font-size:10px; }
     .bandoneon-art { width:80%; top:17%; }
     .menu-section__headline .display { font-size:clamp(69px,16vw,100px); }

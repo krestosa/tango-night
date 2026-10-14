@@ -13,9 +13,11 @@ Landing de campaña estática, responsive y lista para publicar en hosting HTTP(
 - \`styles/base.css\`: reset accesible, utilitarios de grilla y jerarquía tipográfica.
 - \`styles/components.css\`: arquitectura de secciones, cards, menú, reservas y dock.
 - \`styles/responsive.css\`: adaptaciones de 1300, 1100, 960, 760, 640 y 375 px.
+- `styles/motion.css`: secuencia de entrada del hero, revelados de secciones, feedback de botones, acordeones y animación de imágenes, con hover exclusivo para mouse.
+- `styles/mobile-polish.css`: composición de titulares para 320–640 px, safe areas, jerarquía móvil, dimensiones táctiles y dock.
 - Grilla: 12 columnas desktop, 6 tablet, 4 mobile. Shell fluid con ancho máximo de 1576px y gutter centralizado.
 - Tipografía única: **Inter** de Google Fonts (fallback Arial). Los títulos contorneados utilizan un interlineado ampliado para impedir superposiciones.
-- Animaciones respetan \`prefers-reduced-motion\`; navegación y FAQ accesibles sin JS.
+- Animaciones respetan `prefers-reduced-motion`; FAQ accesible con HTML nativo, y navegación móvil accesible con JavaScript.
 
 ## Datos de producción que faltan, SIN inventarlos
 La descripción inicial no incluye los locales adheridos, las fechas ni los horarios de cada función. La landing **se puede navegar y reservar** desde el sistema oficial sin afirmar disponibilidad inventada. En \`scripts/config.js\`, completar \`events\` solamente con funciones confirmadas, especificando \`format: "minimal"\` (música, sin baile) o \`format: "essential"\` (música y danza). Los eventos se mostrarán automáticamente en la sección de reservas.
@@ -33,7 +35,7 @@ Las fotografías son recursos atmosféricos ilustrativos; **no deben presentarse
 
 ## Notas de interacción
 - Menú móvil accesible, cierre por Escape y por navegación.
-- Revelados progresivos con IntersectionObserver, una sola vez por sección.
+- Menú móvil accesible con transición interrumpible usando Web Animations API; cierre inmediato con Escape, navegación e inert/aria-hidden.
 - Barra de progreso de lectura con requestAnimationFrame.
 - Agenda segura: usa textContent y valida URLs HTTPS; evita HTML inyectado.
 - FAQ nativo (details/summary), cierre de preguntas previas.
