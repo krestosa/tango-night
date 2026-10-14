@@ -1,0 +1,10 @@
+# Local-only browser preview profile; never deploy
+.preview-browser/
+preview-desktop.png
+preview-mobile.png
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

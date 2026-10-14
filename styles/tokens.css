@@ -1,0 +1,95 @@
+/* NIGHT / DESIGN SYSTEM v1.0
+   All layout, sizing, rhythm and visual constants are defined here.
+   Grid: 12 columns desktop / 6 tablet / 4 mobile.
+   Spacing: four-pixel base. No section-level magic-number layouts. */
+:root {
+  --color-bg: #070707;
+  --color-surface: #101010;
+  --color-surface-raised: #171616;
+  --color-text: #f4f1ea;
+  --color-white: #ffffff;
+  --color-muted: #a9a5a2;
+  --color-soft: #d6d0ca;
+  --color-border: rgba(244,241,234,.19);
+  --color-border-strong: rgba(244,241,234,.42);
+  --color-wine: #6f171e;
+  --color-copper: #b88b6d;
+  --color-blue: #0d66ee;
+  --font-primary: "Acumin Pro", "Inter", Arial, sans-serif;
+  --font-display: "Acumin Pro", "Inter", Arial, sans-serif;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+  --weight-heavy: 800;
+  --tracking-display: -.075em;
+  --tracking-tight: -.052em;
+  --tracking-label: .095em;
+
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-28: 112px;
+  --space-32: 128px;
+
+  --page-gutter: clamp(20px, 3.25vw, 72px);
+  --container-max: 1576px;
+  --grid-columns: 12;
+  --grid-gap: clamp(12px, 1.5vw, 24px);
+  --section-y: clamp(104px, 11.5vw, 196px);
+  --section-y-tight: clamp(72px, 7.5vw, 132px);
+
+  --text-2xs: 10px;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-md: 14px;
+  --text-lg: clamp(17px, 1.1vw, 20px);
+  --text-body: clamp(17px, 1.35vw, 24px);
+  --text-lead: clamp(23px, 2vw, 36px);
+  --text-section: clamp(60px, 7.8vw, 150px);
+  --text-hero: clamp(92px, 13.3vw, 256px);
+  --text-card: clamp(54px, 5.5vw, 112px);
+
+  --radius-xs: 4px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+  --dock-height: 86px;
+  --dock-bottom: clamp(12px, 2.5vw, 32px);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-inout: cubic-bezier(.76, 0, .24, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 360ms;
+  --duration-slow: 820ms;
+}
+@media (max-width: 960px) {
+  :root {
+    --grid-columns: 6;
+    --page-gutter: clamp(20px, 4vw, 40px);
+    --section-y: clamp(100px, 11vw, 150px);
+  }
+}
+@media (max-width: 640px) {
+  :root {
+    --grid-columns: 4;
+    --page-gutter: 20px;
+    --grid-gap: 12px;
+    --section-y: 104px;
+    --section-y-tight: 76px;
+    --dock-height: 74px;
+    --dock-bottom: 12px;
+    --text-section: clamp(50px, 12.3vw, 84px);
+    --text-hero: clamp(74px, 18.3vw, 128px);
+  }
+}
