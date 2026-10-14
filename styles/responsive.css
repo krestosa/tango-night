@@ -1,21 +1,17 @@
 @layer adaptive {
   @media (max-width: 1300px) {
-    .site-header__side { font-size:9px; }
     .site-header__links { gap:14px; font-size:9px; }
     .site-header__links .site-header__reserve { padding:10px 12px; }
     .story__body { grid-column:4 / -1; }
     .story__meta { grid-column:1 / span 2; }
   }
   @media (max-width: 1100px) {
-    .site-header__side { display:none; }
-    .site-header { grid-template-columns:1fr auto; }
     .site-header__logo { justify-self:start; }
     .site-header__links { justify-self:end; }
     .hero__title { font-size:clamp(88px,14vw,180px); }
     .format-card { min-height:570px; padding:26px; }
     .format-card__features { font-size:10px; gap:10px; }
     .format-card h3 { font-size:clamp(50px,6vw,78px); }
-    .menu-section__headline { align-items:end; }
   }
   @media (max-width: 960px) {
     .hero { min-height:650px; }
@@ -26,13 +22,14 @@
     .story__bottom { margin-top:55px; }
     .display--story { font-size:clamp(60px,8.4vw,98px); }
     .formats__heading { display:block; }
-    .formats__intro { margin:48px 0 0; max-width:570px; }
+    .formats__copy { margin:48px 0 0; max-width:570px; }
     .format-grid { gap:12px; }
     .format-card { min-height:580px; padding:22px; }
     .format-card h3 { font-size:clamp(48px,5.6vw,68px); }
     .format-card__tag { font-size:9px; }
     .menu-layout { grid-template-columns:2fr 4fr; gap:var(--grid-gap); }
-    .menu-course__choices { padding-left:20px; }
+    .menu-layout__sticky { position:static; }
+    .menu-layout__sticky .display { font-size:clamp(44px,5.3vw,70px); }
     .reservations__layout { grid-template-columns: 1fr; gap:64px; }
     .reservations__heading > p:last-child { margin-top:34px; }
     .reservations__panel { max-width:650px; }
@@ -57,7 +54,6 @@
     .story__meta { display:flex; flex-direction:row; align-items:center; gap:18px; margin-bottom:65px; }
     .story__meta .tiny-line { width:42px; height:1px; }
     .story__meta > span:last-child { display:none; }
-    .story__body > .eyebrow { margin-bottom:34px; }
     .display--story { font-size:clamp(58px,10vw,92px); }
     .story__bottom { margin-top:42px; }
     .interlude { min-height:650px; }
@@ -68,15 +64,17 @@
     .format-card { min-height:610px; padding:30px; }
     .format-card h3 { font-size:clamp(69px,10vw,102px); }
     .formats__heading { margin-block:64px; }
-    .formats__intro { margin-top:36px; }
-    .menu-section__headline { display:block; margin-top:65px; padding-bottom:65px; }
-    .menu-price { align-items:flex-start; margin-top:50px; }
+    .formats__copy { margin-top:36px; }
+    .menu-layout { margin-top:65px; }
+    .menu-price { align-items:flex-start; margin-bottom:65px; }
     .menu-price strong { font-size:72px; }
     .menu-layout { display:block; }
-    .menu-layout__aside { flex-direction:row; flex-wrap:wrap; justify-content:space-between; padding-bottom:45px; }
+    .menu-layout__aside { padding-bottom:45px; }
+    .menu-layout__sticky { position:static; }
+    .menu-layout__sticky .display { font-size:clamp(61px,13vw,98px); }
     .menu-aside-rule { display:none; }
     .menu-course__heading { column-gap:15px; }
-    .menu-course__choices { margin-top:28px; padding-left:27px; }
+    .menu-course__choices { margin-top:28px; }
     .questions__grid { grid-template-columns:1fr; gap:54px; }
     .questions__left h2 { margin-top:30px; font-size:clamp(48px,8vw,74px); }
     .footer__inner { flex-wrap:wrap; gap:28px; }
@@ -86,23 +84,18 @@
     .hero__image { object-position:54% center; opacity:.67; }
     .hero__wash { background:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.18) 22%,rgba(0,0,0,.44) 66%,#070707 100%); }
     .hero__center { justify-content:center; padding-top:106px; padding-bottom:165px; }
-    .eyebrow--hero { font-size:9px; letter-spacing:.04em; gap:8px; margin-bottom:30px; }
-    .eyebrow-line { width:12px; }
     .hero__title { font-size:clamp(78px,18.7vw,121px); letter-spacing:-.093em; }
-    .hero__title-bottom em { margin-right:.02em; }
     .hero__tagline { margin-top:34px; font-size:14px; line-height:1.35; }
     .hero__footer { bottom:calc(var(--dock-height) + var(--dock-bottom) + 32px); }
     .scroll-prompt { font-size:9px; gap:12px; }
     .scroll-prompt__arrow { width:29px; height:29px; }
     .story__meta { margin-bottom:43px; }
-    .story__body > .eyebrow { font-size:9px; }
     .display--story { font-size:clamp(52px,12.2vw,82px); }
     .story__bottom > p { font-size:19px; }
     .pills span { font-size:9px; min-height:28px; padding:5px 9px; }
     .interlude { min-height:590px; }
     .interlude__photo img { object-position:58% center; }
     .interlude__quote { font-size:clamp(48px,10.5vw,70px); }
-    .interlude__content .eyebrow { margin-bottom:40px; }
     .formats__heading { margin-top:58px; }
     .formats__heading .display { font-size:clamp(36px,10.2vw,69px); }
     .formats__intro { font-size:17px; }
@@ -116,18 +109,17 @@
     .format-card__features { margin-top:29px; }
     .format-note { font-size:10px; }
     .bandoneon-art { width:80%; top:17%; }
-    .menu-section__headline .display { font-size:clamp(69px,16vw,100px); }
+    .menu-layout__sticky .display { font-size:clamp(69px,16vw,100px); }
     .menu-price strong { font-size:clamp(62px,15vw,83px); }
-    .menu-layout__aside { display:block; padding-block:12px 40px; }
-    .menu-layout__aside > span { display:block; margin-top:18px; }
+    .menu-layout__aside { padding-block:12px 40px; }
+    .menu-layout__sticky > span { display:block; }
     .menu-course { padding:27px 0 36px; }
     .menu-course h3 { font-size:clamp(32px,9vw,44px); }
     .course-choice { font-size:8px; padding:5px 7px; }
-    .menu-course__choices { padding-left:28px; margin-top:23px; }
+    .menu-course__choices { margin-top:23px; }
     .menu-course__choices p { font-size:17px; }
     .menu-course__choices small { font-size:11px; }
     .reservations__layout { margin-top:65px; gap:50px; }
-    .reservations__heading .eyebrow { margin-bottom:34px; font-size:10px; }
     .reservations__heading .display { font-size:clamp(65px,14.4vw,98px); }
     .reservations__heading > p:last-child { font-size:17px; }
     .reservations__panel { margin-inline:calc(0px - var(--page-gutter)); padding:30px 20px; }
@@ -138,8 +130,7 @@
     .faq p { font-size:15px; }
     .final-cta { min-height:720px; padding-bottom:140px; }
     .final-cta h2 { font-size:clamp(61px,13.7vw,87px); }
-    .final-cta .eyebrow { font-size:9px; }
-    .final-cta__content > p:not(.eyebrow) { font-size:10px; }
+    .final-cta__content > p { font-size:10px; }
     .final-cta .button { min-width:0; width:100%; }
     .footer { padding:50px 0 140px; }
     .footer__inner > span { order:3; flex:0 0 100%; }
@@ -151,11 +142,9 @@
     .reservation-dock__segment strong { font-size:11px; }
     .reservation-dock__segment--price strong { font-size:16px; }
     .reservation-dock__cta { padding:9px 10px; font-size:13px; }
-    .reservation-dock__cta > span:last-child { font-size:16px; }
   }
   @media (max-width: 375px) {
     .hero__title { font-size:18vw; }
-    .eyebrow--hero { font-size:8px; }
     .reservation-dock { grid-template-columns:minmax(0,1fr) minmax(0,.85fr) 92px; }
     .reservation-dock__segment--name strong { font-size:10px; }
     .reservation-dock__segment--price strong { font-size:14px; }

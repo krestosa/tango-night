@@ -11,13 +11,11 @@
     animation-duration: 1350ms;
     animation-timing-function: var(--ease-out);
   }
-  .hero .eyebrow--hero,
   .hero__title > span,
   .hero__tagline,
   .hero__footer {
     animation: night-enter var(--duration-hero) var(--ease-out) both;
   }
-  .hero .eyebrow--hero { animation-delay: 110ms; }
   .hero__title > span:first-child { animation-delay: 170ms; }
   .hero__title > span:last-child { animation-delay: 245ms; }
   .hero__tagline { animation-delay: 370ms; }
@@ -118,8 +116,18 @@
   @media (pointer: coarse) {
     .format-card:hover .format-card__backdrop img { transform: none; }
   }
+  /* Full-bleed image transforms allocate large composited textures on phones.
+     Keep text entrances, but show large photos directly on narrow devices. */
+  @media (max-width: 760px) {
+    .hero__image, .hero__title > span, .hero__tagline, .hero__footer { animation:none; }
+    .js-motion .interlude__photo img,
+    .js-motion .final-cta__image img {
+      transition: none;
+      transform: none;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .hero__image, .hero .eyebrow--hero, .hero__title > span,
+    .hero__image, .hero__title > span,
     .hero__tagline, .hero__footer, .faq[open] p {
       animation: none;
     }

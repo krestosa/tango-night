@@ -1,0 +1,216 @@
+<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#070707"><title>Prototype — Formatos | SushiClub</title><link rel="preload" href="../assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin><style>
+@font-face{font-family:Inter;src:url("../assets/fonts/inter-latin-variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:block}
+:root{--bg:#070707;--surface:#101010;--surface-raised:#171616;--text:#f4f1ea;--muted:#a9a5a2;--soft:#d6d0ca;--border:rgba(244,241,234,.19);--border-strong:rgba(244,241,234,.42);--copper:#b88b6d;--gutter:clamp(20px,3.25vw,72px);--max:1576px;--gap:clamp(12px,1.5vw,24px);--ease-out:cubic-bezier(.22,1,.36,1);--duration-panel:240ms;--duration-press:150ms}
+*,:before,:after{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-width:320px}h1,h2,h3,p{margin:0}a{text-decoration:none;color:inherit}button,summary{font:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent;cursor:pointer}button{-webkit-user-select:none;user-select:none}:focus-visible{outline:2px solid var(--copper);outline-offset:4px}.shell{width:min(var(--max),calc(100% - var(--gutter)*2));margin-inline:auto}
+.context-head{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:104px;border-bottom:1px solid var(--border)}.context-head img{width:clamp(140px,12vw,205px);height:auto;filter:brightness(0) invert(1)}.context-head p{font-size:10px;letter-spacing:.12em;color:var(--soft);font-weight:700;text-align:right}.context-end{padding:90px 0 140px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr auto;gap:20px}.context-end small{color:var(--muted);font-size:11px;letter-spacing:.025em;line-height:1.6}.context-end a{font-size:11px;letter-spacing:.07em;font-weight:700;border-bottom:1px solid var(--copper);padding-bottom:9px;align-self:start}
+#stage{min-height:680px}.proto-page{min-height:680px;padding-top:clamp(68px,7vw,120px);padding-bottom:clamp(110px,10vw,160px);animation:variant-enter 320ms var(--ease-out) both}@keyframes variant-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}@keyframes detail-enter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.section-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--border-strong);padding-bottom:20px}.kicker,.micro{font-size:10px;font-weight:700;letter-spacing:.095em}.kicker{color:var(--soft)}.micro{color:var(--muted)}.display{font-size:clamp(54px,7.4vw,132px);letter-spacing:-.075em;line-height:1.06;font-weight:800}.lead{font-size:clamp(16px,1.2vw,20px);line-height:1.5;letter-spacing:-.02em;color:var(--soft)}.lead strong{color:var(--text)}.note{font-size:11px;line-height:1.6;font-weight:600;letter-spacing:.025em;color:var(--muted)}.tags{display:flex;flex-wrap:wrap;gap:8px}.tags span{font-size:10px;letter-spacing:.05em;font-weight:700;border:1px solid var(--border-strong);padding:10px 12px}.tags .emph{color:var(--copper);border-color:rgba(184,139,109,.7)}
+.instr{position:relative;z-index:1;display:flex;align-items:stretch;justify-content:center;width:min(56%,330px);aspect-ratio:1.35;transform:rotate(-12deg);filter:drop-shadow(0 32px 45px #0009)}.instr:before,.instr:after{content:"";flex:0 0 18%;border:6px solid #151011;background:repeating-linear-gradient(90deg,#140e0f 0 4px,#8e6e56 4px 5px,#251a18 5px 10px);box-shadow:inset 0 0 0 4px #755648}.instr i{flex:1;border-inline:1px solid #b18f72;transform:skewY(-7deg);background:linear-gradient(90deg,#0c0909,#c6a88e 55%,#171010)}.expand-icon{position:relative;display:inline-grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border:1px solid var(--border-strong);border-radius:50%;transition:transform var(--duration-panel) var(--ease-out)}.expand-icon:before,.expand-icon:after{content:"";position:absolute;background:currentColor;width:12px;height:1px}.expand-icon:after{transform:rotate(90deg)}details[open] .expand-icon{transform:rotate(45deg)}details summary::-webkit-details-marker{display:none}details summary{list-style:none}details[open] .expanded{animation:detail-enter 220ms var(--ease-out) both}.format-legal{margin-top:40px;max-width:680px}
+/* Direction 1: editorial */
+.ed-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(25px,6vw,140px);align-items:end;margin:clamp(70px,7.5vw,128px) 0}.ed-head__copy{display:flex;flex-direction:column;gap:22px;padding-bottom:8px}.ed-head__copy .note{padding-top:20px;border-top:1px solid var(--border)}.ed-head h1{max-width:10em}.ed-head h1 em{font-style:normal;color:var(--copper)}.ed-table{border-top:1px solid var(--border-strong)}.ed-row{border-bottom:1px solid var(--border-strong)}.ed-row summary{display:grid;grid-template-columns:minmax(55px,.12fr) minmax(0,1fr) minmax(0,.36fr) 36px;align-items:center;gap:var(--gap);min-height:clamp(135px,15vw,244px);padding:24px 0}.ed-n{font-size:12px;color:var(--copper);font-weight:700;align-self:start;padding-top:18px}.ed-name{font-size:clamp(53px,9.2vw,166px);font-weight:800;line-height:1.04;letter-spacing:-.085em;overflow-wrap:anywhere}.ed-kind{align-self:center;display:grid;gap:12px}.ed-kind strong{font-size:13px;line-height:1.4;font-weight:700}.ed-kind small{font-size:10px;line-height:1.4;font-weight:600;color:var(--muted);letter-spacing:.07em}.ed-row[open]{background:linear-gradient(90deg,rgba(184,139,109,.08),transparent 55%)}.ed-row[open] .ed-name{color:var(--copper)}.ed-expanded{margin:0 0 40px clamp(55px,11vw,182px);max-width:640px}.ed-expanded p{font-size:clamp(16px,1.35vw,21px);line-height:1.5;margin-bottom:24px;color:var(--soft)}
+/* Direction 2: cinematic */
+.scene-head{display:grid;grid-template-columns:1fr minmax(240px,360px);align-items:end;gap:var(--gap);margin:70px 0 75px}.scene-head h1{font-size:clamp(52px,7.7vw,134px)}.scene-head .lead{align-self:end;padding-bottom:14px}.scene-stack{display:grid;gap:var(--gap)}.scene{position:relative;isolation:isolate;min-height:clamp(490px,48vw,740px);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,3.3vw,60px);background:#1b1415}.scene-surface{position:absolute;inset:0;z-index:-2;overflow:hidden}.scene-surface--music{display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 51% 31%,#654035 0%,#302023 34%,#130f12 66%,#08080a 100%)}.scene-surface--music:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 69px,rgba(255,255,255,.025) 70px 71px)}.scene-surface--music .instr{width:min(48vw,600px);opacity:.76;filter:drop-shadow(0 42px 55px #000b)}.scene-surface--dance img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.76}.scene:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.26),transparent 30%,rgba(0,0,0,.45) 57%,rgba(0,0,0,.91) 100%)}.scene-top{display:flex;justify-content:space-between;gap:20px;align-items:start;font-size:11px;font-weight:700;letter-spacing:.1em}.scene-top span:last-child{border:1px solid #fffa;padding:10px 14px}.scene-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.52fr);gap:24px;align-items:end}.scene-bottom h2{font-size:clamp(68px,11vw,193px);line-height:.97;letter-spacing:-.09em;font-weight:800}.scene-text{max-width:420px}.scene-text p{font-size:clamp(16px,1.2vw,21px);line-height:1.42;margin-bottom:18px}.scene-text details{border-top:1px solid #fff9;padding-top:18px}.scene-text summary{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;letter-spacing:.07em;font-weight:700}.scene-text .expanded{padding-top:16px;color:var(--soft);font-size:13px;line-height:1.5}.scene-text .expanded p{margin:0;font-size:14px}.scene-bottom .expand-icon{width:30px;height:30px;flex-basis:30px}.scene-micro{display:flex;gap:18px;align-items:center;margin-top:18px;font-size:10px;font-weight:700;letter-spacing:.07em}.scene-micro span+span{padding-left:18px;border-left:1px solid #fff5}
+/* Direction 3: selector */
+.select-head{margin:70px 0 65px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);align-items:end;gap:var(--gap)}.select-head h1{font-size:clamp(56px,8vw,142px)}.select-head .lead{max-width:360px;justify-self:end;padding-bottom:12px}.selector-layout{display:grid;grid-template-columns:minmax(250px,.36fr) minmax(0,1fr);background:var(--surface);border:1px solid var(--border)}.selector-menu{border-right:1px solid var(--border);display:flex;flex-direction:column}.selector-menu__top{padding:32px;border-bottom:1px solid var(--border);font-size:10px;letter-spacing:.08em;color:var(--muted);font-weight:700}.s-tab{min-height:170px;text-align:left;border:0;border-bottom:1px solid var(--border);background:transparent;color:var(--muted);padding:28px 30px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;position:relative;transition:background var(--duration-panel) var(--ease-out),color var(--duration-panel) var(--ease-out)}.s-tab:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--copper);transform:scaleY(0);transform-origin:top;transition:transform var(--duration-panel) var(--ease-out)}.s-tab[aria-pressed="true"]{background:#241d1b;color:var(--text)}.s-tab[aria-pressed="true"]:before{transform:scaleY(1)}.s-tab__top{font-size:10px;letter-spacing:.08em;font-weight:700;display:flex;justify-content:space-between;gap:12px}.s-tab__name{font-size:clamp(27px,3vw,49px);font-weight:800;letter-spacing:-.065em;line-height:1}.s-tab:active{transform:scale(.99)}.selector-info{padding:30px;font-size:12px;line-height:1.6;color:var(--muted);margin-top:auto}.selector-panel{min-height:clamp(590px,51vw,755px);position:relative;overflow:hidden;isolation:isolate;background:#191419;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(25px,4vw,68px)}.selector-visual{position:absolute;z-index:-2;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 60% 29%,#613e3d,#1e1517 53%,#09090a 94%)}.selector-visual .instr{width:min(53%,430px);opacity:.74}.selector-visual img{width:100%;height:100%;object-fit:cover;opacity:.57}.selector-panel:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,#0006,transparent 27%,#0008 62%,#000e)}.selector-panel__top{display:flex;justify-content:space-between;gap:15px;font-weight:700;font-size:10px;letter-spacing:.12em}.selector-panel__bottom h2{font-size:clamp(68px,9vw,160px);letter-spacing:-.086em;line-height:1;margin-bottom:25px;font-weight:800}.selector-panel__bottom p{font-size:clamp(17px,1.55vw,25px);line-height:1.4;max-width:555px;margin-bottom:25px}.selector-panel__bottom .note{max-width:480px;padding-top:22px;border-top:1px solid #fff5}.selector-panel__bottom .tags{margin-bottom:32px}.selector-panel.mode-transition>.selector-panel__top,.selector-panel.mode-transition>.selector-panel__bottom{animation:detail-enter 220ms var(--ease-out) both}
+@media(max-width:1100px){.scene-bottom{grid-template-columns:1fr}.scene-text{max-width:550px}.select-head,.ed-head{grid-template-columns:1fr 1fr}}
+@media(max-width:800px){:root{--gutter:24px}.context-head{min-height:78px}.proto-page{padding-top:70px}.ed-head,.scene-head,.select-head{grid-template-columns:1fr;gap:30px;margin:55px 0 52px}.ed-head__copy,.scene-head .lead,.select-head .lead{max-width:550px;justify-self:start}.ed-head h1,.scene-head h1,.select-head h1{font-size:clamp(52px,10vw,85px)}.ed-row summary{grid-template-columns:45px minmax(0,1fr) 36px;min-height:133px}.ed-name{font-size:clamp(50px,9vw,96px)}.ed-kind{grid-column:2;grid-row:2;padding-bottom:6px;gap:3px}.ed-row summary .expand-icon{grid-column:3;grid-row:1}.ed-expanded{margin-left:45px}.scene{min-height:580px}.scene-bottom h2{font-size:clamp(66px,11vw,114px)}.selector-layout{grid-template-columns:1fr}.selector-menu{border-right:0;display:grid;grid-template-columns:1fr 1fr}.selector-menu__top,.selector-info{display:none}.s-tab{min-height:112px;padding:22px;border-right:1px solid var(--border)}.s-tab:before{top:auto;right:0;bottom:0;height:3px;width:auto;transform:scaleX(0);transform-origin:left}.s-tab[aria-pressed="true"]:before{transform:scaleX(1)}.s-tab__name{font-size:clamp(24px,4.6vw,42px)}.selector-panel{min-height:615px}}
+@media(max-width:520px){:root{--gutter:20px}.context-head img{width:141px}.context-head p{font-size:9px;max-width:145px}.context-end{grid-template-columns:1fr;gap:26px}.section-top>.micro{display:none}.display{font-size:clamp(48px,11vw,74px)}.ed-head h1,.scene-head h1,.select-head h1{font-size:clamp(48px,12vw,69px)}.lead{font-size:17px}.ed-row summary{grid-template-columns:28px minmax(0,1fr) 31px;gap:12px;padding:20px 0}.ed-n{font-size:10px;padding-top:8px}.ed-name{font-size:clamp(42px,10.8vw,66px)}.ed-kind{grid-column:2;padding-bottom:8px}.ed-kind strong{font-size:12px}.ed-expanded{margin:0 0 26px 40px}.scene{min-height:clamp(505px,137vw,670px);padding:22px}.scene-top{font-size:9px}.scene-top span:last-child{padding:8px;font-size:9px}.scene-bottom h2{font-size:clamp(57px,15vw,90px)}.scene-text p{font-size:16px;margin-bottom:15px}.scene-micro{font-size:9px;gap:10px}.scene-micro span+span{padding-left:10px}.scene-surface--music .instr{width:83%}.s-tab{min-height:100px;padding:18px 13px}.s-tab__name{font-size:clamp(24px,6.3vw,34px)}.s-tab__top{font-size:9px}.selector-panel{min-height:clamp(530px,148vw,685px);padding:25px 20px}.selector-panel__bottom h2{font-size:clamp(52px,13.5vw,85px)}.selector-panel__bottom p{font-size:16px}.tags span{font-size:9px}}
+@media(hover:hover) and (pointer:fine){.s-tab:hover:not([aria-pressed="true"]){background:#1d1a19;color:var(--text)}.ed-row summary:hover .ed-name{color:var(--copper)}.scene-text summary:hover{color:var(--copper)}.context-end a:hover{color:var(--copper)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.proto-page,details[open] .expanded,.selector-panel.mode-transition>.selector-panel__top,.selector-panel.mode-transition>.selector-panel__bottom{animation:none}.s-tab,.s-tab:before,.expand-icon{transition:none}}
+/* PICKER FROM Emil Kowalski: exact markup and styles */
+.proto-picker {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.82);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 8px 24px rgba(0, 0, 0, 0.24),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.proto-picker-highlight {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  will-change: transform;
+}
+.proto-picker[data-ready] .proto-picker-highlight {
+  transition:
+    transform 250ms cubic-bezier(0.23, 1, 0.32, 1),
+    width 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .proto-picker[data-ready] .proto-picker-highlight { transition: none; }
+}
+.proto-picker-item {
+  position: relative; /* sits above the highlight */
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font: inherit;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+.proto-picker-item:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.proto-picker-item:active {
+  transform: scale(0.97);
+}
+.proto-picker-item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+.proto-picker-item[data-active] {
+  color: #fff;
+}
+.proto-picker-divider {
+  width: 1px;
+  height: 16px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.proto-picker-replay {
+  padding: 0 10px;
+  font-size: 14px;
+}
+.proto-picker[data-position="top"] {
+  bottom: auto;
+  top: 24px;
+}
+</style></head>
+<body>
+<header class="shell context-head"><a href="../index.html#formatos" aria-label="Volver a Noche de Tango"><img src="../assets/sushiclub.svg" alt="SushiClub" width="205" height="30"></a><p>NOCHE DE TANGO<br>TANGO RAÍZ</p></header>
+<main id="stage"></main>
+<footer class="context-end shell"><small>UNA EXPERIENCIA DE TANGO RAÍZ EN SUSHICLUB.<br>LA MODALIDAD DEPENDE DEL LOCAL Y LA FECHA. IMÁGENES ILUSTRATIVAS.</small><a href="../index.html#reservas">CONSULTAR RESERVAS ↗</a></footer>
+<template id="template-editorial"><section class="proto-page shell" aria-labelledby="proto-heading">
+<div class="section-top"><span class="kicker">02 / EL ESPECTÁCULO</span><span class="micro">50 MINUTOS / TANGO RAÍZ</span></div>
+<div class="ed-head"><h1 id="proto-heading" class="display">DOS<br>FORMAS<span style="color:var(--copper)">.</span><br>UNA PASIÓN<span style="color:var(--copper)">.</span></h1>
+<div class="ed-head__copy"><p class="lead">Tango Raíz propone dos maneras de vivir la música. <strong>La modalidad depende de la fecha y del salón.</strong> Conocé qué incluye cada experiencia antes de reservar.</p><p class="note">IMPORTANTE: CADA LOCAL Y FECHA OFRECE UNA MODALIDAD ESPECÍFICA.</p></div></div>
+<div class="ed-table">
+<details class="ed-row"><summary><span class="ed-n">01 / 02</span><span class="ed-name">MINIMAL</span><span class="ed-kind"><strong>MÚSICA EN VIVO</strong><small>FORMATO ACÚSTICO · 50 MINUTOS</small></span><span class="expand-icon" aria-hidden="true"></span></summary><div class="ed-expanded expanded"><p>Una presentación acústica de tango en vivo, íntima y envolvente, para acompañar cada momento de la noche. Este formato se centra únicamente en la música.</p><div class="tags"><span>♪ MÚSICA ACÚSTICA</span><span>50 MINUTOS</span><span class="emph">SIN DANZA</span></div></div></details>
+<details class="ed-row"><summary><span class="ed-n">02 / 02</span><span class="ed-name">ESSENTIAL</span><span class="ed-kind"><strong>MÚSICA &amp; DANZA EN VIVO</strong><small>ESPECTÁCULO COMPLETO · 50 MINUTOS</small></span><span class="expand-icon" aria-hidden="true"></span></summary><div class="ed-expanded expanded"><p>Una puesta en escena que reúne música y danza en vivo. El tango se escucha, se mira y se siente.</p><div class="tags"><span>♪ MÚSICA EN VIVO</span><span>DANZA EN VIVO</span><span>50 MINUTOS</span></div></div></details>
+</div><p class="note format-legal">TOCÁ UN FORMATO PARA DESPLEGAR LA INFORMACIÓN. LAS FECHAS SE CONFIRMAN CON EL SALÓN.</p></section></template>
+<template id="template-escenario"><section class="proto-page shell" aria-labelledby="proto-heading">
+<div class="section-top"><span class="kicker">02 / EL ESPECTÁCULO</span><span class="micro">50 MINUTOS / TANGO RAÍZ</span></div>
+<div class="scene-head"><h1 class="display" id="proto-heading">DOS FORMAS.<br>UNA PASIÓN.</h1><p class="lead">Una misma raíz, dos maneras de vivirla. <strong>Música acústica</strong> o <strong>música y danza</strong> en vivo, según fecha y salón.</p></div>
+<div class="scene-stack">
+<article class="scene"><div class="scene-surface scene-surface--music"><div class="instr" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="scene-top"><span>ACTO 01 / TANGO RAÍZ</span><span>SOLO MÚSICA</span></div>
+<div class="scene-bottom"><h2>MINIMAL<span style="color:var(--copper)">.</span></h2><div class="scene-text"><p>La intimidad del tango acústico. Todo el protagonismo en la música.</p><details><summary>DESCUBRÍ ESTE FORMATO <span class="expand-icon" aria-hidden="true"></span></summary><div class="expanded"><p>Una presentación de música en vivo de 50 minutos, sin espectáculo de danza.</p></div></details><div class="scene-micro"><span>MÚSICA EN VIVO</span><span>50 MINUTOS</span></div></div></div></article>
+<article class="scene"><div class="scene-surface scene-surface--dance"><img src="../assets/essential-tango.jpg" alt="" loading="lazy" decoding="async"></div><div class="scene-top"><span>ACTO 02 / TANGO RAÍZ</span><span>MÚSICA + DANZA</span></div>
+<div class="scene-bottom"><h2>ESSENTIAL<span style="color:var(--copper)">.</span></h2><div class="scene-text"><p>Una puesta en escena que combina el sonido y el movimiento del tango.</p><details><summary>DESCUBRÍ ESTE FORMATO <span class="expand-icon" aria-hidden="true"></span></summary><div class="expanded"><p>Música y danza en vivo durante 50 minutos. El espectáculo incluye una presentación de baile.</p></div></details><div class="scene-micro"><span>MÚSICA &amp; DANZA</span><span>50 MINUTOS</span></div></div></div></article>
+</div><p class="note format-legal">IMPORTANTE: CADA LOCAL Y FECHA OFRECE UNA MODALIDAD ESPECÍFICA.</p></section></template>
+<template id="template-selector"><section class="proto-page shell" aria-labelledby="proto-heading">
+<div class="section-top"><span class="kicker">02 / EL ESPECTÁCULO</span><span class="micro">50 MINUTOS / TANGO RAÍZ</span></div>
+<div class="select-head"><h1 class="display" id="proto-heading">ELEGÍ CÓMO<br>VIVIR EL TANGO.</h1><p class="lead">Tango Raíz ofrece dos modalidades. Explorá cada una para conocer el espectáculo antes de reservar.</p></div>
+<div class="selector-layout"><div class="selector-menu" role="group" aria-label="Modalidades de Tango Raíz">
+<div class="selector-menu__top">EXPLORÁ LOS FORMATOS</div>
+<button class="s-tab" data-format="minimal" aria-pressed="true"><span class="s-tab__top"><span>01 / FORMATO</span><span>↗</span></span><span class="s-tab__name">MINIMAL</span></button>
+<button class="s-tab" data-format="essential" aria-pressed="false"><span class="s-tab__top"><span>02 / FORMATO</span><span>↗</span></span><span class="s-tab__name">ESSENTIAL</span></button>
+<p class="selector-info">CADA LOCAL Y FECHA PRESENTA UNA MODALIDAD ESPECÍFICA. CONSULTÁ AL RESERVAR.</p>
+</div><div class="selector-panel" data-selector-panel role="region" aria-live="polite" aria-label="Descripción del formato">
+<div class="selector-visual"><div class="instr" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<div class="selector-panel__top"><span>TANGO RAÍZ / 01</span><span>MÚSICA ACÚSTICA EN VIVO</span></div>
+<div class="selector-panel__bottom"><h2>MINIMAL<span style="color:var(--copper)">.</span></h2><p>Una presentación acústica de tango en vivo, íntima y envolvente, para acompañar cada momento de la noche.</p><div class="tags"><span>MÚSICA EN VIVO</span><span>50 MINUTOS</span></div><p class="note">FORMATO EXCLUSIVAMENTE MUSICAL, SIN DANZA.</p></div>
+</div></div><p class="note format-legal">IMPORTANTE: CADA LOCAL Y FECHA OFRECE UNA MODALIDAD ESPECÍFICA.</p></section></template>
+<template id="panel-minimal"><div class="selector-visual"><div class="instr" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="selector-panel__top"><span>TANGO RAÍZ / 01</span><span>MÚSICA ACÚSTICA EN VIVO</span></div><div class="selector-panel__bottom"><h2>MINIMAL<span style="color:var(--copper)">.</span></h2><p>Una presentación acústica de tango en vivo, íntima y envolvente, para acompañar cada momento de la noche.</p><div class="tags"><span>MÚSICA EN VIVO</span><span>50 MINUTOS</span></div><p class="note">FORMATO EXCLUSIVAMENTE MUSICAL, SIN DANZA.</p></div></template>
+<template id="panel-essential"><div class="selector-visual"><img src="../assets/essential-tango.jpg" alt="" loading="lazy" decoding="async"></div>
+<div class="selector-panel__top"><span>TANGO RAÍZ / 02</span><span>MÚSICA Y DANZA EN VIVO</span></div>
+<div class="selector-panel__bottom"><h2>ESSENTIAL<span style="color:var(--copper)">.</span></h2><p>Una puesta en escena que reúne música y danza en vivo. El tango se escucha, se mira y se siente.</p><div class="tags"><span>MÚSICA &amp; DANZA</span><span>50 MINUTOS</span></div><p class="note">INCLUYE PRESENTACIÓN DE BAILE.</p></div></template>
+<nav class="proto-picker" aria-label="Prototype variants">
+  <span class="proto-picker-highlight" aria-hidden="true"></span>
+  <button class="proto-picker-item" data-active aria-current="true">Editorial</button>
+  <button class="proto-picker-item">Escenario</button>
+  <button class="proto-picker-item">Selector</button>
+  <span class="proto-picker-divider" aria-hidden="true"></span>
+  <button class="proto-picker-item proto-picker-replay" aria-label="Replay animation (R)">↻</button>
+</nav>
+<script>
+const variants = [
+  () => document.getElementById('template-editorial').innerHTML,
+  () => document.getElementById('template-escenario').innerHTML,
+  () => document.getElementById('template-selector').innerHTML
+];
+document.getElementById('stage').addEventListener('click', e => {
+  const button = e.target.closest('.s-tab');
+  if (!button) return;
+  const mode = button.dataset.format;
+  const root = button.closest('.selector-layout');
+  const panel = root && root.querySelector('[data-selector-panel]');
+  if (!panel || button.getAttribute('aria-pressed') === 'true') return;
+  root.querySelectorAll('.s-tab').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+  panel.innerHTML = document.getElementById('panel-' + mode).innerHTML;
+  panel.classList.remove('mode-transition');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    void panel.offsetWidth;
+    panel.classList.add('mode-transition');
+  }
+});
+// Picker wiring from PICKER.md (standalone reference, highlight translation string uses concatenation).
+const stage = document.getElementById('stage');
+const picker = document.querySelector('.proto-picker');
+const highlight = picker.querySelector('.proto-picker-highlight');
+const items = [...picker.querySelectorAll('.proto-picker-item:not(.proto-picker-replay)')];
+const replay = picker.querySelector('.proto-picker-replay');
+let current = 0;
+function moveHighlight() {
+  const el = items[current];
+  highlight.style.width = el.offsetWidth + 'px';
+  highlight.style.transform = 'translateX(' + el.offsetLeft + 'px)';
+}
+function mount(i) {
+  stage.innerHTML = '';
+  requestAnimationFrame(() => { stage.innerHTML = variants[i](); });
+}
+function setActive(i) {
+  if (i < 0 || i >= variants.length) return;
+  current = i;
+  items.forEach((el, j) => {
+    el.toggleAttribute('data-active', j === i);
+    if (j === i) el.setAttribute('aria-current', 'true');
+    else el.removeAttribute('aria-current');
+  });
+  moveHighlight();
+  const url = new URL(location);
+  url.searchParams.set('v', i + 1);
+  history.replaceState(null, '', url);
+  mount(i);
+}
+items.forEach((el, i) => el.addEventListener('click', () => setActive(i)));
+replay?.addEventListener('click', () => mount(current));
+window.addEventListener('resize', moveHighlight);
+document.addEventListener('keydown', (e) => {
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const num = parseInt(e.key, 10);
+  if (num >= 1 && num <= variants.length) setActive(num - 1);
+  else if (e.key === 'ArrowRight') setActive((current + 1) % variants.length);
+  else if (e.key === 'ArrowLeft') setActive((current - 1 + variants.length) % variants.length);
+  else if (e.key === 'r' || e.key === 'R') mount(current);
+});
+setActive((parseInt(new URLSearchParams(location.search).get('v'), 10) || 1) - 1);
+requestAnimationFrame(() => requestAnimationFrame(() => picker.setAttribute('data-ready', '')));
+</script></body></html>

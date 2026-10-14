@@ -19,18 +19,22 @@
       min-height: 44px;
       transition: transform var(--duration-press) var(--ease-out);
     }
-    .hero__title-bottom {
-      display: inline-flex;
-      justify-content: center;
-      align-items: baseline;
-      gap: .08em;
+    /* Mobile hero as a single painted background: no alpha/image/wash compositing
+       surfaces that can expose 1px tile seams during Android scrolling. */
+    .hero {
+      isolation: auto;
+      background-color: #070707;
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.18) 22%, rgba(0,0,0,.44) 66%, #070707 100%),
+        linear-gradient(rgba(0,0,0,.33), rgba(0,0,0,.33)),
+        url("../assets/hero-tango.jpg");
+      background-size: 100% 100%, 100% 100%, cover;
+      background-position: center, center, 54% center;
+      background-repeat: no-repeat;
     }
-    .hero__title-bottom em {
-      position: static;
-      top: auto;
-      margin: 0;
-      transform: translate3d(0, -.11em, 0);
-    }
+    .hero__media, .hero__wash { display: none; }
+    .hero__center, .hero__footer { z-index: auto; }
+    .hero__title > .hero__title-bottom { gap:.10em; }
     .hero__title-word { display: inline-block; }
     .format-card { overflow: hidden; }
     .format-card__features { line-height: 1.5; gap: 10px 17px; }
@@ -47,7 +51,7 @@
       line-height: 1.025;
       letter-spacing: -.083em;
     }
-    .hero__title-bottom em { font-size: .21em; letter-spacing: -.055em; }
+    .hero__title > .hero__title-bottom { font-size:.82em; }
     .hero__tagline { margin-top: clamp(20px, 4svh, 35px); font-size: clamp(12px, 3.5vw, 15px); }
     .hero__footer { bottom: calc(var(--dock-height) + 32px + env(safe-area-inset-bottom, 0px)); }
     .section-topline > :last-child:not(:first-child) { display: none; }
@@ -78,9 +82,9 @@
     }
     .format-card__body > p:not(.format-card__eyebrow) { margin-top: 22px; line-height: 1.47; }
     .format-card__features { margin-top: 26px; font-size: 10px; }
-    .format-note { margin-top: var(--space-5); }
-    .menu-section__headline .display { font-size: clamp(57px, 15vw, 96px); line-height: 1.07; }
-    .menu-price { margin-top: var(--space-10); }
+    .formats__copy { gap:var(--space-5); }
+    .menu-layout__sticky .display { font-size: clamp(57px, 15vw, 96px); line-height: 1.07; }
+    .menu-price { margin-top: 0; }
     .menu-course__choices p { line-height: 1.4; }
     .reservations__heading .display { font-size: clamp(53px, 13vw, 82px); line-height: 1.07; }
     .questions__left h2 { font-size: clamp(42px, 11vw, 60px); line-height: 1.08; }

@@ -135,24 +135,4 @@
     qa(".reveal, .interlude, .final-cta").forEach((el) => observer.observe(el));
   }
 
-  // Single rAF update for inexpensive reading progress; no scroll effects on layout.
-  const progress = q("[data-scroll-progress]");
-  if (progress) {
-    let pending = false;
-    const update = () => {
-      const remaining = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const fraction = Math.max(0, Math.min(1, window.scrollY / remaining));
-      progress.style.transform = "scaleX(" + fraction.toFixed(4) + ")";
-      pending = false;
-    };
-    const requestUpdate = () => {
-      if (!pending) {
-        pending = true;
-        window.requestAnimationFrame(update);
-      }
-    };
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate, { passive: true });
-    update();
-  }
 })();
