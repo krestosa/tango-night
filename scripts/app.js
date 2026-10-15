@@ -6,15 +6,7 @@
   const qa = (selector, base = document) => [...base.querySelectorAll(selector)];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Booking destination is always the actual SushiClub reservation entry point.
-  const safeUrl = (value) => {
-    if (typeof value !== "string") return null;
-    try {
-      const u = new URL(value);
-      return u.protocol === "https:" ? u.href : null;
-    } catch { return null; }
-  };
-  const bookingUrl = safeUrl(data.reservationUrl) || "https://www.sushiclub.com.ar/shop_reservas.php";
+  const bookingUrl = "https://www.sushiclub.com.ar/shop_reservas.php";
   qa("[data-reservation-link]").forEach((a) => { a.href = bookingUrl; });
 
   // Interruptible mobile menu, with focus semantics and reduced-motion support.
@@ -104,7 +96,7 @@
         detail.textContent = item.format === "minimal" ? "MINIMAL · MÚSICA EN VIVO · SIN BAILE" : "ESSENTIAL · MÚSICA Y DANZA EN VIVO";
         const book = document.createElement("a");
         book.className = "event-item__book";
-        book.href = safeUrl(item.bookingUrl) || bookingUrl;
+        book.href = bookingUrl;
         book.target = "_blank";
         book.rel = "noopener noreferrer";
         book.textContent = "RESERVAR ESTA FECHA ↗";

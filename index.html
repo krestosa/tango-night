@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="styles/mobile-polish.css?v=tango-night-type-1">
   <link rel="stylesheet" href="styles/landing.css?v=20261015-photo-light-responsive">
   <script src="scripts/config.js" defer></script>
-  <script src="scripts/app.js?v=text-entrances-1" defer></script>
+  <script src="scripts/app.js?v=reservations-official-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -36,7 +36,7 @@
       <a href="#experiencia">LA EXPERIENCIA</a>
       <a href="#formatos">EL SHOW</a>
       <a href="#menu">EL MENÚ</a>
-      <a class="site-header__reserve" href="#reservas">RESERVAS <span aria-hidden="true">↗</span></a>
+      <a class="site-header__reserve" data-reservation-link href="https://www.sushiclub.com.ar/shop_reservas.php" target="_blank" rel="noopener noreferrer">RESERVAS <span aria-hidden="true">↗</span></a>
     </nav>
     <button class="mobile-menu-toggle" data-menu-toggle type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Abrir menú"><span></span><span></span></button>
   </header>
@@ -44,7 +44,7 @@
     <a href="#experiencia">LA EXPERIENCIA</a>
     <a href="#formatos">EL SHOW</a>
     <a href="#menu">EL MENÚ</a>
-    <a href="#reservas">RESERVAS</a>
+    <a data-reservation-link href="https://www.sushiclub.com.ar/shop_reservas.php" target="_blank" rel="noopener noreferrer">RESERVAS</a>
   </nav>
 
   <main id="contenido">
@@ -253,7 +253,7 @@
     <a class="reservation-dock__segment reservation-dock__segment--name" href="#formatos"><span class="reservation-dock__label">EXPERIENCIA</span><strong>TANGO NIGHT</strong></a>
     <a class="reservation-dock__segment reservation-dock__segment--place" href="#reservas"><span class="reservation-dock__label">ZONA</span><strong>CABA &amp; GBA</strong></a>
     <div class="reservation-dock__segment reservation-dock__segment--price"><span class="reservation-dock__label">POR PERSONA</span><strong>$79.000</strong></div>
-    <a class="reservation-dock__cta" href="#reservas"><span>RESERVAR<br>AHORA</span></a>
+    <a class="reservation-dock__cta" data-reservation-link href="https://www.sushiclub.com.ar/shop_reservas.php" target="_blank" rel="noopener noreferrer"><span>RESERVAR<br>AHORA</span></a>
   </aside>
 
   <footer class="campaign-footer">

@@ -6,7 +6,7 @@ Landing de campaña estática, responsive y lista para publicar en hosting HTTP(
 - Abrir \`index.html\` en el navegador o publicar directamente todo este directorio en la raíz de un sitio estático.
 - Publicar juntos \`index.html\`, \`styles/\`, \`scripts/\` y \`assets/\`. Las rutas son relativas.
 - No requiere npm, servidor API, Node.js ni compilación. Inter Variable se carga desde `assets/fonts/`, junto con Owners XWide Black para titulares. Verificar que la licencia de Owners permita su uso como webfont antes de publicar.
-- Botones de reserva: enlace real al canal oficial de SushiClub, definido en \`scripts/config.js\`.
+- Todos los enlaces de reserva y disponibilidad, incluidos los de eventos futuros, llevan a `https://www.sushiclub.com.ar/shop_reservas.php`.
 
 ## Sistema de diseño
 - `styles/fonts.css`: Inter Variable para textos y Owners XWide Black para títulos, ambos cargados desde `assets/fonts/`.
