@@ -1,0 +1,1358 @@
+/* Taste Skill v2 · Noche de Tango · page-is-the-object */
+@layer adaptive {
+  :root { --paper:#e9e9e6; --ink:#111214; --blue:#0d66ee; }
+
+  /* Program printed on a luminous sheet, against the real tango photograph. */
+  :root {
+    --color-copper:var(--blue); --color-bg:var(--ink);
+    --color-text:#f4f4f0; --color-muted:#adadae;
+  }
+  body { background:var(--ink); color:#f4f4f0; }
+  .shell { width:min(1640px,calc(100% - clamp(36px,4vw,100px))); }
+  .display { letter-spacing:-.07em; line-height:.95; font-weight:780; }
+  .section-topline { border:0; padding-bottom:0; }
+  .section-topline::after { display:none !important; }
+  .section-index,.section-topline > :last-child { font-size:13px; letter-spacing:0; }
+  .outline__shape { display:none; }
+  .outline__text { color:inherit; }
+  .accent { color:inherit; }
+  .site-header { min-height:92px; z-index:35; }
+  .site-header__links { gap:clamp(22px,2.4vw,42px); }
+  .site-header__links a { opacity:1; font-size:13px; font-weight:600; letter-spacing:0; }
+  .site-header__links .site-header__reserve { border:0; background:var(--blue); padding:13px 21px; }
+  .site-header__reserve span { display:none; }
+  .hero {
+    display:grid; grid-template-rows:minmax(0,1fr) auto;
+    height:auto; min-height:max(740px,100svh); background:var(--ink);
+  }
+  .hero__media { z-index:-2; }
+  .hero__image { opacity:.63; }
+  .hero__wash { z-index:-1; background:rgba(0,0,0,.48); }
+  .hero__center {
+    width:min(900px,calc(100% - 64px)); min-height:0;
+    margin:clamp(140px,15vh,200px) auto 36px;
+    padding:clamp(42px,5vw,78px);
+    background:var(--paper); color:var(--ink);
+    display:flex; flex-direction:column; align-items:stretch;
+    justify-content:center; text-align:left;
+  }
+  .hero__center::before {
+    content:"SUSHICLUB  ×  TANGO RAÍZ  /  UNA NOCHE ESPECIAL";
+    display:block; font-size:13px; font-weight:650;
+    margin-bottom:clamp(44px,6vh,78px);
+  }
+  .hero__title {
+    color:var(--ink); font-size:clamp(67px,8.6vw,135px);
+    letter-spacing:-.098em; line-height:.9; font-weight:800; text-shadow:none;
+  }
+  .hero__title > .hero__title-bottom { justify-content:flex-start; gap:.16em; }
+  .hero__tagline {
+    margin-top:clamp(42px,5vw,80px); max-width:40ch;
+    color:var(--ink); font-size:clamp(18px,1.45vw,23px);
+    line-height:1.42; letter-spacing:-.02em; text-shadow:none;
+    text-transform:none; font-weight:530;
+  }
+  .hero__footer {
+    position:relative; inset:auto; z-index:3;
+    margin-inline:auto;
+    padding-bottom:calc(var(--dock-height) + var(--dock-bottom) + 34px);
+  }
+  .hero__footer-left,.hero__footer-right { font-size:13px; letter-spacing:0; }
+  .scroll-prompt {
+    background:var(--blue); color:#fff;
+    flex-direction:row; padding:15px 25px; gap:22px;
+    font-size:15px; font-weight:680; letter-spacing:0;
+  }
+  .scroll-prompt__arrow { border:0; width:auto; height:auto; font-size:24px; }
+  .button--bright { background:var(--blue); color:#fff; }
+  .button { border-radius:0; font-size:14px; min-height:60px; letter-spacing:0; }
+
+  /* First act: a typographic programme, followed by the real tango atmosphere. */
+  .story { background:#111214; }
+  .story__meta { grid-column:1 / span 3; padding-top:6px; font-size:15px; }
+  .story__meta .section-index,.tiny-line { display:none; }
+  .story__meta > span:last-child { color:#b0b0b1; font-size:15px; }
+  .story__body { grid-column:4 / -1; }
+  .display--story { font-size:clamp(68px,8.2vw,146px); line-height:.95; max-width:12ch; }
+  .story__bottom { max-width:730px; margin-top:clamp(48px,6vw,95px); }
+  .story__bottom > p { font-size:clamp(19px,1.6vw,26px); line-height:1.52; max-width:60ch; }
+  .pills { display:flex; flex-wrap:wrap; gap:10px; }
+  .pills span { display:inline-flex; align-items:center; justify-content:center; min-height:38px; padding:9px 17px; border:1px solid rgba(255,255,255,.34); border-radius:999px; background:#1b1b1b; color:#f4f4f4; font-size:13px; font-weight:650; letter-spacing:.025em; line-height:1.2; white-space:nowrap; }
+  .interlude { min-height:84svh; background:#161515; }
+  .interlude__photo img { opacity:.86; }
+  .interlude__wash { background:rgba(0,0,0,.35); }
+  .interlude__quote {
+    font-size:clamp(66px,8.8vw,146px); line-height:.92;
+    max-width:14ch; letter-spacing:-.07em; font-weight:770;
+  }
+  .interlude__quote span { color:inherit; }
+  .interlude__credit { font-size:15px; font-weight:550; letter-spacing:0; }
+
+  /* The two Tango Raíz line-ups behave like two programme slips. */
+  .formats {
+    background:var(--paper); color:var(--ink);
+  }
+  .formats .section-topline { display:none; }
+  .formats__heading {
+    display:grid; grid-template-columns:minmax(0,6fr) minmax(0,4fr);
+    align-items:end; gap:clamp(50px,8vw,150px);
+    margin-top:0; margin-bottom:clamp(52px,6vw,90px);
+  }
+  .formats__heading .display {
+    font-size:clamp(65px,8vw,140px); line-height:.92;
+    max-width:10ch;
+  }
+  .formats__intro { font-size:clamp(18px,1.5vw,24px); line-height:1.52; color:#2e3034; }
+  .format-note { font-size:15px; color:#55565b; line-height:1.5; letter-spacing:0; }
+  .format-grid { gap:clamp(14px,2vw,32px); grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); }
+  .format-card {
+    min-height:clamp(540px,52vw,720px);
+    padding:clamp(30px,3.5vw,60px);
+    border-radius:0;
+  }
+  .format-card--minimal { background:#111214; }
+  .format-card--minimal .format-card__backdrop { opacity:.27; }
+  .format-card--essential .format-card__backdrop { opacity:.92; }
+  .format-card--essential .format-card__backdrop::after { background:rgba(0,0,0,.38); }
+  .format-card__number,.format-card__eyebrow { display:none; }
+  .format-card__top { font-size:15px; letter-spacing:0; }
+  .format-card__tag { font-size:15px; font-weight:550; letter-spacing:0; padding:0; border:0; border-radius:0; background:transparent; }
+  .format-card__body { padding-top:190px; }
+  .format-card h3 { font-size:clamp(56px,7.5vw,120px); letter-spacing:-.073em; line-height:.95; }
+  .format-card h3 span { display:none; }
+  .format-card__body > p:not(.format-card__eyebrow) {
+    font-size:clamp(17px,1.4vw,22px); margin-top:30px; max-width:41ch;
+    line-height:1.5; letter-spacing:-.02em;
+  }
+  .format-card__features { font-size:14px; letter-spacing:0; gap:20px; }
+  .format-choice { position:relative; }
+  .format-choice__radio { position:absolute; width:0; height:0; opacity:0; overflow:hidden; }
+  .format-choice__tabs { display:flex; margin-bottom:20px; }
+  .format-choice__tabs label {
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    font-size:16px; font-weight:700; padding:15px 36px; min-height:62px;
+    color:var(--ink); background:#d4d4d1;
+  }
+  #formato-minimal:checked ~ .format-choice__tabs label[for="formato-minimal"],
+  #formato-essential:checked ~ .format-choice__tabs label[for="formato-essential"] {
+    background:var(--blue); color:#fff;
+  }
+  #formato-minimal:checked ~ .format-grid .format-card--essential,
+  #formato-essential:checked ~ .format-grid .format-card--minimal { display:none; }
+  #formato-minimal:focus-visible ~ .format-choice__tabs label[for="formato-minimal"],
+  #formato-essential:focus-visible ~ .format-choice__tabs label[for="formato-essential"] {
+    outline:3px solid var(--blue); outline-offset:4px;
+  }
+  .format-choice .format-grid { grid-template-columns:1fr; }
+  .format-choice .format-card { min-height:clamp(520px,49vw,710px); }
+  .format-choice .format-card h3 { font-size:clamp(74px,10vw,165px); }
+  .format-choice .format-card__body { max-width:710px; }
+  .format-choice .format-card--minimal .bandoneon-art { width:min(49%,510px); left:78%; }
+
+  /* Dinner menu: an actual printed object, not a background image over type. */
+  .menu-section { isolation:auto; overflow:clip; background:var(--paper); color:var(--ink); }
+  .menu-section::before,.menu-section__photo { display:none; }
+  .menu-section .section-topline { display:none; }
+  .menu-layout {
+    grid-template-columns:minmax(0,4.2fr) minmax(0,5.8fr);
+    gap:clamp(60px,7vw,132px); margin-top:0;
+  }
+  .menu-layout__aside { color:var(--ink); align-self:stretch; }
+  .menu-layout__sticky { top:clamp(26px,5vh,70px); gap:0; }
+  .menu-layout__sticky .display {
+    font-size:clamp(85px,9.5vw,170px); line-height:.86; letter-spacing:-.08em;
+  }
+  .menu-layout__sticky > p { font-size:18px; margin-top:48px; font-weight:590; line-height:1.5; }
+  .menu-layout__sticky > span { font-size:15px; color:#55565a; line-height:1.55; margin-top:24px; }
+  .menu-aside-rule { display:none; }
+  .menu-price { gap:13px; align-items:flex-start; margin:0 0 65px; }
+  .menu-price > span { color:#4d4e52; font-size:15px; font-weight:550; letter-spacing:0; }
+  .menu-price strong { font-size:clamp(64px,6vw,108px); letter-spacing:-.07em; }
+  .menu-course { padding:40px 0; border:0; }
+  .menu-course:last-child { border:0; }
+  .menu-course h3 { font-size:clamp(36px,3.8vw,65px); letter-spacing:-.064em; line-height:.98; }
+  .course-choice { border:0; border-radius:0; padding:0; color:#53555a; font-size:14px; }
+  .menu-course__choices { margin-top:25px; gap:17px; }
+  .menu-course__choices p { color:#28292c; font-size:clamp(18px,1.45vw,23px); line-height:1.42; font-weight:500; }
+  .menu-course__choices small { color:#52545a; font-size:15px; }
+  .menu-disclaimer { margin-top:55px; color:#505259; font-size:15px; letter-spacing:0; line-height:1.55; max-width:680px; }
+
+  /* Ticket-sized booking window separates charcoal from the paper stub. */
+  .reservations { background:#292a2c; color:#f4f4f1; }
+  .reservations .section-topline { display:none; }
+  .reservations__layout {
+    grid-template-columns:minmax(0,5fr) minmax(0,6fr);
+    align-items:center; gap:clamp(35px,6vw,130px); margin-top:0;
+  }
+  .reservations__heading .display { font-size:clamp(70px,7.7vw,134px); line-height:.92; }
+  .reservations__heading > p:last-child { margin-top:50px; font-size:clamp(19px,1.5vw,24px); line-height:1.52; max-width:34ch; }
+  .reservations .outline__shape { display:none; }
+  .reservations__panel {
+    background:var(--paper); color:var(--ink);
+    padding:clamp(35px,3.6vw,68px); border:0; box-shadow:none;
+    position:relative; min-height:470px;
+  }
+  .reservations__panel::before,.reservations__panel::after {
+    content:""; position:absolute; top:50%; transform:translateY(-50%);
+    width:24px; height:24px; border-radius:50%; background:#292a2c;
+  }
+  .reservations__panel::before { left:-12px; }
+  .reservations__panel::after { right:-12px; }
+  .reservations__panel-heading { font-size:15px; font-weight:650; letter-spacing:0; border:0; padding-bottom:16px; }
+  .live-dot { background:var(--blue); }
+  .events { min-height:160px; padding-block:24px; }
+  .events__empty { color:var(--ink); }
+  .events__empty strong { font-size:clamp(28px,2.8vw,42px); }
+  .events__empty p { color:#46474b; font-size:16px; }
+  .event-item { border:0; }
+  .event-item__date,.event-item__book { color:var(--blue); }
+  .event-item__details { color:#47484d; }
+  .reservations__panel .button { width:100%; }
+  .reservations__panel-note { color:#47484d; font-size:13px; letter-spacing:0; line-height:1.5; }
+
+  .questions { background:#111214; }
+  .questions__grid { grid-template-columns:minmax(0,4fr) minmax(0,7fr); gap:clamp(50px,8vw,150px); }
+  .questions__left .section-index { display:none; }
+  .questions__left h2 { margin-top:0; font-size:clamp(70px,7vw,128px); line-height:.92; }
+  .questions__right,.faq { border:0; }
+  .faq { padding-bottom:18px; }
+  .faq summary { min-height:0; padding:22px 0; font-size:clamp(19px,1.5vw,23px); font-weight:600; line-height:1.35; }
+  .faq summary span { border:0; flex-basis:26px; }
+  .faq summary span::before,.faq summary span::after { background:var(--blue); }
+  .faq p { font-size:17px; color:#d5d5d6; line-height:1.6; padding-bottom:23px; max-width:53ch; }
+
+  /* Last act: a printed reply card in front of the dimmed performance. */
+  .final-cta { min-height:92svh; background:#111; }
+  .final-cta__image img { opacity:.65; }
+  .final-cta__content {
+    width:min(690px,calc(100% - 60px));
+    margin-inline:auto clamp(25px,8vw,145px);
+    padding:clamp(45px,5vw,80px);
+    background:var(--paper); color:var(--ink);
+  }
+  .final-cta h2 { font-size:clamp(60px,6.5vw,118px); line-height:.92; }
+  .final-cta__content > p { font-size:17px; letter-spacing:0; line-height:1.5; margin-top:30px; }
+  .final-cta .button { margin-top:38px; width:100%; min-width:0; color:#fff; }
+  .footer { background:var(--paper); color:var(--ink); padding:105px 0 155px; }
+  .footer__inner > a:first-child img { width:clamp(200px,22vw,330px); filter:none; }
+  .footer__inner > span,.footer__inner > a:last-child { font-size:15px; letter-spacing:0; }
+  .footer__legal { color:#505057; font-size:13px; letter-spacing:0; }
+
+  /* Keep the user's original four-item reserve dock and centered button. */
+  .reservation-dock {
+    width:min(880px,calc(100% - 32px));
+    background:#161719; border:0; border-radius:0;
+    grid-template-columns:max-content max-content max-content 150px;
+    box-shadow:none;
+  }
+  .reservation-dock__label { font-size:12px; letter-spacing:0; color:#adadae; }
+  .reservation-dock__segment strong { font-size:clamp(13px,1.05vw,17px); }
+  .reservation-dock__cta { background:var(--blue); color:#fff; border-radius:0; font-size:15px; }
+  .scroll-prompt:hover,.button--bright:hover,.reservation-dock__cta:hover,
+  .site-header__reserve:hover { background:#0057d5; color:#fff; }
+  .js-motion .reveal { transform:translate3d(0,24px,0); }
+  .js-motion .reveal.is-visible { transform:none; }
+
+  @media (max-width:1100px) {
+    .hero__center { width:min(830px,calc(100% - 52px)); }
+    .hero__title { font-size:clamp(64px,9.5vw,115px); }
+    .formats__heading { gap:40px; }
+    .formats__heading .display { font-size:clamp(58px,7.4vw,114px); }
+    .format-card h3 { font-size:clamp(56px,7.5vw,110px); }
+    .menu-layout { gap:42px; }
+  }
+  @media (max-width:960px) {
+    .hero__footer-left,.hero__footer-right { display:none; }
+    .hero__footer { display:flex; justify-content:center; }
+    .story__meta { grid-column:1 / span 2; }
+    .story__body { grid-column:3 / -1; }
+    .formats__heading { display:block; }
+    .formats__copy { margin-top:34px; }
+    .menu-layout { grid-template-columns:minmax(0,4fr) minmax(0,6fr); }
+    .menu-layout__sticky { position:sticky; }
+    .reservations__layout { grid-template-columns:minmax(0,4fr) minmax(0,6fr); }
+    .reservations__heading .display { font-size:clamp(59px,7.4vw,88px); }
+  }
+  @media (max-width:760px) {
+    .shell { width:calc(100% - 40px); }
+    .site-header { min-height:79px; top:env(safe-area-inset-top,0px); }
+    .site-header__logo img { width:154px; }
+    .site-header__links { display:none; }
+    .mobile-menu-toggle { display:flex; background:var(--blue); border:0; border-radius:0; }
+    .mobile-navigation { background:#111214; }
+    .mobile-navigation a { border:0; font-size:clamp(28px,6.8vw,44px); }
+    .mobile-navigation a span { display:none; }
+    .hero {
+      isolation:auto; display:grid; grid-template-rows:minmax(0,1fr) auto;
+      height:auto; min-height:max(750px,100svh);
+      background:rgba(5,5,6,.4) url("../assets/hero-tango.jpg") 54% center / cover no-repeat;
+    }
+    .hero__media,.hero__wash { display:none; }
+    .hero__center {
+      z-index:auto; width:calc(100% - 36px); min-height:0;
+      margin:clamp(95px,12svh,140px) auto 26px;
+      padding:clamp(28px,6vw,48px);
+    }
+    .hero__center::before { font-size:11px; margin-bottom:clamp(45px,6svh,70px); }
+    .hero__title {
+      font-size:clamp(50px,13vw,96px);
+      line-height:.92; letter-spacing:-.09em;
+    }
+    .hero__title > .hero__title-bottom { font-size:1em; gap:.11em; }
+    .hero__tagline { margin-top:clamp(36px,5svh,64px); font-size:17px; line-height:1.42; }
+    .hero__footer {
+      z-index:auto; position:relative; inset:auto; margin:0 auto;
+      padding-bottom:calc(var(--dock-height) + 38px + env(safe-area-inset-bottom,0px));
+    }
+    .scroll-prompt { flex-direction:row; gap:20px; font-size:14px; padding:15px 22px; }
+    .scroll-prompt__arrow { border:0; width:auto; height:auto; font-size:20px; }
+    .section-pad { padding-block:100px; }
+    .story .grid-12 { display:block; }
+    .story__meta { display:none; }
+    .display--story { font-size:clamp(50px,11.6vw,91px); max-width:12ch; }
+    .story__bottom { margin-top:45px; gap:35px; }
+    .story__bottom > p { font-size:19px; }
+    .pills { gap:10px; }
+    .pills span { min-height:34px; padding:8px 12px; font-size:12px; }
+    .interlude { min-height:610px; }
+    .interlude__content { padding-block:120px; }
+    .interlude__quote { font-size:clamp(52px,10.7vw,82px); }
+    .interlude__credit { font-size:14px; }
+    .formats__heading .display { font-size:clamp(57px,12vw,88px); }
+    .formats__intro { font-size:18px; }
+    .format-note { font-size:14px; }
+    .format-choice__tabs { width:100%; }
+    .format-choice__tabs label { flex:1; text-align:center; padding:14px 8px; min-height:58px; font-size:15px; }
+    .format-choice .format-card { min-height:560px; padding:28px; }
+    .format-choice .format-card h3 { font-size:clamp(58px,12vw,97px); }
+    .format-card__body { padding-top:195px; }
+    .format-card__body > p:not(.format-card__eyebrow) { font-size:17px; }
+    .format-card__features { font-size:13px; gap:12px; }
+    .menu-layout { display:block; }
+    .menu-layout__aside { padding-bottom:52px; }
+    .menu-layout__sticky { position:static; }
+    .menu-layout__sticky .display { font-size:clamp(82px,16vw,115px); line-height:.91; }
+    .menu-layout__sticky > p { font-size:17px; margin-top:35px; }
+    .menu-layout__sticky > span { font-size:14px; }
+    .menu-price { margin-bottom:25px; }
+    .menu-price strong { font-size:clamp(60px,12vw,92px); }
+    .menu-course { padding:30px 0; }
+    .menu-course h3 { font-size:clamp(34px,8.8vw,48px); }
+    .menu-course__heading { column-gap:12px; }
+    .menu-course__choices { padding:0; margin-top:18px; }
+    .menu-course__choices p { font-size:18px; }
+    .menu-disclaimer { font-size:14px; }
+    .reservations__layout { display:block; }
+    .reservations__heading .display { font-size:clamp(64px,12.5vw,100px); }
+    .reservations__heading > p:last-child { margin:30px 0 47px; font-size:18px; }
+    .reservations__panel { margin:0; min-height:0; padding:36px 26px; }
+    .events__empty strong { font-size:30px; }
+    .events__empty p { font-size:16px; }
+    .reservations__panel-note { font-size:12px; }
+    .questions__grid { display:block; }
+    .questions__left h2 { margin:0 0 48px; font-size:clamp(56px,12vw,85px); }
+    .faq summary { min-height:0; padding:18px 0; font-size:19px; }
+    .faq p { font-size:16px; }
+    .final-cta { min-height:760px; padding-block:95px; }
+    .final-cta__content { width:calc(100% - 40px); margin-inline:auto; padding:38px 28px; }
+    .final-cta h2 { font-size:clamp(54px,11vw,86px); }
+    .final-cta__content > p { font-size:16px; }
+    .final-cta .button { min-width:0; width:100%; font-size:12px; }
+    .footer { padding:70px 0 140px; }
+    .footer__inner > a:first-child img { width:200px; }
+    .footer__inner > span,.footer__inner > a:last-child { font-size:14px; }
+    .footer__legal { font-size:12px; }
+    .reservation-dock {
+      width:calc(100% - 20px);
+      height:74px; padding:5px; column-gap:0;
+      bottom:calc(10px + env(safe-area-inset-bottom,0px));
+      grid-template-columns:minmax(0,1fr) minmax(0,.9fr) 104px;
+    }
+    .reservation-dock__segment { padding:5px 7px; }
+    .reservation-dock__segment--place { display:none; }
+    .reservation-dock__label { font-size:10px; }
+    .reservation-dock__segment strong { font-size:11px; }
+    .reservation-dock__segment--price strong { font-size:16px; }
+    .reservation-dock__cta { padding:9px 7px; font-size:13px; }
+  }
+  @media (max-width:390px) {
+    .hero__title { font-size:12.6vw; }
+    .hero__center::before { font-size:10px; }
+    .format-choice .format-card h3 { font-size:12vw; }
+    .reservation-dock__segment--name strong { font-size:10px; }
+    .reservation-dock__segment--price strong { font-size:14px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .js-motion .reveal { opacity:1; transform:none; transition:none; }
+    .hero__image { animation:none; }
+  }
+
+  /* Distinct object details and safeguards against old component geometry. */
+  .hero__media { z-index:0; }
+  .hero__wash { z-index:1; }
+  .hero__center { z-index:3; }
+  .hero__footer { z-index:6; }
+  .hero__details {
+    max-width:42ch; margin-top:28px;
+    font-size:14px; line-height:1.5; font-weight:670;
+    color:#383a3f; letter-spacing:0;
+  }
+  .menu__food-photo {
+    width:min(100%,385px); margin:clamp(35px,5vw,66px) 0 0;
+    aspect-ratio:4/3; overflow:hidden;
+  }
+  .menu__food-photo img { width:100%; height:100%; display:block; object-fit:cover; }
+  .formats__copy .format-note { color:#54555b; }
+  .format-choice .format-card.reveal,
+  .js-motion .format-choice .format-card.reveal {
+    opacity:1; transform:none; transition:none;
+  }
+  .final-cta::before { background:rgba(0,0,0,.35); }
+  .final-cta__image { z-index:0; }
+  .final-cta::before { z-index:1; }
+  .final-cta__content { position:relative; z-index:2; align-self:center; }
+  .mobile-navigation[hidden] { display:none !important; }
+  .reservation-dock__cta { text-align:center; justify-content:center; }
+  @media (max-width:760px) {
+    .hero {
+      background-image:url("../assets/hero-tango.jpg");
+      background-color:#0c0c0d; background-size:cover; background-position:center,54% center;
+    }
+    .hero__details { margin-top:25px; font-size:12px; line-height:1.5; }
+    .menu__food-photo { max-width:350px; margin-top:35px; }
+    .format-card--minimal .bandoneon-art { width:80%; top:15%; }
+    .final-cta__content { margin-inline:auto; }
+  }
+
+  /* The reservation action is on the first printed screen. */
+  .hero__center { padding-block:clamp(36px,4vw,58px); }
+  .hero__center::before { margin-bottom:clamp(34px,4vh,55px); }
+  .hero__tagline { margin-top:clamp(28px,3.5vw,50px); }
+  .hero__primary {
+    display:inline-flex; align-self:flex-start; gap:34px; align-items:center;
+    justify-content:space-between;
+    min-height:56px; margin-top:25px; padding:16px 20px;
+    background:var(--blue); color:#fff; font-size:15px; font-weight:730;
+    text-decoration:none; letter-spacing:0;
+  }
+  .hero__primary:hover { background:#0057d5; }
+  .hero__primary:focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
+  @media (max-width:760px) {
+    .hero__center { padding:clamp(26px,6vw,42px); }
+    .hero__center::before { margin-bottom:clamp(30px,5svh,52px); }
+    .hero__tagline { margin-top:clamp(25px,4svh,40px); }
+    .hero__primary { margin-top:24px; min-height:54px; font-size:14px; }
+  }
+
+  /* Fit complete two-line programme headlines at every tested width. */
+  .display--story { font-size:clamp(67px,7.2vw,126px); }
+  .formats__heading .display { font-size:clamp(62px,6.95vw,112px); }
+  .menu-layout__sticky .display { font-size:clamp(77px,8vw,140px); }
+  .reservations__heading .display { font-size:clamp(64px,6.55vw,112px); }
+  .final-cta h2 { font-size:clamp(55px,5.65vw,94px); }
+  @media (max-width:760px) {
+    .display--story { font-size:clamp(48px,10.3vw,78px); }
+    .formats__heading .display { font-size:clamp(44px,10.4vw,78px); }
+    .menu-layout__sticky .display { font-size:clamp(75px,15vw,100px); }
+    .reservations__heading .display { font-size:clamp(56px,11vw,88px); }
+    .questions__left h2 { font-size:clamp(51px,10vw,77px); }
+    .final-cta h2 { font-size:clamp(46px,9.4vw,72px); }
+  }
+
+  /* QA DARK PASS — all physical programme surfaces use ink on charcoal. */
+  :root {
+    --paper:#202225;
+    --ink:#111315;
+    --color-bg:#111315;
+    --color-text:#f3f3f0;
+    --color-soft:#eeeef0;
+    --color-muted:#c2c5c9;
+  }
+  .hero__center {
+    background:#202225; color:#f5f5f2;
+  }
+  .hero__center::before,.hero__title,.hero__tagline {
+    color:#f5f5f2;
+  }
+  .hero__details { color:#cdd0d4; font-size:14px; }
+
+  /* Every section is dark; transitions are flat fields of charcoal. */
+  .story { background:#141618; color:#f5f5f2; }
+  .interlude { background:#0e0f11; }
+  .formats { background:#1b1d20; color:#f4f4f2; }
+  .formats__heading .display { color:#f4f4f2; }
+  .formats__intro,.formats__intro strong,.formats__copy .format-note {
+    color:#e6e7e8;
+  }
+  .format-choice__tabs label {
+    background:#2d3034; color:#f3f4f4;
+  }
+  .format-card--minimal { background:#25282c; }
+  .format-card--essential { background:#101113; }
+  .format-card__body > p:not(.format-card__eyebrow),
+  .format-card__features,.format-card__tag { color:#f3f3f0; }
+  .format-card--minimal .format-card__backdrop {
+    opacity:.4; background:#1b1d20;
+  }
+  .format-card--minimal .bandoneon-art {
+    display:none;
+  }
+  /* Content photo, not CSS gradients, provides the stage atmosphere. */
+  .format-card--minimal .format-card__backdrop::before {
+    content:""; display:block; position:absolute; inset:0;
+    background:url("../assets/intimate-tango.jpg") 50% 45% / cover no-repeat;
+    filter:brightness(.62);
+  }
+  .format-choice__tabs label[for] { outline:0; }
+  #formato-minimal:checked ~ .format-choice__tabs label[for="formato-minimal"],
+  #formato-essential:checked ~ .format-choice__tabs label[for="formato-essential"] {
+    background:#0d66ee; color:#fff;
+  }
+  .menu-section { background:#232529; color:#f4f4f2; }
+  .menu-layout__aside { color:#f4f4f2; }
+  .menu-layout__sticky > p,.menu-layout__sticky > span,
+  .menu-price > span,.menu-course__choices p,
+  .menu-course__choices small,.menu-disclaimer,.course-choice {
+    color:#e2e3e5;
+  }
+  .menu-price strong,.menu-course h3 { color:#f8f8f6; }
+  .reservations { background:#131517; color:#f4f4f2; }
+  .reservations__panel { background:#272a2e; color:#f6f6f5; }
+  .reservations__panel::before,.reservations__panel::after { background:#131517; }
+  .events__empty,.events__empty strong,.event-item__name,
+  .reservations__panel-heading { color:#f6f6f5; }
+  .events__empty p,.event-item__details,
+  .reservations__panel-note { color:#d0d2d6; }
+  .questions { background:#1a1c1f; color:#f4f4f2; }
+  .faq p { color:#e2e2e2; }
+  .final-cta { background:#111315; }
+  .final-cta__content {
+    background:#24272b; color:#f6f6f5;
+  }
+  .final-cta__content > p { color:#e6e6e8; }
+  .footer { background:#141619; color:#f4f4f2; }
+  .footer__inner img { filter:brightness(0) invert(1) !important; }
+  .footer__inner > a:last-child,.footer__inner > span,
+  .footer__legal { color:#d3d5d7; }
+
+  /* Clarify facts and improve visual reading scale. */
+  .menu-price > span { font-size:16px; }
+  .reservations__panel-heading { font-size:16px; }
+  .format-note,.menu-disclaimer,.course-choice { font-size:15px; }
+  .reservation-dock__label { font-size:13px; }
+  .reservation-dock__segment strong { font-size:16px; }
+  .footer__legal { font-size:14px; }
+  .hero__details { font-size:14px; }
+  .questions__left h2 { font-size:clamp(55px,5.7vw,86px); line-height:.97; }
+  .reservations__heading .display { font-size:clamp(62px,5.7vw,97px); }
+  .reservations__layout { align-items:start; }
+  .reservations__heading { min-width:0; }
+  .reservations__panel { min-width:0; }
+
+  /* More useful than a decorative graphic: an anchored booking bar. */
+  .reservation-dock { background:#191b1f; }
+  .reservation-dock__cta { background:#0d66ee; }
+  .reservation-dock.is-hidden {
+    visibility:hidden; opacity:0; pointer-events:none;
+  }
+  .reservation-dock { transition:opacity 170ms ease,visibility 170ms ease; }
+
+  @media(max-width:960px) {
+    .reservations__layout { grid-template-columns:1fr; gap:55px; }
+    .reservations__heading .display { font-size:clamp(64px,9vw,95px); }
+  }
+  @media(max-width:760px) {
+    .hero__details { font-size:13px; }
+    .hero__center::before { font-size:13px; }
+    .reservations__panel-note { font-size:13px; }
+    .footer__legal { font-size:13px; }
+    .reservation-dock__label { font-size:12px; }
+    .reservation-dock__segment strong { font-size:13px; }
+    .reservation-dock__segment--price strong { font-size:16px; }
+    .format-card__features { font-size:14px; }
+    .format-choice__tabs label { font-size:14px; }
+    .questions__left h2 { font-size:clamp(48px,10.2vw,72px); }
+    .reservations__heading .display { font-size:clamp(56px,11vw,82px); }
+    .interlude__quote { font-size:clamp(30px,7.4vw,56px); line-height:1.08; }
+    .final-cta h2 { font-size:clamp(45px,9.7vw,70px); }
+  }
+
+  /* QA final: #0A0A0A is the only page and section ground. */
+  html,body,main,
+  .hero,.story,.interlude,.formats,.menu-section,
+  .reservations,.questions,.final-cta,.footer {
+    background-color:#0a0a0a;
+  }
+  :root { --ink:#0a0a0a; --color-bg:#0a0a0a; }
+  .hero__center,.final-cta__content {
+    background:#171717; color:#f4f4f4;
+  }
+  .hero__center::before,.hero__title,.hero__tagline,
+  .final-cta__content > p { color:#f4f4f4; }
+  .format-card--minimal,.format-card--essential {
+    background-color:#161616; color:#f4f4f4;
+  }
+  .format-choice__tabs label { background:#1e1e1e; color:#f4f4f4; }
+  .menu-section,.menu-layout__aside,
+  .menu-course h3,.menu-price strong { color:#f4f4f4; }
+  .reservations__panel { background:#171717; color:#f4f4f4; }
+  .reservations__panel::before,.reservations__panel::after {
+    background:#0a0a0a;
+  }
+  .reservation-dock { background:#161616; }
+  .reservations__panel-note,.menu-disclaimer,.format-note {
+    color:#dedede;
+  }
+  .menu-price strong { display:block; }
+  .menu-price > span { font-size:16px; color:#e3e3e3; }
+  .events { min-height:140px; padding-top:10px; }
+  .interlude__content { z-index:3; }
+  .interlude__quote {
+    max-width:100%; font-size:clamp(52px,7.2vw,104px);
+    line-height:1.07; text-wrap:balance;
+  }
+  .interlude__wash { pointer-events:none; }
+  .interlude__photo { pointer-events:none; }
+  .questions__left h2 { font-size:clamp(51px,5.2vw,82px); }
+  .hero__center { border:0; box-shadow:none; }
+  .reservations__panel { border:0; box-shadow:none; }
+  .mobile-menu-toggle:focus-visible { outline:3px solid #0d66ee; outline-offset:2px; }
+  .faq summary:focus-visible { outline:3px solid #0d66ee; outline-offset:3px; }
+  .format-choice__tabs label { user-select:none; }
+  @media(max-width:960px) {
+    .questions__grid { grid-template-columns:minmax(0,3fr) minmax(0,7fr); }
+    .questions__left h2 { font-size:clamp(42px,5.4vw,64px); }
+  }
+  @media(max-width:760px) {
+    .hero { background-color:#0a0a0a; }
+    .hero__center { background:#171717; }
+    .interlude__quote { font-size:clamp(43px,9.2vw,68px); }
+    .questions__left h2 { font-size:clamp(44px,10.2vw,72px); }
+    .reservation-dock__label { font-size:13px; }
+    .reservation-dock__segment--name strong { font-size:13px; }
+    .reservation-dock__segment--price strong { font-size:16px; }
+    .footer__legal { font-size:13px; }
+  }
+
+  /* Tighten transitions so long blank areas do not interrupt the programme. */
+  .questions.section-pad { padding-top:clamp(90px,8vw,125px); padding-bottom:38px; }
+  .final-cta { min-height:78svh; padding-block:80px 105px; }
+  .footer { padding-top:78px; padding-bottom:105px; }
+  .final-cta .button { font-size:15px; line-height:1.25; }
+  @media(max-width:760px) {
+    .questions.section-pad { padding-top:85px; padding-bottom:42px; }
+    .final-cta { min-height:650px; padding-block:70px 95px; }
+    .final-cta .button { font-size:14px; }
+    .footer { padding:65px 0 90px; }
+  }
+
+  /* QA: the tango photograph and its statement must never overlap. */
+  .interlude {
+    display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    min-height:600px; align-items:stretch; isolation:auto; overflow:hidden;
+    background:#0a0a0a;
+  }
+  .interlude__photo {
+    position:relative; inset:auto; z-index:auto;
+    grid-row:1; grid-column:1;
+    width:100%; min-height:600px; overflow:hidden;
+  }
+  .interlude__photo img {
+    position:absolute; inset:0; display:block; width:100%; height:100%;
+    object-fit:cover; object-position:center 45%; opacity:1;
+  }
+  .interlude__wash { display:none; }
+  .interlude__content {
+    position:relative; z-index:2; grid-row:1; grid-column:2;
+    width:100%; margin:0; padding:80px clamp(35px,5vw,105px);
+    display:flex; flex-direction:column; justify-content:center;
+    align-items:flex-start; background:#0a0a0a; color:#f6f6f6;
+  }
+  .interlude__quote {
+    max-width:100%; font-size:clamp(40px,4.15vw,69px);
+    line-height:1.06; letter-spacing:-.055em;
+  }
+  .interlude__credit { margin-top:32px; font-size:14px; color:#dedede; }
+  @media(max-width:960px) {
+    .interlude { grid-template-columns:minmax(0,1fr) minmax(0,1fr); min-height:520px; }
+    .interlude__photo { min-height:520px; }
+    .interlude__content { padding:55px 28px; }
+    .interlude__quote { font-size:clamp(34px,4.2vw,49px); }
+  }
+  @media(max-width:760px) {
+    .interlude {
+      display:flex; flex-direction:column; align-items:stretch;
+      min-height:0; overflow:visible;
+    }
+    .interlude__photo { width:100%; height:54svh; min-height:300px; flex:0 0 auto; }
+    .interlude__content { padding:68px 20px 82px; width:100%; }
+    .interlude__quote { font-size:clamp(34px,8.3vw,45px); }
+    .interlude__credit { margin-top:26px; }
+  }
+
+  /* Complete the FAQ spread with real SushiClub imagery and readable copy. */
+  .questions__intro {
+    margin-top:32px; max-width:35ch;
+    font-size:18px; line-height:1.55; color:#e5e5e5;
+  }
+  .questions__visual {
+    width:min(100%,430px); aspect-ratio:1.52;
+    margin:38px 0 0; overflow:hidden; background:#161616;
+  }
+  .questions__visual img {
+    display:block; width:100%; height:100%;
+    object-fit:cover; object-position:center;
+  }
+  .interlude__photo img { position:relative; inset:auto; }
+  @media(max-width:760px) {
+    .questions__intro { font-size:17px; margin-top:26px; }
+    .questions__visual { width:100%; aspect-ratio:1.7; margin:26px 0 36px; }
+  }
+}
+
+/* Only the hero is returned to its pre-Taste visual design.
+   This overrides the Taste experiment without changing the other sections. */
+@layer adaptive {
+  .hero {
+    position:relative;
+    isolation:isolate;
+    display:grid;
+    grid-template-rows:minmax(max-content, 1fr) auto;
+    height:auto;
+    min-height:max(680px, 100svh);
+    overflow:hidden;
+    background:#0a0a0a;
+  }
+  .hero__media,.hero__wash {
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    display:block;
+  }
+  .hero__media { z-index:0; overflow:hidden; }
+  .hero__image {
+    --hero-photo-opacity:.74;
+    display:block;
+    width:100%; height:100%;
+    object-fit:cover; object-position:55% 40%;
+    opacity:var(--hero-photo-opacity);
+    animation:hero-arrive 1350ms var(--ease-out) both;
+  }
+  .hero__wash {
+    z-index:1;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.12) 25%,rgba(0,0,0,.38) 61%,rgba(0,0,0,.88) 92%,#0a0a0a 100%),
+      linear-gradient(90deg,rgba(0,0,0,.5),transparent 36%,rgba(0,0,0,.3));
+  }
+  .hero__center {
+    position:relative;
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    align-self:stretch;
+    width:min(1640px,calc(100% - clamp(36px,4vw,100px)));
+    min-height:0;
+    margin:0 auto;
+    padding:clamp(120px,13svh,160px) 0 clamp(40px,5svh,70px);
+    background:transparent;
+    color:#fff;
+    text-align:center;
+    border:0;
+    box-shadow:none;
+  }
+  .hero__center::before { content:none; display:none; }
+  .hero__title {
+    width:100%;
+    color:#fff;
+    font-weight:800;
+    font-size:calc(var(--text-hero) * .93);
+    line-height:.98;
+    letter-spacing:-.096em;
+    text-transform:uppercase;
+    text-shadow:0 4px 40px rgba(0,0,0,.22);
+  }
+  .hero__title > span { display:block; }
+  .hero__title > .hero__title-bottom {
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:.13em;
+    font-size:1em;
+    white-space:nowrap;
+  }
+  .hero__title-bottom em {
+    font-size:1em;
+    font-style:normal;
+    font-weight:inherit;
+    line-height:inherit;
+    letter-spacing:inherit;
+  }
+  .hero__tagline {
+    margin-top:clamp(36px,4vh,60px);
+    max-width:none;
+    color:#fff;
+    font-size:clamp(15px,1.16vw,22px);
+    font-weight:500;
+    line-height:1.25;
+    letter-spacing:-.027em;
+    text-transform:uppercase;
+    text-align:center;
+    text-shadow:0 2px 24px #000;
+  }
+  .hero__footer {
+    position:relative;
+    inset:auto;
+    z-index:6;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    width:min(1640px,calc(100% - clamp(36px,4vw,100px)));
+    min-height:0;
+    margin-inline:auto;
+    padding:0 0 calc(var(--dock-height) + var(--dock-bottom) + 26px);
+    color:#fff;
+    font-size:10px;
+    font-weight:650;
+    letter-spacing:.095em;
+  }
+  .hero__footer-left,.hero__footer-right {
+    display:block;
+    font-size:inherit;
+    font-weight:inherit;
+    letter-spacing:inherit;
+  }
+  .hero__footer-right { text-align:right; }
+  .scroll-prompt {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    padding:0;
+    min-height:0;
+    background:transparent;
+    color:#fff;
+    font-size:10px;
+    font-weight:650;
+    letter-spacing:.095em;
+  }
+  .scroll-prompt:hover { background:transparent; color:#fff; }
+  .scroll-prompt__arrow {
+    display:grid;
+    place-items:center;
+    width:35px;
+    height:35px;
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:50%;
+    font-size:17px;
+  }
+  @media (max-width:1100px) {
+    .hero__title { font-size:clamp(82px,13vw,167px); }
+  }
+  @media (max-width:960px) {
+    .hero__footer-left,.hero__footer-right { display:none; }
+    .hero__footer { display:flex; justify-content:center; }
+  }
+  @media (max-width:760px) {
+    .hero {
+      display:block;
+      isolation:auto;
+      height:100svh;
+      min-height:650px;
+      background-color:#0a0a0a;
+      background-image:
+        linear-gradient(180deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.18) 22%,rgba(0,0,0,.44) 66%,#0a0a0a 100%),
+        linear-gradient(rgba(0,0,0,.33),rgba(0,0,0,.33)),
+        url("../assets/hero-tango.jpg");
+      background-size:100% 100%,100% 100%,cover;
+      background-position:center,center,54% center;
+      background-repeat:no-repeat;
+    }
+    .hero__media,.hero__wash { display:none; }
+    .hero__center {
+      z-index:auto;
+      width:min(1640px,calc(100% - clamp(36px,4vw,100px)));
+      min-height:100%;
+      margin:0 auto;
+      padding:100px 0 155px;
+      align-items:center;
+      justify-content:center;
+      background:transparent;
+      text-align:center;
+    }
+    .hero__title {
+      font-size:clamp(74px,14.9vw,124px);
+      line-height:.98;
+      letter-spacing:-.096em;
+    }
+    .hero__tagline {
+      margin-top:clamp(36px,4vh,60px);
+      font-size:15px;
+      line-height:1.25;
+      text-transform:uppercase;
+      text-align:center;
+    }
+    .hero__footer {
+      position:absolute;
+      inset:auto 0 calc(var(--dock-height) + var(--dock-bottom) + 36px) 0;
+      display:flex;
+      justify-content:center;
+      width:min(1640px,calc(100% - clamp(36px,4vw,100px)));
+      padding:0;
+    }
+    .scroll-prompt {
+      flex-direction:column;
+      gap:18px;
+      padding:0;
+      font-size:10px;
+    }
+    .scroll-prompt__arrow {
+      width:35px; height:35px;
+      border:1px solid rgba(255,255,255,.5);
+      border-radius:50%;
+      font-size:17px;
+    }
+    .hero__image,.hero__title > span,.hero__tagline,.hero__footer { animation:none; }
+  }
+  @media (max-width:640px) {
+    .hero { height:100svh; min-height:min(640px,100svh); }
+    .hero__center { padding:100px 0 150px; }
+    .hero__title {
+      font-size:clamp(60px,18.7vw,104px);
+      line-height:1.025;
+      letter-spacing:-.083em;
+    }
+    .hero__title > .hero__title-bottom { font-size:.82em; gap:.10em; }
+    .hero__tagline {
+      margin-top:clamp(20px,4svh,35px);
+      font-size:clamp(12px,3.5vw,15px);
+      line-height:1.25;
+    }
+    .hero__footer {
+      bottom:calc(var(--dock-height) + 32px + env(safe-area-inset-bottom,0px));
+    }
+    .scroll-prompt { font-size:9px; gap:12px; }
+    .scroll-prompt__arrow { width:29px; height:29px; }
+  }
+  @media (max-width:370px) {
+    .hero__title { font-size:18vw; }
+  }
+  @media (max-height:620px) and (max-width:640px) {
+    .hero__center { padding:86px 0 110px; }
+    .hero__title { font-size:min(17.7vw,67px); }
+    .hero__footer {
+      bottom:calc(var(--dock-height) + 20px + env(safe-area-inset-bottom,0px));
+    }
+    .scroll-prompt { gap:7px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .hero__image,.hero__title > span,.hero__tagline,.hero__footer { animation:none; }
+  }
+}
+
+/* Recorrido de Menú Tango · transferred from Emil Prototype round 4.
+   Scoped to the menu so no other section changes. */
+@layer adaptive {
+  .menu-section.menu-recorrido {
+    background:#0a0a0a;
+    color:#f4f4f4;
+    overflow:clip;
+  }
+  .menu-recorrido .rc-intro {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:end;
+    gap:35px;
+    margin-bottom:clamp(75px,9vw,140px);
+  }
+  .menu-recorrido .rc-intro h2 {
+    font-size:clamp(72px,9.4vw,148px);
+    line-height:.92;
+    letter-spacing:-.078em;
+  }
+  .menu-recorrido .rc-price { text-align:right; }
+  .menu-recorrido .rc-price__amount {
+    display:block;
+    font-size:clamp(57px,6vw,96px);
+    font-weight:760;
+    line-height:1;
+    letter-spacing:-.07em;
+    white-space:nowrap;
+  }
+  .menu-recorrido .rc-price__label {
+    display:block;
+    margin-top:15px;
+    color:#d7d7da;
+    font-size:14px;
+    font-weight:600;
+  }
+  .menu-recorrido .rc-layout {
+    display:grid;
+    grid-template-columns:minmax(240px,3.5fr) minmax(0,6.5fr);
+    gap:clamp(50px,7vw,140px);
+    align-items:stretch;
+  }
+  .menu-recorrido .rc-sidebar,.menu-recorrido .rc-body { min-width:0; }
+  .menu-recorrido .rc-sticky { position:sticky; top:28px; }
+  .menu-recorrido .rc-links { display:grid; gap:7px; }
+  .menu-recorrido .rc-links a {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    min-height:65px;
+    padding:19px 23px;
+    background:#191b1e;
+    color:#e6e7e8;
+    font-size:clamp(19px,2.2vw,28px);
+    font-weight:690;
+    letter-spacing:-.045em;
+    line-height:1.2;
+    text-decoration:none;
+  }
+  .menu-recorrido .rc-links a:hover { background:#27292c; }
+  .menu-recorrido .rc-links a[aria-current="location"] {
+    background:#0d66ee;
+    color:#fff;
+  }
+  .menu-recorrido .rc-links a:focus-visible {
+    outline:3px solid #0d66ee;
+    outline-offset:3px;
+  }
+  .menu-recorrido .rc-links a span:last-child { font-size:17px; font-weight:540; }
+  .menu-recorrido .rc-description {
+    max-width:35ch;
+    margin-top:32px;
+    color:#e3e3e3;
+    font-size:17px;
+    line-height:1.45;
+  }
+  .menu-recorrido .rc-course {
+    min-height:clamp(480px,70svh,810px);
+    padding:clamp(40px,5vw,80px) 0 clamp(60px,6vw,100px);
+    scroll-margin-top:45px;
+  }
+  .menu-recorrido .rc-course:not(:last-child) { margin-bottom:35px; }
+  .menu-recorrido .rc-course h3 {
+    margin:0;
+    font-size:clamp(59px,7.2vw,110px);
+    font-weight:790;
+    letter-spacing:-.081em;
+    line-height:.97;
+  }
+  .menu-recorrido .rc-choice {
+    display:block;
+    margin-top:28px;
+    color:#d7d7da;
+    font-size:15px;
+    font-weight:550;
+  }
+  .menu-recorrido .rc-dishes {
+    display:grid;
+    gap:clamp(19px,2.6vw,36px);
+    max-width:680px;
+    margin-top:clamp(70px,8vw,140px);
+  }
+  .menu-recorrido .rc-dishes p {
+    margin:0;
+    color:#f3f3f3;
+    font-size:clamp(21px,2.3vw,33px);
+    font-weight:500;
+    line-height:1.4;
+  }
+  .menu-recorrido .rc-dishes small {
+    margin-left:10px;
+    color:#bcbec2;
+    font-size:15px;
+    font-weight:500;
+  }
+  .menu-recorrido .rc-note {
+    max-width:760px;
+    margin-top:30px;
+    color:#c9cbce;
+    font-size:13px;
+    font-weight:550;
+    line-height:1.6;
+  }
+  @media (max-width:1050px) {
+    .menu-recorrido .rc-layout {
+      grid-template-columns:minmax(185px,3fr) minmax(0,7fr);
+      gap:35px;
+    }
+    .menu-recorrido .rc-links a { font-size:20px; padding:15px; }
+  }
+  @media (max-width:760px) {
+    .menu-recorrido .rc-intro { display:block; margin-bottom:62px; }
+    .menu-recorrido .rc-intro h2 {
+      font-size:clamp(64px,14.5vw,108px);
+      line-height:.92;
+    }
+    .menu-recorrido .rc-price { text-align:left; margin-top:40px; }
+    .menu-recorrido .rc-layout { display:block; }
+    .menu-recorrido .rc-sidebar {
+      position:sticky;
+      top:0;
+      z-index:8;
+      margin-inline:-2px;
+      padding:12px 2px;
+      background:#0a0a0a;
+    }
+    .menu-recorrido .rc-sticky { position:static; }
+    .menu-recorrido .rc-links {
+      display:flex;
+      gap:7px;
+      overflow-x:auto;
+      overscroll-behavior-x:contain;
+      scrollbar-width:none;
+    }
+    .menu-recorrido .rc-links::-webkit-scrollbar { display:none; }
+    .menu-recorrido .rc-links a {
+      flex:0 0 auto;
+      min-height:45px;
+      padding:12px 15px;
+      font-size:15px;
+      white-space:nowrap;
+    }
+    .menu-recorrido .rc-links a span:last-child,
+    .menu-recorrido .rc-description { display:none; }
+    .menu-recorrido .rc-course {
+      min-height:480px;
+      padding:60px 0 80px;
+      scroll-margin-top:105px;
+    }
+    .menu-recorrido .rc-course h3 { font-size:clamp(60px,12vw,90px); }
+    .menu-recorrido .rc-dishes { margin-top:70px; }
+    .menu-recorrido .rc-dishes p { font-size:23px; }
+  }
+  @media (max-width:410px) {
+    .menu-recorrido .rc-course h3 { font-size:clamp(48px,12vw,68px); }
+    .menu-recorrido .rc-links { gap:3px; justify-content:space-between; }
+    .menu-recorrido .rc-links a {
+      justify-content:center;
+      padding:11px 7px;
+      font-size:13px;
+    }
+    .menu-recorrido .rc-dishes small { display:inline; }
+  }
+}
+
+@layer adaptive {
+  .interlude.interlude--scene {
+    position:relative;
+    isolation:isolate;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-end;
+    width:100%;
+    min-height:clamp(650px,83svh,1080px);
+    overflow:hidden;
+    background:#0a0a0a;
+    color:#f5f5f3;
+  }
+  .interlude--scene .scene__photo {
+    position:absolute;
+    z-index:-2;
+    inset:0;
+    margin:0;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .interlude--scene .scene__photo img {
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 46%;
+    filter:brightness(.66);
+  }
+  .interlude--scene .scene__shade {
+    position:absolute;
+    z-index:-1;
+    inset:0;
+    background: /* taste-skill-ignore: neutral overlay on the real tango photograph */ linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.2) 35%,rgba(0,0,0,.86));
+    pointer-events:none;
+  }
+  .interlude--scene .scene__content {
+    position:relative;
+    z-index:1;
+    width:min(1260px,100%);
+    padding:clamp(160px,17svh,255px) clamp(20px,4.7vw,84px) clamp(76px,9svh,140px);
+    color:#f5f5f3;
+  }
+  .interlude--scene .scene__quote {
+    max-width:11ch;
+    margin:0;
+    color:#f5f5f3;
+    font-size:clamp(54px,8vw,126px);
+    font-weight:800;
+    line-height:.94;
+    letter-spacing:-.078em;
+    text-wrap:balance;
+  }
+  .interlude--scene .scene__credit {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:42px;
+    color:#e0e0e2;
+    font-size:14px;
+    font-weight:620;
+    line-height:1.5;
+    letter-spacing:.015em;
+  }
+  .interlude--scene .scene__accent {
+    display:block;
+    flex:0 0 44px;
+    width:44px;
+    height:3px;
+    background:#0d66ee;
+  }
+  @media (max-width:760px) {
+    .interlude.interlude--scene { min-height:680px; }
+    .interlude--scene .scene__content {
+      width:100%;
+      padding:210px 20px 95px;
+    }
+    .interlude--scene .scene__quote {
+      max-width:100%;
+      font-size:clamp(43px,10vw,76px);
+    }
+    .interlude--scene .scene__credit {
+      margin-top:30px;
+      font-size:13px;
+    }
+  }
+  @media (max-width:390px) {
+    .interlude--scene .scene__quote { font-size:clamp(36px,10vw,49px); }
+    .interlude--scene .scene__credit { font-size:12px; gap:11px; }
+    .interlude--scene .scene__accent { flex-basis:34px; width:34px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .interlude--scene .scene__quote { transition:none; }
+  }
+}
+
+@layer adaptive {
+  .campaign-footer {
+    background:#0a0a0a;
+    color:#fff;
+    padding:58px 0 34px;
+    font-family:"Acumin Pro",Inter,Arial,sans-serif;
+  }
+  .campaign-footer__inner {
+    display:block;
+    width:min(1320px,calc(100% - 40px));
+    margin-inline:auto;
+  }
+  .campaign-footer__top {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:32px;
+  }
+  .campaign-footer__brand {
+    display:inline-flex;
+    align-items:center;
+    text-decoration:none;
+  }
+  .campaign-footer__brand img {
+    display:block;
+    width:clamp(168px,15vw,228px);
+    height:auto;
+    filter:brightness(0) invert(1);
+  }
+  .campaign-footer__social {
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .campaign-footer__social a {
+    display:grid;
+    place-items:center;
+    width:44px;
+    height:44px;
+    border:1px solid rgba(255,255,255,.24);
+    border-radius:50%;
+    color:#fff;
+    text-decoration:none;
+    transition:transform 180ms ease,border-color 180ms ease,background-color 180ms ease;
+  }
+  .campaign-footer__social a:hover {
+    transform:translateY(-2px);
+    border-color:rgba(255,255,255,.7);
+    background:rgba(255,255,255,.06);
+  }
+  .campaign-footer__social a:focus-visible,
+  .campaign-footer__bottom a:focus-visible,
+  .campaign-footer__brand:focus-visible {
+    outline:2px solid #0d66ee;
+    outline-offset:4px;
+  }
+  .campaign-footer__social svg {
+    width:20px;
+    height:20px;
+    display:block;
+    fill:currentColor;
+  }
+  .campaign-footer__divider {
+    height:1px;
+    margin:42px 0 26px;
+    background:rgba(255,255,255,.18);
+  }
+  .campaign-footer__bottom {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    color:rgba(255,255,255,.7);
+    font-size:11px;
+    font-weight:500;
+    line-height:1.45;
+    letter-spacing:0;
+    text-transform:uppercase;
+  }
+  .campaign-footer__bottom p { margin:0; }
+  .campaign-footer__bottom a {
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+  }
+  .campaign-footer__bottom a:hover {
+    text-decoration:underline;
+    text-underline-offset:4px;
+  }
+  @media(max-width:760px) {
+    .campaign-footer {
+      padding:44px 0 calc(28px + env(safe-area-inset-bottom,0px));
+    }
+    .campaign-footer__inner {
+      width:calc(100% - 40px);
+    }
+    .campaign-footer__top {
+      align-items:center;
+      gap:18px;
+    }
+    .campaign-footer__brand img { width:156px; }
+    .campaign-footer__social { gap:9px; }
+    .campaign-footer__social a { width:40px; height:40px; }
+    .campaign-footer__divider { margin:32px 0 22px; }
+    .campaign-footer__bottom {
+      flex-direction:column;
+      align-items:flex-start;
+      gap:12px;
+      font-size:10px;
+    }
+  }
+  @media(max-width:390px) {
+    .campaign-footer__brand img { width:138px; }
+    .campaign-footer__social a { width:35px; height:35px; }
+    .campaign-footer__social { gap:6px; }
+    .campaign-footer__social svg { width:17px; height:17px; }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .campaign-footer__social a { transition:none; }
+  }
+}

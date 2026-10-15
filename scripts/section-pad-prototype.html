@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<title>Menú Tango · Exploración de section-pad</title>
+<style>
+@font-face{font-family:Inter;src:url("../assets/fonts/inter-latin-variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{--bg:#0a0a0a;--ink:#f4f4f3;--muted:#c5c7c9;--blue:#0d66ee;--surface:#191b1e;--pad:clamp(20px,4.8vw,85px);font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);font-synthesis:none}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);min-width:320px}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+[hidden]{display:none!important}
+img{display:block;width:100%;height:100%;object-fit:cover}
+figure{margin:0}
+.mast{padding:29px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:90px}
+.mast__brand{font-size:18px;font-weight:800;letter-spacing:-.065em}
+.mast__label{font-size:13px;color:var(--muted)}
+.stage{min-height:84svh}
+.section-pad{padding:clamp(85px,10vw,165px) var(--pad) clamp(145px,12vw,200px);background:var(--bg)}
+.display{font-weight:790;font-size:clamp(68px,10.5vw,165px);line-height:.87;letter-spacing:-.088em;margin:0}
+.display--small{font-size:clamp(62px,7.7vw,115px)}
+.lead{font-size:clamp(17px,1.7vw,23px);line-height:1.45;max-width:42ch;color:#e6e7e8;margin:0}
+.price{font-weight:760;letter-spacing:-.07em;line-height:1;font-size:clamp(55px,7vw,105px);margin:0}
+.price-label{font-size:13px;font-weight:650;color:var(--muted);line-height:1.5}
+.note{font-size:13px;line-height:1.55;color:var(--muted);max-width:70ch}
+.course-title{font-weight:760;font-size:clamp(33px,3.7vw,61px);letter-spacing:-.067em;line-height:1.08;margin:0}
+.choice{font-size:13px;font-weight:650;color:#d5d7da}
+.dish{font-size:clamp(17px,1.5vw,22px);line-height:1.5;margin:0}
+.dish small{display:inline-block;margin-left:10px;font-size:14px;color:#b7bbc0}
+.continuation{padding:50px var(--pad) 130px;color:#bec0c2;font-size:14px}
+.continuation strong{color:#fff;font-weight:700}
+.proto-container{max-width:1620px;margin-inline:auto}
+/* Editorial: quiet asymmetric two-column reading, sticky on desktop. */
+.editorial .ed-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(35px,7vw,130px);align-items:start}
+.editorial .ed-aside{position:relative;align-self:stretch;min-width:0}
+.editorial .ed-sticky{position:sticky;top:clamp(30px,6vh,80px)}
+.editorial .ed-sticky .display{margin-bottom:48px}
+.editorial .ed-sticky .lead{font-size:18px;max-width:27ch}
+.editorial .ed-image{width:min(100%,420px);aspect-ratio:1.65;margin-top:46px;overflow:hidden;background:var(--surface)}
+.editorial .ed-main{min-width:0}
+.editorial .ed-price{margin-bottom:clamp(75px,9vw,160px)}
+.editorial .ed-price .price-label{display:block;margin-top:14px}
+.editorial .ed-course{padding:0 0 clamp(55px,6vw,110px)}
+.editorial .ed-course h3{margin-bottom:30px}
+.editorial .ed-options{display:grid;gap:17px}
+.editorial .ed-course-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+.editorial .ed-note{margin-top:15px}
+/* Secuencia: visitor browses five acts using a genuine interactive tab panel. */
+.sequence .sq-intro{display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px;margin-bottom:clamp(45px,6vw,90px)}
+.sequence .sq-intro h2{font-size:clamp(70px,9vw,132px)}
+.sequence .sq-price{min-width:180px;text-align:right}
+.sequence .sq-price .price{font-size:clamp(48px,5.4vw,78px)}
+.sequence .sq-price .price-label{display:block;margin-top:15px}
+.sequence .sq-desc{max-width:36ch;margin-top:28px}
+.sequence .sq-body{display:grid;grid-template-columns:minmax(200px,3fr) minmax(0,7fr);gap:clamp(28px,5vw,100px);align-items:start}
+.sequence .sq-tabs{display:grid;gap:4px}
+.sequence .sq-tab{display:flex;align-items:center;justify-content:space-between;min-height:70px;width:100%;padding:17px 20px;background:#191b1e;border:0;color:#eceeee;text-align:left;font-size:clamp(17px,2vw,24px);font-weight:680;letter-spacing:-.035em}
+.sequence .sq-tab:hover{background:#272a30}
+.sequence .sq-tab[aria-selected=true]{background:var(--blue);color:#fff}
+.sequence .sq-tab span{font-size:17px}
+.sequence .sq-panel{min-height:440px;padding:clamp(35px,5vw,80px);background:#181a1d}
+.sequence .sq-panel .course-title{font-size:clamp(49px,5.3vw,85px)}
+.sequence .sq-sub{display:block;margin-top:15px;color:#c7c9cd}
+.sequence .sq-options{display:grid;gap:22px;margin-top:clamp(55px,7vw,110px)}
+.sequence .sq-note{margin-top:40px}
+/* Mesa: food photograph as architectural anchor, courses in expandable sheets. */
+.mesa .ms-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(35px,7vw,150px)}
+.mesa .ms-visual{min-width:0;position:relative;align-self:stretch}
+.mesa .ms-sticky{position:sticky;top:24px}
+.mesa .ms-photo{height:clamp(380px,65svh,780px);overflow:hidden;background:#161719}
+.mesa .ms-photo img{object-position:54% 50%}
+.mesa .ms-caption{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-top:18px;color:#dedfe0;font-size:13px}
+.mesa .ms-copy{min-width:0}
+.mesa .ms-copy .display{font-size:clamp(67px,8vw,128px)}
+.mesa .ms-intro{margin:36px 0 50px}
+.mesa .ms-price{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:40px}
+.mesa .ms-price .price{font-size:clamp(50px,5.4vw,82px)}
+.mesa .ms-course{background:#16181b;margin:0 0 6px}
+.mesa .ms-course summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:24px clamp(20px,3vw,40px);min-height:88px;font-size:clamp(20px,2vw,28px);font-weight:730;letter-spacing:-.04em;cursor:pointer}
+.mesa .ms-course summary::-webkit-details-marker{display:none}
+.mesa .ms-course summary span:last-child{font-size:29px;font-weight:400;color:#b9bec4}
+.mesa .ms-course[open]{background:#212327}
+.mesa .ms-course[open] summary span:last-child{transform:rotate(45deg)}
+.mesa .ms-options{padding:0 clamp(20px,3vw,40px) 34px;display:grid;gap:15px}
+.mesa .ms-note{margin-top:33px}
+@media(max-width:900px){
+  .editorial .ed-head,.mesa .ms-layout{grid-template-columns:1fr;gap:60px}
+  .editorial .ed-sticky,.mesa .ms-sticky{position:static}
+  .editorial .ed-image{max-width:620px;margin-top:30px}
+  .editorial .ed-sticky .display{margin-bottom:30px}
+  .sequence .sq-body{grid-template-columns:1fr;gap:15px}
+  .sequence .sq-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .sequence .sq-tab{justify-content:center;min-height:60px;padding:12px 6px;text-align:center;font-size:14px}
+  .sequence .sq-tab span{display:none}
+  .sequence .sq-panel{min-height:350px}
+  .mesa .ms-photo{height:45svh;min-height:280px}
+}
+@media(max-width:620px){
+  .mast{min-height:72px;padding-top:22px;padding-bottom:22px}
+  .mast__label{font-size:12px}
+  .section-pad{padding-top:82px;padding-bottom:130px}
+  .editorial .ed-head{gap:55px}
+  .editorial .ed-sticky .display{font-size:clamp(73px,18vw,112px)}
+  .editorial .ed-price{margin-bottom:60px}
+  .editorial .ed-course{padding-bottom:65px}
+  .sequence .sq-intro{grid-template-columns:1fr}
+  .sequence .sq-intro h2{font-size:clamp(64px,16vw,98px)}
+  .sequence .sq-price{text-align:left}
+  .sequence .sq-price .price{font-size:66px}
+  .sequence .sq-tab{min-height:52px;font-size:12px;padding:10px 5px}
+  .sequence .sq-panel{padding:28px;min-height:360px}
+  .sequence .sq-panel .course-title{font-size:clamp(40px,10vw,61px)}
+  .mesa .ms-layout{gap:40px}
+  .mesa .ms-copy .display{font-size:clamp(64px,16vw,105px)}
+  .mesa .ms-price .price{font-size:clamp(52px,12vw,75px)}
+  .mesa .ms-course summary{min-height:74px}
+  .dish small{margin-left:0;display:block}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Picker: unchanged Emil Kowalski prototype harness chrome. */
+.proto-picker {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.82);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow: /* taste-skill-ignore: Emil's mandatory picker chrome, not part of the menu design */
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 8px 24px rgba(0, 0, 0, 0.24),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.proto-picker-highlight {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  will-change: transform;
+}
+.proto-picker[data-ready] .proto-picker-highlight {
+  transition:
+    transform 250ms cubic-bezier(0.23, 1, 0.32, 1),
+    width 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .proto-picker[data-ready] .proto-picker-highlight { transition: none; }
+}
+.proto-picker-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font: inherit;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+.proto-picker-item:hover { color: rgba(255, 255, 255, 0.85); }
+.proto-picker-item:active { transform: scale(0.97); }
+.proto-picker-item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+.proto-picker-item[data-active] { color: #fff; }
+.proto-picker-divider {
+  width: 1px;
+  height: 16px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.proto-picker-replay { padding: 0 10px; font-size: 14px; }
+.proto-picker[data-position="top"] { bottom: auto; top: 24px; }
+</style>
+</head>
+<body>
+<header class="mast">
+  <span class="mast__brand">SUSHICLUB <span style="font-weight:450">/ NOCHE DE TANGO</span></span>
+  <span class="mast__label">EXPLORACIÓN · MENÚ TANGO</span>
+</header>
+<main id="stage" class="stage" aria-live="polite"></main>
+<footer class="continuation"><div class="proto-container">La experiencia continúa con <strong>reservas anticipadas</strong> en los salones adheridos.</div></footer>
+<nav class="proto-picker" aria-label="Prototype variants">
+  <span class="proto-picker-highlight" aria-hidden="true"></span>
+  <button class="proto-picker-item" data-active aria-current="true">Editorial</button>
+  <button class="proto-picker-item">Secuencia</button>
+  <button class="proto-picker-item">Mesa</button>
+</nav>
+<script>
+
+const courses = [
+  {name:"Appetizer",choice:"",items:[["Appetizer del día",""]]},
+  {name:"Entrada",choice:"A elección",items:[["Pink Floyd","3 unidades"],["Dupla Arrolladito Vegan","2 unidades"]]},
+  {name:"Principal",choice:"A elección",items:[["Wok Langostinos",""],["Sorrentinos Back",""],["Roll&Roll","15 piezas"],["Bio Veggie","15 piezas"]]},
+  {name:"Postre",choice:"",items:[["Flan de chocolate blanco",""]]},
+  {name:"Bebidas",choice:"",items:[["Copa de vino Trapiche Malbec o Chardonnay, o gaseosa.",""],["Más agua con o sin gas, agua saborizada o gaseosa.",""]]}
+];
+const note = "ENTRADA Y PRINCIPAL A ELECCIÓN POR PERSONA. LA DISPONIBILIDAD DE LOS PRODUCTOS ESTÁ SUJETA AL LOCAL ADHERIDO.";
+function escapeHTML(str){return str.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");}
+function itemsHTML(course){return course.items.map(([name,amount]) =>
+  '<p class="dish">'+escapeHTML(name)+(amount?' <small>'+escapeHTML(amount)+'</small>':'')+'</p>'
+).join('');}
+function editorial(){
+  return `
+  <section class="section-pad editorial" aria-labelledby="ed-title"><div class="proto-container ed-head">
+    <aside class="ed-aside"><div class="ed-sticky">
+      <h1 class="display" id="ed-title">MENÚ<br>TANGO</h1>
+      <p class="lead">Una selección pensada para disfrutar sin apuro.</p>
+      <figure class="ed-image"><img src="../assets/sushi.jpg" alt="Selección de sushi SushiClub" width="1400" height="1000"></figure>
+    </div></aside>
+    <div class="ed-main">
+      <div class="ed-price"><p class="price">$79.000</p><span class="price-label">POR PERSONA · RESERVA PREVIA</span></div>
+      ${courses.map(course=>`<article class="ed-course">
+         <div class="ed-course-heading"><h2 class="course-title">${course.name}</h2><span class="choice">${course.choice}</span></div>
+         <div class="ed-options">${itemsHTML(course)}</div>
+      </article>`).join('')}
+      <p class="note ed-note">${note}</p>
+    </div>
+  </div></section>`;
+}
+function sequence(){
+  return `
+  <section class="section-pad sequence" aria-labelledby="sq-title"><div class="proto-container">
+    <div class="sq-intro">
+      <div>
+        <h1 class="display" id="sq-title">MENÚ TANGO</h1>
+        <p class="lead sq-desc">Recorré la propuesta plato por plato.</p></div>
+      <div class="sq-price"><p class="price">$79.000</p><span class="price-label">POR PERSONA · RESERVA PREVIA</span></div>
+    </div>
+    <div class="sq-body">
+      <div class="sq-tabs" role="tablist" aria-label="Secciones del menú">
+        ${courses.map((c,i)=>`<button class="sq-tab" type="button" role="tab" id="sq-tab-${i}" data-course-tab="${i}" aria-selected="${i===0}" aria-controls="sq-panel-${i}" tabindex="${i===0?0:-1}">${c.name}<span aria-hidden="true">↗</span></button>`).join('')}
+      </div>
+      <div class="sq-panels">
+        ${courses.map((c,i)=>`<article id="sq-panel-${i}" class="sq-panel" role="tabpanel" aria-labelledby="sq-tab-${i}" ${i?'hidden':''}>
+          <h2 class="course-title">${c.name}</h2>
+          ${c.choice?'<span class="choice sq-sub">'+c.choice+'</span>':''}
+          <div class="sq-options">${itemsHTML(c)}</div></article>`).join('')}
+      </div>
+    </div>
+    <p class="note sq-note">${note}</p>
+  </div></section>`;
+}
+function mesa(){
+  return `
+  <section class="section-pad mesa" aria-labelledby="ms-title"><div class="proto-container ms-layout">
+    <aside class="ms-visual"><div class="ms-sticky">
+      <figure class="ms-photo"><img src="../assets/sushi.jpg" alt="Fotografía gastronómica SushiClub" width="1400" height="1000"></figure>
+      <div class="ms-caption"><span>SUSHICLUB · NOCHE DE TANGO</span><span>CON RESERVA PREVIA</span></div>
+    </div></aside>
+    <div class="ms-copy">
+      <h1 class="display" id="ms-title">MENÚ<br>TANGO</h1>
+      <p class="lead ms-intro">Cinco momentos, una noche para disfrutar.</p>
+      <div class="ms-price"><p class="price">$79.000</p><span class="price-label">POR PERSONA</span></div>
+      ${courses.map((c,i)=>`<details class="ms-course" name="menu-tango-acordeon" ${i===0?'open':''}>
+        <summary><span>${c.name}</span><span aria-hidden="true">+</span></summary>
+        <div class="ms-options">${c.choice?'<span class="choice">'+c.choice+'</span>':''}${itemsHTML(c)}</div>
+      </details>`).join('')}
+      <p class="note ms-note">${note}</p>
+    </div>
+  </div></section>`;
+}
+const variants = [editorial, sequence, mesa];
+
+/* Functional stage: tabs in Secuencia and native exclusive details in Mesa. */
+const stage = document.getElementById('stage');
+stage.addEventListener('click', (event) => {
+  const tab = event.target.closest('.sq-tab');
+  if (!tab) return;
+  const tabs = [...stage.querySelectorAll('.sq-tab')];
+  tabs.forEach(button => {
+    const active = button === tab;
+    button.setAttribute('aria-selected', String(active));
+    button.tabIndex = active ? 0 : -1;
+    const panel = stage.querySelector('#sq-panel-' + button.dataset.courseTab);
+    if (panel) panel.hidden = !active;
+  });
+});
+stage.addEventListener('keydown', (event) => {
+  const tab = event.target.closest('.sq-tab');
+  if (!tab || (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft'
+      && event.key !== 'Home' && event.key !== 'End')) return;
+  event.preventDefault();
+  const tabs = [...stage.querySelectorAll('.sq-tab')];
+  const currentIndex = tabs.indexOf(tab);
+  const targetIndex = event.key === 'Home' ? 0
+    : event.key === 'End' ? tabs.length - 1
+    : (currentIndex + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+  tabs[targetIndex].click();
+  tabs[targetIndex].focus();
+});
+const picker = document.querySelector('.proto-picker');
+const highlight = picker.querySelector('.proto-picker-highlight');
+const items = [...picker.querySelectorAll('.proto-picker-item:not(.proto-picker-replay)')];
+const replay = picker.querySelector('.proto-picker-replay');
+let current = 0;
+function moveHighlight() {
+  const el = items[current];
+  highlight.style.width = el.offsetWidth + 'px';
+  highlight.style.transform = 'translateX(' + el.offsetLeft + 'px)';
+}
+function mount(i) {
+  stage.innerHTML = '';
+  // Clear first, render next frame, so entrance animations re-run.
+  requestAnimationFrame(() => { stage.innerHTML = variants[i](); });
+}
+function setActive(i) {
+  if (i < 0 || i >= variants.length) return;
+  current = i;
+  items.forEach((el, j) => {
+    el.toggleAttribute('data-active', j === i);
+    if (j === i) el.setAttribute('aria-current', 'true');
+    else el.removeAttribute('aria-current');
+  });
+  moveHighlight();
+  const url = new URL(location);
+  url.searchParams.set('v', i + 1);
+  history.replaceState(null, '', url);
+  mount(i);
+}
+items.forEach((el, i) => el.addEventListener('click', () => setActive(i)));
+replay?.addEventListener('click', () => mount(current));
+window.addEventListener('resize', moveHighlight);
+document.addEventListener('keydown', (e) => {
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const num = parseInt(e.key, 10);
+  if (num >= 1 && num <= variants.length) setActive(num - 1);
+  else if (e.key === 'ArrowRight') setActive((current + 1) % variants.length);
+  else if (e.key === 'ArrowLeft') setActive((current - 1 + variants.length) % variants.length);
+  else if (e.key === 'r' || e.key === 'R') mount(current);
+});
+setActive((parseInt(new URLSearchParams(location.search).get('v'), 10) || 1) - 1);
+requestAnimationFrame(() => requestAnimationFrame(() => picker.setAttribute('data-ready', '')));
+</script>
+</body>
+</html>

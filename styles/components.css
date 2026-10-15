@@ -26,6 +26,27 @@
   .scroll-prompt { display:flex; flex-direction:column; gap:18px; align-items:center; }
   .scroll-prompt__arrow { display:grid; place-items:center; width:35px; height:35px; border:1px solid rgba(255,255,255,.5); border-radius:50%; font-size:17px; transition:transform var(--duration-normal) var(--ease-out); }
   @keyframes hero-arrive { from {transform:scale(1.055); opacity:0;} to{transform:scale(1); opacity:var(--hero-photo-opacity);} }
+  /* Desktop: put the centered copy and scroll prompt in independent rows.
+     The hero may grow beyond one viewport when the text needs more height. */
+  @media (min-width: 761px) {
+    .hero {
+      display: grid;
+      grid-template-rows: minmax(max-content, 1fr) auto;
+      height: auto;
+      min-height: max(680px, 100svh);
+    }
+    .hero__center {
+      min-height: 0;
+      padding-top: clamp(120px, 13svh, 160px);
+      padding-bottom: clamp(40px, 5svh, 70px);
+    }
+    .hero__footer {
+      position: relative;
+      inset: auto;
+      margin-inline: auto;
+      padding-bottom: calc(var(--dock-height) + var(--dock-bottom) + 26px);
+    }
+  }
   /* STORY */
   .story { overflow:hidden; }
   .story__meta { grid-column:1 / span 3; display:flex; flex-direction:column; align-items:flex-start; gap:24px; padding-top:14px; font-size:11px; line-height:1.7; font-weight:550; letter-spacing:.02em; }

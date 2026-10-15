@@ -134,5 +134,67 @@
     }, { threshold: 0.08, rootMargin: "0px 0px 30px 0px" });
     qa(".reveal, .interlude, .final-cta").forEach((el) => observer.observe(el));
   }
+  const dock = q(".reservation-dock");
+  const finalReserveButton = q(".final-cta .button");
+  if (dock && finalReserveButton) {
+    let dockFrame = 0;
+    const updateDock = () => {
+      dockFrame = 0;
+      const dockStyle = window.getComputedStyle(dock);
+      const dockBottom = parseFloat(dockStyle.bottom) || 0;
+      const offset = Math.max(80, dock.offsetHeight + dockBottom + 16);
+      const buttonTop = finalReserveButton.getBoundingClientRect().top;
+      dock.classList.toggle("is-hidden", buttonTop <= window.innerHeight - offset);
+    };
+    const scheduleDockUpdate = () => {
+      if (dockFrame) return;
+      dockFrame = window.requestAnimationFrame(updateDock);
+    };
+    window.addEventListener("scroll", scheduleDockUpdate, { passive: true });
+    window.addEventListener("resize", scheduleDockUpdate, { passive: true });
+    updateDock();
+  }
+
+  // Menu Recorrido: native anchor fallback with active-section tracking.
+  // Bound exclusively to #menu; other landing sections retain their behavior.
+  const recorrido = q("#menu.menu-recorrido");
+  if (recorrido) {
+    const links = qa("[data-rc-link]", recorrido);
+    const courses = qa("[data-rc-part]", recorrido);
+    const setCurrentCourse = (index) => {
+      links.forEach((link, i) => {
+        if (i === index) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+    const syncCurrentCourse = () => {
+      const threshold = window.innerHeight * .4;
+      let current = 0;
+      courses.forEach((course, index) => {
+        if (course.getBoundingClientRect().top <= threshold) current = index;
+      });
+      setCurrentCourse(current);
+    };
+    let courseFrame = 0;
+    const scheduleCourseSync = () => {
+      if (courseFrame) return;
+      courseFrame = window.requestAnimationFrame(() => {
+        courseFrame = 0;
+        syncCurrentCourse();
+      });
+    };
+    links.forEach((link, index) => link.addEventListener("click", (event) => {
+      const course = courses[index];
+      if (!course) return;
+      event.preventDefault();
+      setCurrentCourse(index);
+      course.scrollIntoView({ block: "start", behavior: reducedMotion ? "instant" : "smooth" });
+    }));
+    window.addEventListener("scroll", scheduleCourseSync, { passive: true });
+    window.addEventListener("resize", scheduleCourseSync, { passive: true });
+    syncCurrentCourse();
+  }
+
+
 
 })();

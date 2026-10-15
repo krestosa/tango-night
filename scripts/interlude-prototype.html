@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="Tres alternativas para la sección interlude de Noche de Tango.">
+<title>Interlude · Noche de Tango · Prototipos</title>
+<style>
+@font-face{font-family:Inter;src:url("../assets/fonts/inter-latin-variable.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{--black:#0a0a0a;--white:#f5f5f3;--muted:#d3d3d4;--blue:#0d66ee;--pad:clamp(20px,4.7vw,84px);font-family:Inter,Arial,sans-serif;color:var(--white);background:var(--black);font-synthesis:none}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;background:var(--black)}
+button,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+[hidden]{display:none!important}
+h1,h2,p,figure{margin:0}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.preview-header{min-height:96px;padding:28px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:24px;background:#0a0a0a}
+.preview-header__brand{font-size:19px;letter-spacing:-.064em;font-weight:780}
+.preview-header__brand span{font-weight:470}
+.preview-header__label{color:#c4c4c6;font-size:13px;line-height:1.4;text-align:right}
+.preview-intro{padding:80px var(--pad) 100px;min-height:240px;background:#0a0a0a;display:flex;align-items:end;justify-content:space-between;gap:28px}
+.preview-intro h1{font-size:clamp(50px,6vw,98px);letter-spacing:-.082em;line-height:.97;max-width:10ch;font-weight:790}
+.preview-intro p{max-width:28ch;font-size:clamp(16px,1.35vw,19px);line-height:1.5;color:#d3d3d4}
+#stage{min-height:75svh}
+.preview-outro{padding:clamp(70px,8vw,120px) var(--pad) 145px;background:#0a0a0a;display:flex;align-items:end;justify-content:space-between;gap:30px}
+.preview-outro__title{font-size:clamp(38px,5.4vw,82px);font-weight:780;line-height:1.02;letter-spacing:-.072em}
+.preview-outro__note{font-size:14px;color:#c7c7ca;max-width:28ch;line-height:1.55}
+.interlude-variant{background:#0a0a0a;color:var(--white);isolation:isolate}
+.interlude-variant__quote{font-size:clamp(54px,8vw,126px);letter-spacing:-.078em;line-height:.94;font-weight:800;text-wrap:balance}
+.interlude-variant__credit{font-size:14px;font-weight:620;line-height:1.5;letter-spacing:.015em;color:#e0e0e2}
+.interlude-variant__label{font-size:13px;font-weight:650;line-height:1.4;letter-spacing:.025em}
+.interlude-variant .enter{animation:arrive 260ms cubic-bezier(.22,1,.36,1) both}
+.interlude-variant .enter--late{animation-delay:65ms}
+@keyframes arrive{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+/* Escena — single immersive photograph and theatrical copy */
+.scene{min-height:clamp(650px,83svh,1080px);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.scene__photo{position:absolute;z-index:-2;inset:0}
+.scene__photo img{object-position:center 46%;filter:brightness(.66)}
+.scene__shade{position:absolute;z-index:-1;inset:0;background: /* taste-skill-ignore: neutral scrim over a real performance image */ linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.2) 35%,rgba(0,0,0,.86));pointer-events:none}
+.scene__top{position:absolute;top:clamp(35px,5vw,80px);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;gap:18px}
+.scene__content{padding:clamp(160px,17svh,255px) var(--pad) clamp(76px,9svh,140px);width:min(1260px,100%)}
+.scene__content .interlude-variant__quote{max-width:11ch}
+.scene__credit{margin-top:42px;display:flex;align-items:center;gap:15px}
+.scene__accent{display:block;width:44px;height:3px;background:var(--blue)}
+/* Díptico — a black editorial page juxtaposed with a portrait crop */
+.diptych{display:grid;grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);min-height:clamp(690px,82svh,1030px)}
+.diptych__text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0;padding:clamp(75px,8vw,155px) clamp(32px,6vw,110px) clamp(65px,7vw,120px) var(--pad)}
+.diptych__text .interlude-variant__quote{margin:clamp(75px,8vw,130px) 0 55px;font-size:clamp(57px,6.2vw,105px)}
+.diptych__image{position:relative;min-height:580px;background:#151515;overflow:hidden}
+.diptych__image img{object-position:54% center;filter:brightness(.85)}
+.diptych__image figcaption{position:absolute;bottom:clamp(32px,4vw,65px);left:clamp(25px,4vw,60px);padding:14px 18px;background:#0a0a0a;color:#fff;font-size:14px;font-weight:620}
+.diptych__footer{margin-top:auto;padding-top:35px;max-width:38ch;color:#bfc1c3;font-size:14px;line-height:1.5}
+/* Pausa — typography first, then a narrow cinematic photo interval */
+.pause{padding:clamp(95px,10vw,170px) 0 clamp(100px,11vw,190px);min-height:clamp(690px,87svh,1080px);display:flex;flex-direction:column;justify-content:center}
+.pause__top,.pause__bottom{padding-inline:var(--pad);width:100%;display:flex;align-items:end;justify-content:space-between;gap:28px}
+.pause__top{margin-bottom:clamp(48px,5vw,80px)}
+.pause__top h2,.pause__bottom h2{font-size:clamp(65px,10.6vw,175px);font-weight:800;letter-spacing:-.092em;line-height:.9;text-wrap:balance}
+.pause__top .interlude-variant__label{padding-bottom:12px;max-width:14ch;text-align:right}
+.pause__strip{height:clamp(210px,28svh,420px);overflow:hidden;background:#1c1c1c}
+.pause__strip img{object-position:center 42%;filter:brightness(.8)}
+.pause__bottom{margin-top:clamp(42px,5vw,80px)}
+.pause__bottom h2{max-width:10ch}
+.pause__bottom .interlude-variant__credit{text-align:right;max-width:20ch;padding-bottom:12px}
+@media(max-width:980px){
+ .diptych__text .interlude-variant__quote{font-size:clamp(50px,6vw,82px)}
+ .diptych__text{padding-left:clamp(22px,4vw,70px);padding-right:clamp(22px,4vw,70px)}
+ .pause__top h2,.pause__bottom h2{font-size:clamp(60px,10vw,112px)}
+}
+@media(max-width:760px){
+ .preview-header{min-height:78px;padding-block:20px}
+ .preview-header__brand{font-size:15px}
+ .preview-header__label{font-size:11px}
+ .preview-intro{min-height:0;padding-block:60px 70px;display:block}
+ .preview-intro h1{font-size:clamp(49px,10vw,76px)}
+ .preview-intro p{margin-top:22px;font-size:16px}
+ .scene{min-height:680px}
+ .scene__top{top:37px}
+ .scene__top .interlude-variant__label{font-size:11px}
+ .scene__content{padding:210px var(--pad) 95px}
+ .scene__content .interlude-variant__quote{font-size:clamp(58px,12vw,96px)}
+ .scene__credit{margin-top:30px}
+ .diptych{display:flex;flex-direction:column}
+ .diptych__text{padding:90px var(--pad) 75px;min-height:420px}
+ .diptych__text .interlude-variant__quote{font-size:clamp(54px,10.5vw,85px);margin:60px 0 37px}
+ .diptych__footer{margin-top:35px}
+ .diptych__image{height:56svh;min-height:315px}
+ .diptych__image figcaption{font-size:12px;bottom:24px;left:20px}
+ .pause{padding-block:105px 110px;min-height:0}
+ .pause__top,.pause__bottom{display:block}
+ .pause__top h2,.pause__bottom h2{font-size:clamp(59px,12vw,103px)}
+ .pause__top .interlude-variant__label{max-width:none;text-align:left;margin-top:20px;padding:0}
+ .pause__strip{height:260px}
+ .pause__bottom .interlude-variant__credit{max-width:none;text-align:left;margin-top:33px}
+ .preview-outro{display:block;padding-block:85px 145px}
+ .preview-outro__note{margin-top:20px}
+}
+@media(max-width:390px){
+ .scene__content .interlude-variant__quote{font-size:clamp(51px,11.5vw,67px)}
+ .diptych__text .interlude-variant__quote{font-size:clamp(50px,10vw,67px)}
+ .pause__top h2,.pause__bottom h2{font-size:clamp(52px,11.4vw,68px)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.interlude-variant .enter{animation:none}}
+
+.proto-picker {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.82);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow: /* taste-skill-ignore: mandatory Emil Prototype picker chrome */
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 8px 24px rgba(0, 0, 0, 0.24),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.proto-picker-highlight {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  will-change: transform;
+}
+
+/* The slide is enabled only after first paint (data-ready), so load doesn't animate. */
+.proto-picker[data-ready] .proto-picker-highlight {
+  transition:
+    transform 250ms cubic-bezier(0.23, 1, 0.32, 1),
+    width 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proto-picker[data-ready] .proto-picker-highlight { transition: none; }
+}
+
+.proto-picker-item {
+  position: relative; /* sits above the highlight */
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font: inherit;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+
+.proto-picker-item:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.proto-picker-item:active {
+  transform: scale(0.97);
+}
+
+.proto-picker-item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+.proto-picker-item[data-active] {
+  color: #fff;
+}
+
+.proto-picker-divider {
+  width: 1px;
+  height: 16px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.proto-picker-replay {
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.proto-picker[data-position="top"] {
+  bottom: auto;
+  top: 24px;
+}
+
+
+</style>
+</head>
+<body>
+<header class="preview-header">
+  <a class="preview-header__brand" href="../index.html" aria-label="SushiClub, volver a la landing">SUSHICLUB <span>/ NOCHE DE TANGO</span></a>
+  <span class="preview-header__label">EXPLORACIÓN · INTERLUDE</span>
+</header>
+<section class="preview-intro" aria-label="Contexto anterior a interlude">
+  <h1>Una mesa.<br>Otro ritmo.</h1>
+  <p>Una propuesta que reúne gastronomía y tango en vivo. La noche continúa...</p>
+</section>
+<main id="stage" aria-live="polite"></main>
+<section class="preview-outro" id="formatos" aria-label="Contexto posterior a interlude">
+  <h2 class="preview-outro__title">Dos formas.<br>Una pasión.</h2>
+  <a class="preview-outro__note" href="../index.html#formatos">Conocé Minimal y Essential <span aria-hidden="true">↗</span></a>
+</section>
+<nav class="proto-picker" aria-label="Prototype variants">
+  <span class="proto-picker-highlight" aria-hidden="true"></span>
+  <button class="proto-picker-item" data-active aria-current="true">Escena</button>
+  <button class="proto-picker-item">Díptico</button>
+  <button class="proto-picker-item">Pausa</button>
+  <span class="proto-picker-divider" aria-hidden="true"></span>
+  <button class="proto-picker-item proto-picker-replay" aria-label="Replay animation (R)">↻</button>
+</nav>
+<script>
+function escena(){
+  return [
+    '<section class="interlude-variant scene" aria-labelledby="scene-title">',
+    '<figure class="scene__photo"><img src="../assets/intimate-tango.jpg" width="1200" height="800" alt="Fotografía ambiental de tango"></figure>',
+    '<div class="scene__shade" aria-hidden="true"></div>',
+    '<div class="scene__content"><h2 class="interlude-variant__quote enter" id="scene-title">EL TANGO<br>LO DICE TODO.</h2>',
+    '<p class="interlude-variant__credit scene__credit enter enter--late"><span class="scene__accent" aria-hidden="true"></span>UNA EXPERIENCIA QUE SE VIVE EN PRESENTE.</p></div>',
+    '</section>'
+  ].join('');
+}
+function diptico(){
+  return [
+    '<section class="interlude-variant diptych" aria-labelledby="diptych-title">',
+    '<div class="diptych__text">',
+      '<p class="interlude-variant__label">LA ATMÓSFERA / TANGO RAÍZ</p>',
+      '<h2 class="interlude-variant__quote enter" id="diptych-title">EL TANGO<br>LO DICE<br>TODO.</h2>',
+      '<p class="interlude-variant__credit enter enter--late">UNA EXPERIENCIA QUE SE VIVE EN PRESENTE.</p>',
+      '<p class="diptych__footer">Gastronomía, música y danza. Una noche para quedarse un poco más.</p>',
+    '</div>',
+    '<figure class="diptych__image"><img src="../assets/intimate-tango.jpg" width="1200" height="800" alt="Fotografía ambiental de tango">',
+      '<figcaption>50 MINUTOS EN VIVO · TANGO RAÍZ</figcaption></figure>',
+    '</section>'
+  ].join('');
+}
+function pausa(){
+  return [
+    '<section class="interlude-variant pause" aria-labelledby="pause-title">',
+    '<div class="pause__top"><h2 id="pause-title" class="enter">EL TANGO</h2>',
+      '<span class="interlude-variant__label">UNA NOCHE QUE SE SIENTE.</span></div>',
+    '<figure class="pause__strip"><img src="../assets/intimate-tango.jpg" width="1200" height="800" alt="Fotografía ambiental de tango"></figure>',
+    '<div class="pause__bottom"><h2 class="enter enter--late">LO DICE<br>TODO.</h2>',
+      '<p class="interlude-variant__credit">UNA EXPERIENCIA QUE SE VIVE EN PRESENTE.</p></div>',
+    '</section>'
+  ].join('');
+}
+const variants=[escena,diptico,pausa];
+
+// `variants` is an array of render functions, one per variant, in picker order.
+const stage = document.getElementById('stage');
+const picker = document.querySelector('.proto-picker');
+const highlight = picker.querySelector('.proto-picker-highlight');
+const items = [...picker.querySelectorAll('.proto-picker-item:not(.proto-picker-replay)')];
+const replay = picker.querySelector('.proto-picker-replay');
+let current = 0;
+
+function moveHighlight() {
+  const el = items[current];
+  highlight.style.width = el.offsetWidth + 'px';
+  highlight.style.transform = `translateX(${el.offsetLeft}px)`;
+}
+
+function mount(i) {
+  stage.innerHTML = '';
+  // Clear first, render next frame, so entrance animations re-run.
+  requestAnimationFrame(() => { stage.innerHTML = variants[i](); });
+}
+
+function setActive(i) {
+  if (i < 0 || i >= variants.length) return;
+  current = i;
+  items.forEach((el, j) => {
+    el.toggleAttribute('data-active', j === i);
+    if (j === i) el.setAttribute('aria-current', 'true');
+    else el.removeAttribute('aria-current');
+  });
+  moveHighlight();
+  const url = new URL(location);
+  url.searchParams.set('v', i + 1);
+  history.replaceState(null, '', url);
+  mount(i);
+}
+
+items.forEach((el, i) => el.addEventListener('click', () => setActive(i)));
+replay?.addEventListener('click', () => mount(current));
+window.addEventListener('resize', moveHighlight);
+
+document.addEventListener('keydown', (e) => {
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const num = parseInt(e.key, 10);
+  if (num >= 1 && num <= variants.length) setActive(num - 1);
+  else if (e.key === 'ArrowRight') setActive((current + 1) % variants.length);
+  else if (e.key === 'ArrowLeft') setActive((current - 1 + variants.length) % variants.length);
+  else if (e.key === 'r' || e.key === 'R') mount(current);
+});
+
+setActive((parseInt(new URLSearchParams(location.search).get('v'), 10) || 1) - 1);
+// Enable the slide only after first paint, so load doesn't animate.
+requestAnimationFrame(() => requestAnimationFrame(() => picker.setAttribute('data-ready', '')));
+
+</script>
+</body>
+</html>
