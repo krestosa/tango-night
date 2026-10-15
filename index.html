@@ -4,25 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#070707">
-  <meta name="description" content="Noche de Tango en SushiClub: gastronomía, música y danza en vivo junto a Tango Raíz. Menú Tango $79.000 por persona, con reserva previa.">
+  <meta name="description" content="Tango Night en SushiClub: gastronomía, música y danza en vivo junto a Tango Raíz. Menú Tango $79.000 por persona, con reserva previa.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Noche de Tango | SushiClub">
+  <meta property="og:title" content="Tango Night | SushiClub">
   <meta property="og:description" content="Una noche donde el tango y la gastronomía se encuentran. Conocé las dos experiencias y el Menú Tango.">
   <meta property="og:image" content="assets/hero-tango.jpg">
-  <title>Noche de Tango — SushiClub</title>
+  <title>Tango Night — SushiClub</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/owners-xwide-black.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="assets/hero-tango.jpg" as="image" fetchpriority="high">
-  <link rel="stylesheet" href="styles/fonts.css">
+  <link rel="stylesheet" href="styles/fonts.css?v=owners-xwide-black-1">
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/components.css?v=hero-desktop-spacing-7">
-  <link rel="stylesheet" href="styles/responsive.css?v=dock-align-4">
-  <link rel="stylesheet" href="styles/motion.css">
-  <link rel="stylesheet" href="styles/mobile-polish.css?v=hero-type-3">
-  <link rel="stylesheet" href="styles/taste-v2.css?v=golden-footer-1">
+  <link rel="stylesheet" href="styles/components.css?v=modalities-no-zoom-1">
+  <link rel="stylesheet" href="styles/responsive.css?v=motion-performance-2">
+  <link rel="stylesheet" href="styles/motion.css?v=text-entrances-1">
+  <link rel="stylesheet" href="styles/mobile-polish.css?v=tango-night-type-1">
+  <link rel="stylesheet" href="styles/landing.css?v=20261015">
   <script src="scripts/config.js" defer></script>
-  <script src="scripts/app.js?v=final-cta-dock-1" defer></script>
+  <script src="scripts/app.js?v=text-entrances-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -51,7 +52,7 @@
       <div class="hero__media" aria-hidden="true"><img class="hero__image" src="assets/hero-tango.jpg" alt="" width="1920" height="1280" fetchpriority="high" decoding="async"></div>
       <div class="hero__wash" aria-hidden="true"></div>
       <div class="hero__center shell">
-        <h1 class="hero__title" id="hero-title"><span>NOCHE</span><span class="hero__title-bottom"><em>DE</em><span class="hero__title-word">TANGO</span></span></h1>
+        <h1 class="hero__title" id="hero-title"><span>TANGO</span><span class="hero__title-bottom"><span class="hero__title-word">NIGHT</span></span></h1>
         <p class="hero__tagline">Una noche que se siente.<br>Una experiencia que se recuerda.</p>
       </div>
       <div class="hero__footer shell">
@@ -97,8 +98,8 @@
           <input class="format-choice__radio" id="formato-minimal" type="radio" name="modalidad" checked>
           <input class="format-choice__radio" id="formato-essential" type="radio" name="modalidad">
           <div class="format-choice__tabs" aria-label="Comparar modalidades de Tango Raíz">
-            <label for="formato-minimal">Minimal — solo música</label>
-            <label for="formato-essential">Essential — música y danza</label>
+            <label for="formato-minimal">Minimal</label>
+            <label for="formato-essential">Essential</label>
           </div>
           <div class="format-grid">
           <article class="format-card format-card--minimal reveal">
@@ -135,65 +136,105 @@
                 <a href="#menu-postre" data-rc-link="3"><span>Postre</span><span aria-hidden="true">↗</span></a>
                 <a href="#menu-bebidas" data-rc-link="4"><span>Bebidas</span><span aria-hidden="true">↗</span></a>
               </nav>
-              <p class="rc-description">Elegí qué momento explorar o recorré el menú con el scroll.</p>
             </div>
           </aside>
           <div class="rc-body">
             <article class="rc-course" id="menu-appetizer" data-rc-part="0">
-              <h3>Appetizer</h3>
+              <div class="rc-course__heading"><h3>Appetizer</h3></div>
               <div class="rc-dishes"><p>Appetizer del día</p></div>
             </article>
             <article class="rc-course" id="menu-entrada" data-rc-part="1">
-              <h3>Entrada</h3>
-              <span class="rc-choice">A elección</span>
+              <div class="rc-course__heading"><h3>Entrada</h3><span class="rc-choice">A elección</span></div>
               <div class="rc-dishes"><p>Pink Floyd <small>3 unidades</small></p><p>Dupla Arrolladito Vegan <small>2 unidades</small></p></div>
             </article>
             <article class="rc-course" id="menu-principal" data-rc-part="2">
-              <h3>Principal</h3>
-              <span class="rc-choice">A elección</span>
+              <div class="rc-course__heading"><h3>Principal</h3><span class="rc-choice">A elección</span></div>
               <div class="rc-dishes"><p>Wok Langostinos</p><p>Sorrentinos Back</p><p>Roll&amp;Roll <small>15 piezas</small></p><p>Bio Veggie <small>15 piezas</small></p></div>
             </article>
             <article class="rc-course" id="menu-postre" data-rc-part="3">
-              <h3>Postre</h3>
+              <div class="rc-course__heading"><h3>Postre</h3></div>
               <div class="rc-dishes"><p>Flan de chocolate blanco</p></div>
             </article>
             <article class="rc-course" id="menu-bebidas" data-rc-part="4">
-              <h3>Bebidas</h3>
-              <div class="rc-dishes"><p>Copa de vino Trapiche Malbec o Chardonnay, o gaseosa.</p><p>Más agua con o sin gas, agua saborizada o gaseosa.</p></div>
+              <div class="rc-course__heading"><h3>Bebidas</h3></div>
+              <ul class="rc-drinks" aria-label="Bebidas incluidas y adicionales">
+                <li class="rc-drinks__base">Copa de vino Trapiche Malbec o Chardonnay, o gaseosa.</li>
+                <li class="rc-drinks__extra">
+                  <div class="rc-drinks__divider" aria-hidden="true"><span class="rc-drinks__plus">+</span></div>
+                  <div class="rc-drinks__extra-content"><span class="rc-drinks__extra-label">UN ADICIONAL</span>Agua con o sin gas, agua saborizada o gaseosa.</div>
+                </li>
+              </ul>
             </article>
           </div>
         </div>
-        <p class="rc-note">ENTRADA Y PRINCIPAL A ELECCIÓN POR PERSONA. LA DISPONIBILIDAD DE LOS PRODUCTOS ESTÁ SUJETA AL LOCAL ADHERIDO.</p>
       </div>
     </section>
 
-    <section class="reservations section-pad" id="reservas" aria-labelledby="reservations-title">
-      <div class="shell">
-        <div class="section-topline reveal"><span class="section-index">04 / RESERVAS</span><span>EXCLUSIVO CABA Y GBA · TURNO NOCHE</span></div>
-        <div class="reservations__layout">
-          <div class="reservations__heading reveal"><h2 class="display" id="reservations-title">VIVÍ<br>LA NOCHE.</h2><p>Seleccioná una fecha disponible y descubrí si el local presenta <strong>Minimal</strong> (música) o <strong>Essential</strong> (música y danza).</p></div>
-          <div class="reservations__panel reveal">
-            <div class="events" data-events aria-live="polite"></div>
-            <a class="button button--bright" data-reservation-link href="https://www.sushiclub.com.ar/shop_reservas.php" target="_blank" rel="noopener noreferrer"><span>CONSULTAR RESERVAS</span><span class="button__arrow" aria-hidden="true">↗</span></a>
-            <p class="reservations__panel-note">RESERVA PREVIA OBLIGATORIA · PRECIO POR PERSONA $79.000.<br>CONFIRMÁ EL FORMATO DEL SHOW AL RESERVAR.</p>
+    <section class="reservations reservations--cartelera section-pad" id="reservas" aria-labelledby="reservations-title">
+      <div class="shell reservations-cartelera__inner">
+        <div class="reservations-cartelera__top">
+          <h2 class="display reveal" id="reservations-title">VIVÍ<br>LA NOCHE.</h2>
+          <div class="reservations-cartelera__kicker reveal">
+            <span class="reservations-cartelera__label">TANGO NIGHT · SUSHICLUB</span>
+            <p>Tres cosas para tener en cuenta antes de reservar tu mesa.</p>
+          </div>
+        </div>
+        <div class="reservations-cartelera__rows reveal">
+          <article class="reservations-cartelera__row">
+            <span class="reservations-cartelera__step" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+            <h3>Elegí dónde vivirlo.</h3>
+            <p>Una alternativa al plan de siempre.</p>
+          </article>
+          <article class="reservations-cartelera__row">
+            <span class="reservations-cartelera__step" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="19" cy="6.5" r="1"/><circle cx="15" cy="6.5" r="1"/><path d="M16.99 9c-1.38 0-2.5.84-2.5 1.88h5c0-1.04-1.12-1.88-2.5-1.88zM1 16c0 3.31 2.69 6 6 6s6-2.69 6-6V9H1v7zm2-5h8v5c0 2.21-1.79 4-4 4s-4-1.79-4-4v-5z"/><path d="M11 2v5.5h2V4h8v5c0 2.21-1.79 4-4 4-.95 0-1.81-.35-2.5-.9v2.35c.76.35 1.61.55 2.5.55 3.31 0 6-2.69 6-6V2H11z"/><circle cx="5" cy="13.5" r="1"/><circle cx="9" cy="13.5" r="1"/><path d="M7 17.88c1.38 0 2.5-.84 2.5-1.88h-5c0 1.04 1.12 1.88 2.5 1.88z"/></svg></span>
+            <h3>Descubrí el espectáculo.</h3>
+            <p>Acá el tango no queda de fondo.</p>
+          </article>
+          <article class="reservations-cartelera__row">
+            <span class="reservations-cartelera__step" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M15 5v7H9V5h6m0-2H9c-1.1 0-2 .9-2 2v9h10V5c0-1.1-.9-2-2-2zm7 7h-3v3h3v-3zM5 10H2v3h3v-3zm15 5H4v6h2v-4h12v4h2v-6z"/></svg></span>
+            <h3>Reservá tu lugar.</h3>
+            <p>No lo dejes para último momento.</p>
+          </article>
+        </div>
+        <div class="events reservations-cartelera__events" data-events aria-live="polite"></div>
+        <div class="reservations-cartelera__bottom reveal">
+          <p class="reservations-cartelera__availability">Las próximas fechas se consultan online.</p>
+          <div class="reservations-cartelera__action">
+            <a class="reservations-cartelera__button" data-reservation-link href="https://www.sushiclub.com.ar/shop_reservas.php" target="_blank" rel="noopener noreferrer"><span>VER DISPONIBILIDAD</span><span aria-hidden="true">↗</span></a>
+            <p>Las reservas y las funciones disponibles se confirman en SushiClub.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="questions section-pad" id="informacion" aria-labelledby="faq-title">
-      <div class="shell questions__grid">
-        <div class="questions__left reveal">
-          <h2 id="faq-title">ANTES DE<br>RESERVAR.</h2>
-          <p class="questions__intro">Todo lo que necesitás saber antes de elegir tu fecha y tu salón.</p>
-          <figure class="questions__visual"><img src="assets/sushi.jpg" width="1400" height="1000" alt="Fotografía gastronómica ilustrativa de sushi" loading="lazy" decoding="async"></figure>
+    <section class="questions questions--panels section-pad" id="informacion" aria-labelledby="faq-title">
+      <div class="shell">
+        <div class="blinds-head">
+          <div>
+            <h2 id="faq-title">ANTES<br>DE IR.</h2>
+          </div>
         </div>
-        <div class="questions__right">
-          <details class="faq reveal"><summary>¿TODAS LAS FECHAS INCLUYEN BAILE?<span aria-hidden="true"></span></summary><p>No. Minimal incluye únicamente música acústica en vivo. Essential incluye música y danza. La modalidad depende del local y la fecha.</p></details>
-          <details class="faq reveal"><summary>¿CUÁNTO DURA LA PRESENTACIÓN?<span aria-hidden="true"></span></summary><p>Ambos formatos de Tango Raíz tienen una duración aproximada de 50 minutos.</p></details>
-          <details class="faq reveal"><summary>¿QUÉ INCLUYE EL MENÚ?<span aria-hidden="true"></span></summary><p>Appetizer del día, una entrada y un principal a elección por persona, flan de chocolate blanco y las bebidas indicadas en el menú.</p></details>
-          <details class="faq reveal"><summary>¿DÓNDE SE REALIZA?<span aria-hidden="true"></span></summary><p>En salones adheridos de SushiClub en CABA y GBA, durante el turno noche. Consultá la fecha y modalidad vigente al reservar.</p></details>
-          <details class="faq reveal"><summary>¿ES NECESARIO RESERVAR?<span aria-hidden="true"></span></summary><p>Sí. La experiencia requiere reserva previa.</p></details>
+        <div class="blinds-stack">
+          <article class="blind is-active is-content-ready">
+            <button class="blind-switch" id="blind-tab-1" type="button" aria-expanded="true" aria-controls="blind-detail-1" aria-label="Baile: ¿Todas las fechas incluyen baile?"><span class="blind-no">01</span><span class="blind-short" aria-hidden="true">BAILE</span><span class="blind-open" aria-hidden="true">+</span></button>
+            <div class="blind-detail" id="blind-detail-1" role="region" aria-labelledby="blind-tab-1"><div><h3>¿TODAS LAS FECHAS INCLUYEN BAILE?</h3><p>No. Minimal incluye únicamente música acústica en vivo. Essential incluye música y danza. La modalidad depende del local y la fecha.</p></div><div class="blind-tail"><span>TANGO NIGHT / PREGUNTAS</span><span>01 — 05</span></div></div>
+          </article>
+          <article class="blind">
+            <button class="blind-switch" id="blind-tab-2" type="button" aria-expanded="false" aria-controls="blind-detail-2" aria-label="Duración: ¿Cuánto dura la presentación?"><span class="blind-no">02</span><span class="blind-short" aria-hidden="true">DURACIÓN</span><span class="blind-open" aria-hidden="true">+</span></button>
+            <div class="blind-detail" id="blind-detail-2" role="region" aria-labelledby="blind-tab-2" hidden><div><h3>¿CUÁNTO DURA LA PRESENTACIÓN?</h3><p>Ambos formatos de Tango Raíz tienen una duración aproximada de 50 minutos.</p></div><div class="blind-tail"><span>TANGO NIGHT / PREGUNTAS</span><span>02 — 05</span></div></div>
+          </article>
+          <article class="blind">
+            <button class="blind-switch" id="blind-tab-3" type="button" aria-expanded="false" aria-controls="blind-detail-3" aria-label="Menú: ¿Qué incluye el menú?"><span class="blind-no">03</span><span class="blind-short" aria-hidden="true">MENÚ</span><span class="blind-open" aria-hidden="true">+</span></button>
+            <div class="blind-detail" id="blind-detail-3" role="region" aria-labelledby="blind-tab-3" hidden><div><h3>¿QUÉ INCLUYE EL MENÚ?</h3><p>Appetizer del día, una entrada y un principal a elección por persona, flan de chocolate blanco y las bebidas indicadas en el menú.</p></div><div class="blind-tail"><span>TANGO NIGHT / PREGUNTAS</span><span>03 — 05</span></div></div>
+          </article>
+          <article class="blind">
+            <button class="blind-switch" id="blind-tab-4" type="button" aria-expanded="false" aria-controls="blind-detail-4" aria-label="Salones: ¿Dónde se realiza?"><span class="blind-no">04</span><span class="blind-short" aria-hidden="true">SALONES</span><span class="blind-open" aria-hidden="true">+</span></button>
+            <div class="blind-detail" id="blind-detail-4" role="region" aria-labelledby="blind-tab-4" hidden><div><h3>¿DÓNDE SE REALIZA?</h3><p>En salones adheridos de SushiClub en CABA y GBA, durante el turno noche. Consultá la fecha y modalidad vigente al reservar.</p></div><div class="blind-tail"><span>TANGO NIGHT / PREGUNTAS</span><span>04 — 05</span></div></div>
+          </article>
+          <article class="blind">
+            <button class="blind-switch" id="blind-tab-5" type="button" aria-expanded="false" aria-controls="blind-detail-5" aria-label="Reserva: ¿Es necesario reservar?"><span class="blind-no">05</span><span class="blind-short" aria-hidden="true">RESERVA</span><span class="blind-open" aria-hidden="true">+</span></button>
+            <div class="blind-detail" id="blind-detail-5" role="region" aria-labelledby="blind-tab-5" hidden><div><h3>¿ES NECESARIO RESERVAR?</h3><p>Sí. La experiencia requiere reserva previa.</p></div><div class="blind-tail"><span>TANGO NIGHT / PREGUNTAS</span><span>05 — 05</span></div></div>
+          </article>
         </div>
       </div>
     </section>
@@ -201,17 +242,17 @@
     <section class="final-cta" aria-labelledby="final-title">
       <div class="final-cta__image" aria-hidden="true"><img src="assets/hero-tango.jpg" width="1920" height="1280" alt="" loading="lazy" decoding="async"></div>
       <div class="shell final-cta__content">
-        <h2 class="display reveal" id="final-title">LA NOCHE<br>TE ESPERA.</h2>
-        <p class="reveal">NOCHE DE TANGO EN SUSHICLUB. TU MESA TE ESPERA.</p>
-        <a class="button button--bright reveal" href="#reservas"><span>DESCUBRÍ CÓMO RESERVAR</span><span class="button__arrow" aria-hidden="true">↗</span></a>
+        <h2 class="display reveal" id="final-title"><span class="final-cta__line">QUE EMPIECE</span><span class="final-cta__line">LA NOCHE.</span></h2>
+        <p class="reveal">Elegí tu salón para disfrutar Tango Night en SushiClub.</p>
+        <a class="button button--bright reveal" data-reservation-link href="https://www.sushiclub.com.ar/shop_reservas.php" target="_blank" rel="noopener noreferrer"><span>RESERVÁ AHORA</span><span class="button__arrow" aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
 
   <aside class="reservation-dock" aria-label="Resumen de reserva">
-    <a class="reservation-dock__segment reservation-dock__segment--name" href="#formatos"><span class="reservation-dock__label">EXPERIENCIA</span><strong>NOCHE DE TANGO</strong></a>
+    <a class="reservation-dock__segment reservation-dock__segment--name" href="#formatos"><span class="reservation-dock__label">EXPERIENCIA</span><strong>TANGO NIGHT</strong></a>
     <a class="reservation-dock__segment reservation-dock__segment--place" href="#reservas"><span class="reservation-dock__label">ZONA</span><strong>CABA &amp; GBA</strong></a>
-    <div class="reservation-dock__segment reservation-dock__segment--price"><span class="reservation-dock__label">MENÚ POR PERSONA</span><strong>$79.000</strong></div>
+    <div class="reservation-dock__segment reservation-dock__segment--price"><span class="reservation-dock__label">POR PERSONA</span><strong>$79.000</strong></div>
     <a class="reservation-dock__cta" href="#reservas"><span>RESERVAR<br>AHORA</span></a>
   </aside>
 

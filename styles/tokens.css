@@ -1,7 +1,4 @@
-/* NIGHT / DESIGN SYSTEM v1.0
-   All layout, sizing, rhythm and visual constants are defined here.
-   Grid: 12 columns desktop / 6 tablet / 4 mobile.
-   Spacing: four-pixel base. No section-level magic-number layouts. */
+
 :root {
   --color-bg: #070707;
   --color-surface: #101010;

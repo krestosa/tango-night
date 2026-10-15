@@ -115,12 +115,88 @@
     }
   }
 
-  // One FAQ expanded at a time; native details preserves keyboard semantics.
-  const faqs = qa(".faq");
-  faqs.forEach((faq) => faq.addEventListener("toggle", () => {
-    if (faq.open) faqs.forEach((other) => { if (other !== faq) other.open = false; });
-  }));
+  const questionPanels = qa(".questions--panels .blind");
+  if (questionPanels.length) {
+    const switches = questionPanels.map((panel) => q(".blind-switch", panel));
+    let activationId = 0;
+    let cancelPendingReveal = null;
+    const activateQuestion = (index, focus = false) => {
+      q(".questions--panels .blinds-stack")?.classList.toggle("is-keyboard", focus);
+      const selectedPanel = questionPanels[index];
+      if (selectedPanel.classList.contains("is-active")) {
+        if (focus) switches[index].focus();
+        return;
+      }
+      if (cancelPendingReveal) cancelPendingReveal();
+      const currentActivation = ++activationId;
+      questionPanels.forEach((panel, i) => {
+        const active = i === index;
+        panel.classList.remove("is-content-ready");
+        panel.classList.toggle("is-active", active);
+        switches[i].setAttribute("aria-expanded", String(active));
+        q(".blind-detail", panel).hidden = !active;
+      });
+      const vertical = focus || window.matchMedia("(max-width:960px), (prefers-reduced-motion:reduce)").matches;
+      if (vertical) {
+        selectedPanel.classList.add("is-content-ready");
+      } else {
+        let timeoutId = 0;
+        const cleanup = () => {
+          selectedPanel.removeEventListener("transitionend", onEnd);
+          window.clearTimeout(timeoutId);
+          if (cancelPendingReveal === cleanup) cancelPendingReveal = null;
+        };
+        const reveal = () => {
+          cleanup();
+          if (activationId === currentActivation && selectedPanel.classList.contains("is-active")) {
+            selectedPanel.classList.add("is-content-ready");
+          }
+        };
+        const onEnd = (event) => {
+          if (event.target === selectedPanel && event.propertyName === "flex-grow") reveal();
+        };
+        selectedPanel.addEventListener("transitionend", onEnd);
+        timeoutId = window.setTimeout(reveal, 300);
+        cancelPendingReveal = cleanup;
+      }
+      if (focus) switches[index].focus();
+    };
+    switches.forEach((button, index) => {
+      button.addEventListener("click", (event) => activateQuestion(index, event.detail === 0));
+      button.addEventListener("keydown", (event) => {
+        const keys = ["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp", "Home", "End"];
+        if (!keys.includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === "Home" ? 0
+          : event.key === "End" ? switches.length - 1
+          : (index + (["ArrowRight", "ArrowDown"].includes(event.key) ? 1 : -1) + switches.length) % switches.length;
+        activateQuestion(next, true);
+      });
+    });
+  }
 
+  const entranceText = qa([
+    "#interlude .scene__credit",
+    "#formatos .format-card__tag",
+    "#formatos .format-card__body h3",
+    "#formatos .format-card__body > p",
+    "#formatos .format-card__features span",
+    "#menu .rc-intro h2",
+    "#menu .rc-price__amount",
+    "#menu .rc-price__label",
+    "#menu .rc-course__heading h3",
+    "#menu .rc-choice",
+    "#menu .rc-dishes p",
+    "#menu .rc-drinks__base",
+    "#menu .rc-drinks__extra-content",
+    "#reservas .reservations-cartelera__row h3",
+    "#reservas .reservations-cartelera__row p",
+    "#informacion .blinds-head h2",
+    ".campaign-footer__bottom p"
+  ].join(","));
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    entranceText.forEach((el) => el.classList.add("text-appear"));
+  }
   // Viewport reveals with a transparent fallback when observers are unavailable.
   if (!reducedMotion && "IntersectionObserver" in window) {
     document.documentElement.classList.add("js-motion");
@@ -132,7 +208,7 @@
         }
       }
     }, { threshold: 0.08, rootMargin: "0px 0px 30px 0px" });
-    qa(".reveal, .interlude, .final-cta").forEach((el) => observer.observe(el));
+    qa(".reveal, .text-appear, .interlude, .final-cta").forEach((el) => observer.observe(el));
   }
   const dock = q(".reservation-dock");
   const finalReserveButton = q(".final-cta .button");
@@ -153,6 +229,16 @@
     window.addEventListener("scroll", scheduleDockUpdate, { passive: true });
     window.addEventListener("resize", scheduleDockUpdate, { passive: true });
     updateDock();
+    const activateDock = () => {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          updateDock();
+          dock.classList.add("is-ready");
+        });
+      });
+    };
+    if (document.readyState === "complete") activateDock();
+    else window.addEventListener("pageshow", activateDock, { once: true });
   }
 
   // Menu Recorrido: native anchor fallback with active-section tracking.
@@ -161,14 +247,32 @@
   if (recorrido) {
     const links = qa("[data-rc-link]", recorrido);
     const courses = qa("[data-rc-part]", recorrido);
+    const navScroller = q(".rc-links", recorrido);
+    let activeCourseIndex = -1;
+    const ensureActiveLinkVisible = (index) => {
+      if (!navScroller || navScroller.scrollWidth <= navScroller.clientWidth + 1) return;
+      const bounds = navScroller.getBoundingClientRect();
+      const linkBounds = links[index].getBoundingClientRect();
+      const inset = 8;
+      let delta = 0;
+      if (linkBounds.left < bounds.left + inset) delta = linkBounds.left - bounds.left - inset;
+      else if (linkBounds.right > bounds.right - inset) delta = linkBounds.right - bounds.right + inset;
+      if (Math.abs(delta) > 1) {
+        navScroller.scrollBy({ left: delta, behavior: reducedMotion ? "instant" : "smooth" });
+      }
+    };
     const setCurrentCourse = (index) => {
-      links.forEach((link, i) => {
-        if (i === index) link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
-      });
+      if (activeCourseIndex !== index) {
+        activeCourseIndex = index;
+        links.forEach((link, i) => {
+          if (i === index) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+        ensureActiveLinkVisible(index);
+      }
     };
     const syncCurrentCourse = () => {
-      const threshold = window.innerHeight * .4;
+      const threshold = Math.min(window.innerHeight * .4, parseFloat(window.getComputedStyle(courses[0]).scrollMarginTop) + 68);
       let current = 0;
       courses.forEach((course, index) => {
         if (course.getBoundingClientRect().top <= threshold) current = index;
@@ -187,6 +291,7 @@
       const course = courses[index];
       if (!course) return;
       event.preventDefault();
+      ensureActiveLinkVisible(index);
       setCurrentCourse(index);
       course.scrollIntoView({ block: "start", behavior: reducedMotion ? "instant" : "smooth" });
     }));

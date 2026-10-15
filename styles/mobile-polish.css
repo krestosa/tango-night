@@ -1,5 +1,4 @@
-/* Mobile art direction and platform polish, layered after responsive.css.
-   320px through tablet: no horizontal overflow, tappable controls, native safe areas. */
+
 @layer adaptive {
   @media (max-width: 760px) {
     .site-header {
@@ -19,8 +18,7 @@
       min-height: 44px;
       transition: transform var(--duration-press) var(--ease-out);
     }
-    /* Mobile hero as a single painted background: no alpha/image/wash compositing
-       surfaces that can expose 1px tile seams during Android scrolling. */
+
     .hero {
       isolation: auto;
       background-color: #070707;

@@ -1,8 +1,6 @@
-/* Emil Kowalski-inspired motion pass.
-   Intentional, one-time narrative entrances. UI transitions stay <300ms.
-   Only transform/opacity are animated; hover is fine-pointer only. */
+
 @layer adaptive {
-  /* Hero: sequence reading order, not simultaneous motion. */
+
   @keyframes night-enter {
     from { opacity: 0; transform: translate3d(0, 18px, 0); }
     to { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -21,7 +19,6 @@
   .hero__tagline { animation-delay: 370ms; }
   .hero__footer { animation-delay: 510ms; }
 
-  /* Section rule: a subtle progressive cue that the next chapter has arrived. */
   .section-topline { position: relative; }
   .section-topline::after {
     content: "";
@@ -46,27 +43,21 @@
     transition-delay: 45ms;
   }
 
-  /* Cinematic media settles once on entry; no continuous scroll listeners. */
   .interlude__photo img,
   .final-cta__image img {
     transform: scale(1);
   }
   .js-motion .interlude__photo img,
   .js-motion .final-cta__image img {
-    transform: scale(1.045);
-    transition: transform 1050ms var(--ease-out);
+    transform: scale(1.025);
+    transition: transform 720ms var(--ease-out);
   }
   .js-motion .interlude.is-in-view .interlude__photo img,
   .js-motion .final-cta.is-in-view .final-cta__image img {
     transform: scale(1);
   }
 
-  /* Desktop focus/hover is deliberate and never emulated on touch. */
   @media (hover: hover) and (pointer: fine) {
-    .format-card__backdrop img {
-      transition: transform 700ms var(--ease-out);
-    }
-    .format-card:hover .format-card__backdrop img { transform: scale(1.025); }
     .site-header__links a,
     .footer__inner a { transition: opacity var(--duration-fast) var(--ease-out); }
     .site-header__links a:hover { opacity: 1; }
@@ -81,7 +72,6 @@
     }
   }
 
-  /* One coherent touch/press rhythm. */
   .button, .reservation-dock__cta, .site-header__reserve, .scroll-prompt__arrow {
     transition: transform var(--duration-press) var(--ease-out),
       opacity var(--duration-press) var(--ease-out),
@@ -113,11 +103,7 @@
     }
     .mobile-navigation a:active { transform: translate3d(4px, 0, 0); opacity: .75; }
   }
-  @media (pointer: coarse) {
-    .format-card:hover .format-card__backdrop img { transform: none; }
-  }
-  /* Full-bleed image transforms allocate large composited textures on phones.
-     Keep text entrances, but show large photos directly on narrow devices. */
+
   @media (max-width: 760px) {
     .hero__image, .hero__title > span, .hero__tagline, .hero__footer { animation:none; }
     .js-motion .interlude__photo img,
@@ -139,4 +125,38 @@
     }
     .js-motion .section-topline::after { transform: scaleX(1); }
   }
+}
+
+@layer adaptive {
+  .js-motion .text-appear {
+    opacity:0;
+    transform:translate3d(0,10px,0);
+    transition:opacity 410ms var(--ease-out),transform 410ms var(--ease-out);
+  }
+  .js-motion .text-appear.is-visible {
+    opacity:1;
+    transform:none;
+  }
+  @media (max-width:760px) {
+    .js-motion .text-appear {
+      transform:translate3d(0,6px,0);
+      transition-duration:340ms;
+    }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .js-motion .text-appear {
+      opacity:1;
+      transform:none;
+      transition:none;
+    }
+  }
+}
+
+@layer adaptive {
+  .js-motion .rc-dishes p:nth-child(2).text-appear,
+  .js-motion .format-card__features span:nth-child(2).text-appear {
+    transition-delay:55ms;
+  }
+  .js-motion .rc-dishes p:nth-child(3).text-appear { transition-delay:100ms; }
+  .js-motion .rc-dishes p:nth-child(4).text-appear { transition-delay:140ms; }
 }

@@ -23,8 +23,7 @@
   .section-topline { display:flex; justify-content:space-between; align-items:center; gap: var(--space-5); padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-border); text-transform:uppercase; }
   .section-topline > :last-child { color: var(--color-muted); font-size: var(--text-2xs); font-weight: 600; letter-spacing: var(--tracking-label); }
   .display { font-family: var(--font-display); font-size: var(--text-section); font-weight: var(--weight-heavy); letter-spacing: var(--tracking-display); line-height: 1.075; text-transform: uppercase; }
-  /* Apply the union filter only to a non-selectable visual duplicate.
-     Filtering the real text also filters its selection background into a rectangle. */
+
   .outline { position:relative; display:inline-block; }
   .outline__text { position:relative; z-index:1; color:transparent; }
   .outline__text::selection { background:var(--color-copper); color:#070707; }
