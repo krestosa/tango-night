@@ -1002,7 +1002,6 @@
     outline:3px solid #0d66ee;
     outline-offset:3px;
   }
-  .menu-recorrido .rc-links a span:last-child { font-size:17px; font-weight:540; }
   .menu-recorrido .rc-description {
     max-width:35ch;
     margin-top:32px;
@@ -1183,7 +1182,6 @@
       font-size:15px;
       white-space:nowrap;
     }
-    .menu-recorrido .rc-links a span:last-child,
     .menu-recorrido .rc-description { display:none; }
     .menu-recorrido .rc-course {
       min-height:0;
@@ -2061,14 +2059,9 @@
   .menu-recorrido .rc-links a {
     transition:background-color 160ms var(--ease-out),color 160ms var(--ease-out);
   }
-  .menu-recorrido .rc-links a span:last-child {
-    display:inline-block;
-    transition:transform 160ms var(--ease-out);
-  }
   @media (hover:hover) and (pointer:fine) {
     .menu-recorrido .rc-links a:hover { background:#27292c; }
     .menu-recorrido .rc-links a[aria-current="location"]:hover { background:#0d66ee; }
-    .menu-recorrido .rc-links a:hover span:last-child { transform:translate3d(2px,-2px,0); }
   }
   .menu-recorrido .rc-links a:active { background:#32363d; }
   .menu-recorrido .rc-links a[aria-current="location"]:active { background:#0b58cc; }
@@ -2090,7 +2083,6 @@
   }
   @media (prefers-reduced-motion:reduce) {
     .menu-recorrido .rc-links a,
-    .menu-recorrido .rc-links a span:last-child,
     .format-choice__tabs label { transition:none; }
   }
 }
