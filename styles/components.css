@@ -81,8 +81,8 @@
   .format-card__backdrop img { width:100%; height:100%; object-fit:cover; object-position:center; opacity:.59; }
   .format-card::before { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,.09) 24%,rgba(0,0,0,.12) 38%,rgba(0,0,0,.86) 83%,rgba(0,0,0,.95)); }
   .format-card--minimal { background:#181312; }
-  .format-card--minimal::before { background: radial-gradient(circle at 60% 31%,transparent,rgba(0,0,0,.46) 50%),linear-gradient(180deg,rgba(22,12,10,.12) 10%,rgba(0,0,0,.85) 92%); }
-  .format-card--minimal .format-card__backdrop { background:radial-gradient(ellipse at 50% 32%,#5e3030 0%,#29181a 42%,#0c0a0a 89%); }
+  .format-card--minimal::before { background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.04) 27%,rgba(0,0,0,.12) 45%,rgba(0,0,0,.75) 84%,rgba(0,0,0,.88)); }
+  .format-card--minimal .format-card__backdrop { background:#181312; }
   .format-card__top { display:flex; justify-content:space-between; align-items:center; gap:16px; font-size:10px; font-weight:650; letter-spacing:.1em; }
   .format-card__tag { border:1px solid rgba(255,255,255,.5); padding:9px 12px; white-space:nowrap; }
   .format-card__body { margin-top:auto; padding-top:80px; }
@@ -93,9 +93,6 @@
   .format-card__features { display:flex; flex-wrap:wrap; gap:13px; margin-top:40px; font-size:11px; font-weight:650; letter-spacing:.045em; }
   .format-note { width:100%; max-width:100%; color:var(--color-muted); margin-top:0; font-size:11px; letter-spacing:.025em; font-weight:600; line-height:1.6; }
 
-  .bandoneon-art { position:absolute; width:min(76%,530px); aspect-ratio:1.5; top:12%; left:50%; transform:translateX(-50%) rotate(-13deg); display:flex; align-items:stretch; justify-content:center; opacity:.68; filter:drop-shadow(0 28px 60px #000); }
-  .bandoneon-art::before,.bandoneon-art::after { content:""; flex:0 0 16%; border:7px solid #080606; background:repeating-linear-gradient(90deg,#1d1713 0 3px,#7e594a 3px 4px,#2b1b1a 4px 8px); box-shadow:inset 0 0 0 4px #6f4a37; }
-  .bandoneon-art span { flex:1; border-inline:1px solid #b08b6f; transform:skewY(-7deg); background:linear-gradient(90deg,#090707,#b58b68 50%,#20120f); }
 
   .menu-section { position:relative; isolation:isolate; overflow:clip; background:#070707; }
   .menu-section__photo { position:absolute; z-index:-2; inset:0; opacity:.20; }

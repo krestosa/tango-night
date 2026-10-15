@@ -109,7 +109,8 @@
     border-radius:0;
   }
   .format-card--minimal { background:#111214; }
-  .format-card--minimal .format-card__backdrop { opacity:.92; }
+  .format-card--minimal .format-card__backdrop { opacity:1; }
+  .format-card--minimal .format-card__backdrop img { opacity:1; }
   .format-card--essential .format-card__backdrop { opacity:1; }
   .format-card--essential .format-card__backdrop picture { display:block; width:100%; height:100%; }
   .format-card--essential .format-card__backdrop img { opacity:.8; }
@@ -151,7 +152,6 @@
   .format-choice .format-card { min-height:clamp(520px,49vw,710px); }
   .format-choice .format-card h3 { font-size:clamp(74px,10vw,165px); }
   .format-choice .format-card__body { max-width:710px; }
-  .format-choice .format-card--minimal .bandoneon-art { width:min(49%,510px); left:78%; }
 
   .menu-section { isolation:auto; overflow:clip; background:var(--paper); color:var(--ink); }
   .menu-section::before,.menu-section__photo { display:none; }
@@ -417,7 +417,6 @@
     }
     .hero__details { margin-top:25px; font-size:12px; line-height:1.5; }
     .menu__food-photo { max-width:350px; margin-top:35px; }
-    .format-card--minimal .bandoneon-art { width:80%; top:15%; }
     .final-cta__content { margin-inline:auto; }
   }
 
@@ -482,18 +481,6 @@
   .format-card--essential { background:#101113; }
   .format-card__body > p:not(.format-card__eyebrow),
   .format-card__features,.format-card__tag { color:#f3f3f0; }
-  .format-card--minimal .format-card__backdrop {
-    opacity:.4; background:#1b1d20;
-  }
-  .format-card--minimal .bandoneon-art {
-    display:none;
-  }
-
-  .format-card--minimal .format-card__backdrop::before {
-    content:""; display:block; position:absolute; inset:0;
-    background:url("../assets/intimate-tango.jpg") 50% 45% / cover no-repeat;
-    filter:brightness(.62);
-  }
   .format-choice__tabs label[for] { outline:0; }
   #formato-minimal:checked ~ .format-choice__tabs label[for="formato-minimal"],
   #formato-essential:checked ~ .format-choice__tabs label[for="formato-essential"] {

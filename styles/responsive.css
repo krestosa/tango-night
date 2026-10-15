@@ -108,7 +108,6 @@
     .format-card__body > p:not(.format-card__eyebrow) { margin-top:28px; font-size:16px; }
     .format-card__features { margin-top:29px; }
     .format-note { font-size:10px; }
-    .bandoneon-art { width:80%; top:17%; }
     .menu-layout__sticky .display { font-size:clamp(69px,16vw,100px); }
     .menu-price strong { font-size:clamp(62px,15vw,83px); }
     .menu-layout__aside { padding-block:12px 40px; }
