@@ -2111,18 +2111,23 @@
 
 @layer adaptive {
   .final-cta .final-cta__content {
-    width:min(690px,100%);
+    width:min(690px,calc(100% - 48px));
     container-type:inline-size;
   }
   .final-cta #final-title {
     width:100%;
     max-width:100%;
-    font-size:min(7cqi,56px);
+    font-size:min(8cqi,56px);
     line-height:1.05;
     text-align:center;
   }
   .final-cta #final-title .final-cta__line {
     display:block;
     white-space:nowrap;
+  }
+  @media (max-width:760px) {
+    .final-cta .final-cta__content {
+      padding:clamp(20px,4vw,28px);
+    }
   }
 }
